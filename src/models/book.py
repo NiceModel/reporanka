@@ -5,4 +5,4 @@ class Book:
         self.published = published
 
     def __str__(self):
-        return f"{self.author} {self.title} {self.published}"
+        return f"{self.author}: {self.title} ({self.published})"
