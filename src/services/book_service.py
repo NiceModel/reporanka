@@ -6,7 +6,7 @@ from repositories.book_repository import (
 
 class BookService:
     def __init__(self, book_repository=default_book_repository):
-        self._book_repository=book_repository
+        self._book_repository = book_repository
 
     def create_book(self, author, title, published):
         book = self._book_repository.create(
