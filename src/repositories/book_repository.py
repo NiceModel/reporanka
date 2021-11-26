@@ -7,7 +7,7 @@ class BookRepository:
     def find_all(self):
         return self._books
 
-    def add(self, book):
+    def create(self, book):
         if isinstance(book, Book):
             self._books.append(book)
             return True

@@ -1,4 +1,4 @@
-from models.book import Book
+from entities.book import Book
 from repositories.book_repository import (
     book_repository as default_book_repository
 )
@@ -13,8 +13,8 @@ class BookService:
             Book(author, title, published)
         )
         return book
+
     def find_all_books(self):
-        books = self._book_repository.find_all()
-        return books
+        return self._book_repository.find_all()
 
 book_service = BookService()
