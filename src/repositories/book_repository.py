@@ -2,7 +2,11 @@ from entities.book import Book
 
 class BookRepository:
     def __init__(self):
-        self._books = []
+        with open("src/data/books.csv", "r") as f:
+            next(f)
+            #print([book.split(",") for book in f])
+            #raise Exception
+            self._books = [Book(*book.split(",")) for book in f]
 
     def find_all(self):
         return self._books
