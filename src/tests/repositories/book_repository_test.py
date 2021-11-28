@@ -11,7 +11,7 @@ class TestBookRepository(unittest.TestCase):
 
     def test_creates_book_if_book_object(self):
         book = Book("Meri", "Meemikirja", "2021")
-        self.assertTrue(self.book_repo.create(book))
+        self.assertTrue(isinstance(self.book_repo.create(book), Book))
 
     def test_create_book_not_book_obj(self):
         book = "olen kirja"

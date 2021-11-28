@@ -10,7 +10,7 @@ class BookRepository:
     def create(self, book):
         if isinstance(book, Book):
             self._books.append(book)
-            return True
+            return book
         raise TypeError(f"Object should be <class 'Book'>, but was {type(book)}")
 
 book_repository = BookRepository()
