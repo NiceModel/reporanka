@@ -1,9 +1,15 @@
 from datetime import date
 
 def check_year(year):
+    if not year:
+        return None
+
     bce = ["bce", "bc", "eaa", "ekr"]
     year_split = year.split()
-    if len(year_split) > 1:
+
+    if not year_split:
+        return False
+    elif len(year_split) > 1:
         for s in bce:
             if year_split[1].find(s):
                 try:
@@ -21,4 +27,3 @@ def check_year(year):
         return True
 
     return False
-
