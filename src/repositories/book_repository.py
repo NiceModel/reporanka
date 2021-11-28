@@ -11,6 +11,6 @@ class BookRepository:
         if isinstance(book, Book):
             self._books.append(book)
             return True
-        raise TypeError(f"Object type should be 'Book', but was {type(book)}")
+        raise TypeError(f"Object should be <class 'Book'>, but was {type(book)}")
 
 book_repository = BookRepository()
