@@ -1,9 +1,10 @@
 import unittest
 from services.book_service import BookService
-#from repositories.book_repository import BookRepository
+from repositories.book_repository import BookRepository
+
 class TestBookService(unittest.TestCase):
     def setUp(self):
-        self.book_service = BookService()
+        self.book_service = BookService(BookRepository())
 
     def test_create_book_returns_correct_book(self):
         book = self.book_service.create_book("Frank Herbert", "Dune", "1965")
