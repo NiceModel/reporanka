@@ -2,9 +2,16 @@ import unittest
 from repositories.book_repository import BookRepository
 from entities.book import Book
 
+class IOServiceStub:
+    def read():
+        return []
+
+    def write(book):
+        return None
+
 class TestBookRepository(unittest.TestCase):
     def setUp(self):
-        self.book_repo = BookRepository()
+        self.book_repo = BookRepository(IOServiceStub)
 
     def test_initialises_repo(self):
         self.assertTrue(isinstance(self.book_repo._books, list))
