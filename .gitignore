@@ -18,6 +18,8 @@ pip-log.txt
 .tox
 .pytest_cache
 
+/__pycache__/
+
 .DS_Store
 .idea/*
 .python-version

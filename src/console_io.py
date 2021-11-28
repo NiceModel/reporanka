@@ -1,4 +1,3 @@
-
 class ConsoleIO:
     def write(self, value):
         print(value)

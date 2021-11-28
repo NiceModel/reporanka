@@ -1,52 +1,63 @@
+from utilities import check_year
+
 class App:
     def __init__(self, book_service, io):
         self.book_service = book_service
         self.io = io
+        self.running = True
+        self.ohjeet = (
+            "\nValitse toiminto"
+            "\n (1) lisää"
+            "\n (2) listaa"
+            "\n (3) hae"
+            "\n (0) lopeta\n")
 
     def run(self):
-        while True:
-            print("\nLUKUVINKKIKIRJASTO")
+        self.io.write("\nLUKUVINKKIKIRJASTO")
 
-            vastaus = self.io.read("\nValitse toiminto"
-              "\n (1) lisää"
-              "\n (2) listaa"
-            "\n (3) hae"
-            #   "\n (4) muokkaa"
-            #   "\n (5) poista"
-              "\n (0) lopeta"
-              )
+        while self.running:
+            vastaus = self.io.read(self.ohjeet)
             if not vastaus:
-                break
-
-            if vastaus == "1":
-                print( "Lisätään lukuvinkki...")
-                print("")
-                (author, title, published) = self._read_credentials()
-                self.book_service.create_book(author, title,published)
-                self.io.write("Uusi lukuvinkki lisätty.")
-
+                self.running = False
+            elif vastaus == "1":
+                self._add_book()
             elif vastaus == "2":
-                print("Listataan lukuvinkit...")
-                books = self.book_service.find_all_books()
-                for book in books:
-                    print(book)
-                    
-            # elif vastaus.endswith("3"):
-            #     print("Haetaan lukuvinkkiä...")
-            # elif vastaus.endswith("4"):
-            #     print("Muokataan lukuvinkkiä...")
-            # elif vastaus.endswith("5"):
-            #     print("Poistetaan lukuvinkki...")
-            elif vastaus ==("0"):
-                print("Heido!")
-                break
+                self._list_books()
+            elif vastaus == "0":
+                self.io.write("Heido!")
+                self.running = False
+            else:
+                self.io.write("Komentoa ei löytynyt, yritä uudelleen.")
 
+    def _add_book(self):
+        self.io.write("Lisätään lukuvinkki...")
+        author = self.io.read("Kirjailija: ")
+        while not author:
+            self.io.write("Kirjailijan nimi on lisättävä!")
+            author = self.io.read("Kirjailija: ")
 
+        title = self.io.read("Nimi: ")
+        while not title:
+            self.io.write("Kirjan nimi on lisättävä!")
+            title = self.io.read("Nimi: ")
 
-    def _read_credentials(self):
-        author = self.io.read("Author: ")
-        title = self.io.read("Title: ")
-        published = self.io.read("Publishing year: ")
+        check = True
+        while check:
+            published = self.io.read("Julkaisuvuosi: ")
+            if not check_year(published):
+                self.io.write("Julkaisuvuosi ei ole kelvollinen!")
+            else:
+                check = False
 
-        return (author, title, published)
+        self.book_service.create_book(author, title, published)
+        self.io.write("Uusi lukuvinkki lisätty.")
+
+    def _list_books(self):
+        self.io.write("Listataan lukuvinkit...")
+        books = self.book_service.find_all_books()
+        if books:
+            for book in books:
+                self.io.write(book)
+        else:
+            self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
 
