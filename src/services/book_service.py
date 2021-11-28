@@ -15,6 +15,6 @@ class BookService:
         return book
     def find_all_books(self):
         books = self._book_repository.find_all()
-        return books
+        return sorted(books, key = lambda book: book.title.lower())
 
 book_service = BookService()
