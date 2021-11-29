@@ -27,5 +27,6 @@ Backlogeille ja tuntikirjanpidolle ym. on käytössä Google Sheets, jota pääs
 + Testien haaraumakattavuus 70%
 + Sovellus toimii oikeilla syötteillä
 + Sovellus antaa järkevät virheilmoitukset yleisimmillä virheellisillä syötteillä
++ Github Actions on otettu käyttöön yksikkötestaukseen
 + Robot Framework on otettu käyttöön
-+ Github Actions on luotu ja toimii oikein
+
