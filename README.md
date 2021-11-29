@@ -19,3 +19,13 @@ Backlogeille ja tuntikirjanpidolle ym. on käytössä Google Sheets, jota pääs
 + Yksikkötestien haaraumakattavuusraportti: `poetry run invoke coverage-report`
   + Raportin löydät *htmlcov* -kansiosta
 + Lint: `poetry run invoke lint`
+
+
+## Definition of Done
+
++ Yksikkötestit on toteutettu
++ Testien haaraumakattavuus 70%
++ Sovellus toimii oikeilla syötteillä
++ Sovellus antaa järkevät virheilmoitukset yleisimmillä virheellisillä syötteillä
++ Robot Framework on otettu käyttöön
++ Github Actions on luotu ja toimii oikein
