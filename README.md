@@ -30,3 +30,6 @@ Backlogeille ja tuntikirjanpidolle ym. on käytössä Google Sheets, jota pääs
 + Github Actions on otettu käyttöön yksikkötestaukseen
 + Robot Framework on otettu käyttöön
 
+
+![Github Actions](https://github.com/NiceModel/reporanka/workflows/CI/badge.svg)
+
