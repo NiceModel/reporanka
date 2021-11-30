@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.8.10 on linux)" generated="20211130 02:26:18.774" rpa="false" schemaversion="2">
+<suite id="s1" name="Tests" source="/home/aebjork/Documents/Kurssit/Ohtu/miniprojekti/reporanka/src/tests">
+<suite id="s1-s1" name="Console" source="/home/aebjork/Documents/Kurssit/Ohtu/miniprojekti/reporanka/src/tests/console.robot">
+<test id="s1-s1-t1" name="Start Succeeds">
+<kw name="Open Application" type="SETUP">
+<kw name="Main Page Should Be Open" library="resource">
+<kw name="Run Application" library="AppLibrary">
+<status status="PASS" starttime="20211130 02:26:18.799" endtime="20211130 02:26:18.799"/>
+</kw>
+<kw name="Input" library="AppLibrary">
+<arg>${RUNS} == True</arg>
+<msg timestamp="20211130 02:26:18.800" level="INFO">Input "app._self.running == True" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.799" endtime="20211130 02:26:18.800"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.798" endtime="20211130 02:26:18.800"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.798" endtime="20211130 02:26:18.800"/>
+</kw>
+<kw name="Output Should Contain" library="AppLibrary">
+<arg>\nLUKUVINKKIKIRJASTO</arg>
+<status status="PASS" starttime="20211130 02:26:18.800" endtime="20211130 02:26:18.800"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.798" endtime="20211130 02:26:18.800"/>
+</test>
+<test id="s1-s1-t2" name="Function Add Starts">
+<kw name="Open Application" type="SETUP">
+<kw name="Main Page Should Be Open" library="resource">
+<kw name="Run Application" library="AppLibrary">
+<status status="PASS" starttime="20211130 02:26:18.801" endtime="20211130 02:26:18.802"/>
+</kw>
+<kw name="Input" library="AppLibrary">
+<arg>${RUNS} == True</arg>
+<msg timestamp="20211130 02:26:18.802" level="INFO">Input "app._self.running == True" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.802" endtime="20211130 02:26:18.802"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.801" endtime="20211130 02:26:18.802"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.801" endtime="20211130 02:26:18.802"/>
+</kw>
+<kw name="Input Function" library="resource">
+<arg>1</arg>
+<kw name="Input" library="AppLibrary">
+<arg>${vastaus}</arg>
+<msg timestamp="20211130 02:26:18.803" level="INFO">Input "1" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.803" endtime="20211130 02:26:18.803"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.802" endtime="20211130 02:26:18.803"/>
+</kw>
+<kw name="Output Should Contain" library="AppLibrary">
+<arg>\nLUKUVINKKIKIRJASTO</arg>
+<status status="PASS" starttime="20211130 02:26:18.803" endtime="20211130 02:26:18.803"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.801" endtime="20211130 02:26:18.803"/>
+</test>
+<test id="s1-s1-t3" name="Function List Starts">
+<kw name="Open Application" type="SETUP">
+<kw name="Main Page Should Be Open" library="resource">
+<kw name="Run Application" library="AppLibrary">
+<status status="PASS" starttime="20211130 02:26:18.805" endtime="20211130 02:26:18.805"/>
+</kw>
+<kw name="Input" library="AppLibrary">
+<arg>${RUNS} == True</arg>
+<msg timestamp="20211130 02:26:18.805" level="INFO">Input "app._self.running == True" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.805" endtime="20211130 02:26:18.805"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.804" endtime="20211130 02:26:18.806"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.804" endtime="20211130 02:26:18.806"/>
+</kw>
+<kw name="Input Function" library="resource">
+<arg>2</arg>
+<kw name="Input" library="AppLibrary">
+<arg>${vastaus}</arg>
+<msg timestamp="20211130 02:26:18.806" level="INFO">Input "2" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.806" endtime="20211130 02:26:18.806"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.806" endtime="20211130 02:26:18.807"/>
+</kw>
+<kw name="Output Should Contain" library="AppLibrary">
+<arg>\nLUKUVINKKIKIRJASTO</arg>
+<status status="PASS" starttime="20211130 02:26:18.807" endtime="20211130 02:26:18.807"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.804" endtime="20211130 02:26:18.807"/>
+</test>
+<test id="s1-s1-t4" name="Function Search Not Starting Yet">
+<kw name="Open Application" type="SETUP">
+<kw name="Main Page Should Be Open" library="resource">
+<kw name="Run Application" library="AppLibrary">
+<status status="PASS" starttime="20211130 02:26:18.809" endtime="20211130 02:26:18.809"/>
+</kw>
+<kw name="Input" library="AppLibrary">
+<arg>${RUNS} == True</arg>
+<msg timestamp="20211130 02:26:18.810" level="INFO">Input "app._self.running == True" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.809" endtime="20211130 02:26:18.810"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.808" endtime="20211130 02:26:18.810"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.808" endtime="20211130 02:26:18.810"/>
+</kw>
+<kw name="Input Function" library="resource">
+<arg>3</arg>
+<kw name="Input" library="AppLibrary">
+<arg>${vastaus}</arg>
+<msg timestamp="20211130 02:26:18.811" level="INFO">Input "3" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.810" endtime="20211130 02:26:18.811"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.810" endtime="20211130 02:26:18.811"/>
+</kw>
+<kw name="Output Should Contain" library="AppLibrary">
+<arg>\nLUKUVINKKIKIRJASTO</arg>
+<status status="PASS" starttime="20211130 02:26:18.811" endtime="20211130 02:26:18.811"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.808" endtime="20211130 02:26:18.811"/>
+</test>
+<test id="s1-s1-t5" name="Unvalid Function">
+<kw name="Open Application" type="SETUP">
+<kw name="Main Page Should Be Open" library="resource">
+<kw name="Run Application" library="AppLibrary">
+<status status="PASS" starttime="20211130 02:26:18.813" endtime="20211130 02:26:18.813"/>
+</kw>
+<kw name="Input" library="AppLibrary">
+<arg>${RUNS} == True</arg>
+<msg timestamp="20211130 02:26:18.813" level="INFO">Input "app._self.running == True" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.813" endtime="20211130 02:26:18.813"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.812" endtime="20211130 02:26:18.814"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.812" endtime="20211130 02:26:18.814"/>
+</kw>
+<kw name="Input Function" library="resource">
+<arg>6</arg>
+<kw name="Input" library="AppLibrary">
+<arg>${vastaus}</arg>
+<msg timestamp="20211130 02:26:18.814" level="INFO">Input "6" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.814" endtime="20211130 02:26:18.814"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.814" endtime="20211130 02:26:18.814"/>
+</kw>
+<kw name="Output Should Contain" library="AppLibrary">
+<arg>\nLUKUVINKKIKIRJASTO</arg>
+<status status="PASS" starttime="20211130 02:26:18.815" endtime="20211130 02:26:18.815"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.812" endtime="20211130 02:26:18.815"/>
+</test>
+<test id="s1-s1-t6" name="Closing Should Succeed">
+<kw name="Open Application" type="SETUP">
+<kw name="Main Page Should Be Open" library="resource">
+<kw name="Run Application" library="AppLibrary">
+<status status="PASS" starttime="20211130 02:26:18.816" endtime="20211130 02:26:18.816"/>
+</kw>
+<kw name="Input" library="AppLibrary">
+<arg>${RUNS} == True</arg>
+<msg timestamp="20211130 02:26:18.817" level="INFO">Input "app._self.running == True" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.816" endtime="20211130 02:26:18.817"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.816" endtime="20211130 02:26:18.817"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.816" endtime="20211130 02:26:18.817"/>
+</kw>
+<kw name="Input Function" library="resource">
+<arg>0</arg>
+<kw name="Input" library="AppLibrary">
+<arg>${vastaus}</arg>
+<msg timestamp="20211130 02:26:18.818" level="INFO">Input "0" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.817" endtime="20211130 02:26:18.818"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.817" endtime="20211130 02:26:18.818"/>
+</kw>
+<kw name="Output Should Contain" library="AppLibrary">
+<arg>\nLUKUVINKKIKIRJASTO</arg>
+<status status="PASS" starttime="20211130 02:26:18.818" endtime="20211130 02:26:18.818"/>
+</kw>
+<kw name="Close Application">
+<kw name="Exit" library="resource">
+<kw name="Input" library="AppLibrary">
+<arg>${RUNS} == False</arg>
+<msg timestamp="20211130 02:26:18.819" level="INFO">Input "app._self.running == False" is in &lt;built-in function input&gt;</msg>
+<status status="PASS" starttime="20211130 02:26:18.819" endtime="20211130 02:26:18.819"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.819" endtime="20211130 02:26:18.819"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.818" endtime="20211130 02:26:18.819"/>
+</kw>
+<status status="PASS" starttime="20211130 02:26:18.815" endtime="20211130 02:26:18.820"/>
+</test>
+<status status="PASS" starttime="20211130 02:26:18.792" endtime="20211130 02:26:18.820"/>
+</suite>
+<status status="PASS" starttime="20211130 02:26:18.775" endtime="20211130 02:26:18.821"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="6" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s1" name="Console">Tests.Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
