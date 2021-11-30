@@ -1,16 +1,17 @@
 from app import App
 from stub_io import StubIO
+from stub_io_service import StubIOService
 from services.book_service import BookService
-from repositories.book_repository import BookRepository
+from stub_book_repository import StubBookRepository
 from entities.book import Book
 import sys
 from io import StringIO
 
 class AppLibrary:
     def __init__(self):
-        # self._io = ConsoleIO()
         self._io = StubIO()
-        self._book_repository = BookRepository()
+        self._io_service = StubIOService()
+        self._book_repository = StubBookRepository(self._io_service)
         self._book_service = BookService(self._book_repository)  
         self._app = App(
             self._book_service,
@@ -29,6 +30,17 @@ class AppLibrary:
         if value not in outputs:
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
+            )
+
+    def read(self):
+        self._io_service.read()
+
+    def write(self, value, book):
+        writetext = set(self.io_service.write(book))
+
+        if value not in writetext:
+            raise AssertionError(
+                f"Output \"{value}\" is not in {str(writetext)}"
             )
 
     def run_application(self):

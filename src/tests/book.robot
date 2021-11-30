@@ -5,7 +5,8 @@ Test Setup  Input Add Command
 *** Test Cases ***
 
 Add Book With Correct Details Published In Common Era
-    Add New Book  Meri  Meemikirja  2021
+    # Add New Book  Meri  Meemikirja  2021
+    Add New Book  TESTIKIRJAILIJA  TESTIKIRJA  2021
     Run App
     Output Should Contain  Uusi lukuvinkki lisätty.
 
