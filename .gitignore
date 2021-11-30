@@ -17,6 +17,7 @@ pip-log.txt
 .coverage
 .tox
 .pytest_cache
+coverage.xml
 
 /__pycache__/
 
@@ -42,3 +43,7 @@ pip-wheel-metadata
 /poetry.toml
 
 poetry/core/*
+
+log.html
+output.xml
+report.html

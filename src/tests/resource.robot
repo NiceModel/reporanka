@@ -1,20 +1,31 @@
 *** Settings ***
 Library  ../AppLibrary.py
 
-*** Variables ***
-${RUNS}  app._self.running
+# *** Variables ***
+# ${RUNS}  app._self.running
 
 *** Keywords ***
-Main Page Should Be Open
+Run App
     Run Application
-    Input  ${RUNS} == True
+    # Input  ${RUNS} == True
 
-Input Function
-    [Arguments]  ${vastaus}
-    Input  ${vastaus}
+Input Quit Command
+    Input  0
 
-Input New Command
-    Input  new
+Input Add Command
+    Input  1
 
-Exit
-    Input  ${RUNS} == False
+Input List Command
+    Input  2
+
+Add New Book
+    [Arguments]  ${author}  ${title}  ${published}
+    Input  ${author}
+    Input  ${title}
+    Input  ${published}
+
+# Input New Command
+#     Input  new
+
+# Exit
+#     Input  ${RUNS} == False

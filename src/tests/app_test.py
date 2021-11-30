@@ -49,9 +49,6 @@ class TestApp(unittest.TestCase):
     def setUp(self):
         self.app = App(StubBookService(), StubIO())
 
-    def test_init_app(self):
-        self.assertTrue(self.app.running)
-
     def test_add_book(self):
         self.app._add_book()
         expected = [
