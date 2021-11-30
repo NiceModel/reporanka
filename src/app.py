@@ -4,19 +4,20 @@ class App:
     def __init__(self, book_service, io):
         self.book_service = book_service
         self.io = io
-        self.running = True
+        self.running = False
         self.ohjeet = (
             "\nValitse toiminto"
             "\n (1) lisää"
             "\n (2) listaa"
-            "\n (3) hae"
             "\n (0) lopeta\n")
 
     def run(self):
+        self.running = True
         self.io.write("\nLUKUVINKKIKIRJASTO")
 
         while self.running:
-            vastaus = self.io.read(self.ohjeet)
+            self.io.write(self.ohjeet)
+            vastaus = self.io.read("Komento: ")
             if not vastaus:
                 self.running = False
             elif vastaus == "1":

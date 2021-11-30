@@ -7,6 +7,7 @@ def start(ctx):
 @task
 def test(ctx):
     ctx.run("pytest src")
+    ctx.run("robot src/tests")
 
 @task
 def coverage(ctx):
