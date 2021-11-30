@@ -15,7 +15,7 @@ Backlogeille ja tuntikirjanpidolle ym. on käytössä Google Sheets, jota pääs
 
 + Riippuvuuksien asentaminen: `poetry install`
 + Sovelluksen käynnistäminen: `poetry run invoke start`
-+ Yksikkötestaus: `poetry run invoke test`
++ Testaus: unittest ja robot framework: `poetry run invoke test`
 + Yksikkötestien haaraumakattavuusraportti: `poetry run invoke coverage-report`
   + Raportin löydät *htmlcov* -kansiosta
 + Lint: `poetry run invoke lint`
