@@ -2,6 +2,7 @@ import unittest
 from collections import deque
 from app import App
 
+
 class StubIO:
     def __init__(self):
         self.authors = deque(["", "Meri"])
@@ -35,6 +36,7 @@ class StubIO:
         elif prompt == published:
             return self.years.popleft()
 
+
 class StubBookService:
     def __init__(self):
         self.book_list = ["kirja1", "kirja2"]
@@ -44,6 +46,7 @@ class StubBookService:
 
     def find_all_books(self):
         return self.book_list
+
 
 class TestApp(unittest.TestCase):
     def setUp(self):
@@ -64,7 +67,7 @@ class TestApp(unittest.TestCase):
         self.app._list_books()
         expected = ["Listataan lukuvinkit...", "kirja1", "kirja2"]
         self.assertEqual(self.app.io.values, expected)
-    
+
     def test_list_books_empty(self):
         self.app.book_service.book_list = []
         self.app._list_books()

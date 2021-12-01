@@ -1,5 +1,6 @@
 from entities.book import Book
 
+
 class StubIOService:
     def read(self):
         with open("src/data/test_books.csv", "r") as f:
