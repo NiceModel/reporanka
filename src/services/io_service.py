@@ -1,12 +1,24 @@
-from entities.book import Book
-
+"""Service for reading from and writing to the items datafile"""
 
 class IOService():
+    """Service for reading from and writing to the items datafile"""
     def read(self):
-        with open("src/data/books.csv", "r") as f:
-            next(f)
-            return [Book(*book.split(",")) for book in f]
+        """Reads from the datafile.
 
-    def write(self, book):
-        with open("src/data/books.csv", "a") as f:
-            f.write(f"\n{book.author},{book.title},{book.published}")
+        Returns:
+            A tuple of (item type: string, item fields: list)
+        """
+
+        with open("src/data/items.csv", "r") as file:
+            next(file)
+            return [(item[0], item[1].split(",")) for item in file]
+
+    def write(self, item_type, item_fields):
+        """Writes to the datafile.
+
+        Writes in two columns:
+            item type: string, item fields: list
+        """
+
+        with open("src/data/items.csv", "a") as file:
+            file.write(f"\n{item_type},{item_fields}")
