@@ -1,6 +1,9 @@
+"""Basic functionality"""
+
 from utilities import check_year
 
 class App:
+    """Handles the UI functionality for the application"""
     def __init__(self, book_service, io):
         self.book_service = book_service
         self.io = io
@@ -12,6 +15,7 @@ class App:
             "\n (0) lopeta\n")
 
     def run(self):
+        """Handles running the application"""
         self.running = True
         self.io.write("\nLUKUVINKKIKIRJASTO")
 
@@ -61,4 +65,3 @@ class App:
                 self.io.write(book)
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
-

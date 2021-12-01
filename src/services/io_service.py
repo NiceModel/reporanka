@@ -1,5 +1,6 @@
 from entities.book import Book
 
+
 class IOService():
     def read(self):
         with open("src/data/books.csv", "r") as f:

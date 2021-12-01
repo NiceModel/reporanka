@@ -2,6 +2,7 @@ import unittest
 
 from entities.book import Book
 
+
 class TestBook(unittest.TestCase):
     def setUp(self):
         self.book = Book('Meri', 'Meemikirja', '2021')
