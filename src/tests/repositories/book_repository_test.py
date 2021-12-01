@@ -2,12 +2,14 @@ import unittest
 from repositories.book_repository import BookRepository
 from entities.book import Book
 
+
 class IOServiceStub:
     def read():
         return []
 
     def write(book):
         return None
+
 
 class TestBookRepository(unittest.TestCase):
     def setUp(self):
