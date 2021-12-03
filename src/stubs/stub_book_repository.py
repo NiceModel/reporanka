@@ -1,11 +1,12 @@
 """Stub for book repository"""
 from config import TEST_DB_PATH
 from entities.book import Book
-from utilities.csv_utilities import read_csv, write_csv
+from utilities.csv_utilities import read_csv, write_csv, clear_csv
 
 class StubBookRepository:
     """Stub for book repository"""
     def __init__(self):
+        clear_csv(TEST_DB_PATH)
         self._books = read_csv(TEST_DB_PATH)
 
     def find_all(self):
@@ -20,6 +21,5 @@ class StubBookRepository:
             return book
         raise TypeError(
             f"Object should be <class 'Book'>, but was {type(book)}")
-
 
 book_repository = StubBookRepository()

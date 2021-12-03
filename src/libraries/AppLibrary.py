@@ -2,17 +2,14 @@
 
 from app.app import App
 from stubs.stub_io import StubIO
-from stubs.stub_io_service import StubIOService
 from services.book_service import BookService
 from stubs.stub_book_repository import StubBookRepository
-
 
 class AppLibrary:
     """Services for App"""
     def __init__(self):
         self._io = StubIO()
-        self._io_service = StubIOService()
-        self._book_repository = StubBookRepository(self._io_service)
+        self._book_repository = StubBookRepository()
         self._book_service = BookService(self._book_repository)
         self._app = App(
             self._book_service,
@@ -35,18 +32,18 @@ class AppLibrary:
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
 
-    def read(self):
-        """Read from input"""
-        self._io_service.read()
+    # def read(self):
+    #     """Read from input"""
+    #     self._io_service.read()
 
-    def write(self, value, book):
-        """Write from input"""
-        writetext = set(self._io_service.write(book))
+    # def write(self, value, book):
+    #     """Write from input"""
+    #     writetext = set(self._io_service.write(book))
 
-        if value not in writetext:
-            raise AssertionError(
-                f"Output \"{value}\" is not in {str(writetext)}"
-            )
+    #     if value not in writetext:
+    #         raise AssertionError(
+    #             f"Output \"{value}\" is not in {str(writetext)}"
+    #         )
 
     def run_application(self):
         """Run application"""
