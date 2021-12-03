@@ -3,7 +3,6 @@ from config import INSTRUCTIONS
 from collections import deque
 from app.app import App
 
-
 class StubIO:
     def __init__(self):
         self.authors = deque(["", "Meri"])
@@ -55,7 +54,7 @@ class TestApp(unittest.TestCase):
             "Kirjailijan nimi on lisättävä!",
             "Kirjan nimi on lisättävä!",
             "Julkaisuvuosi ei ole kelvollinen!",
-            "Uusi lukuvinkki lisätty."
+            "\nUusi lukuvinkki 'Meri: Meemikirja (2021)' lisätty."
         ]
         self.assertEqual(self.app.io.values, expected)
 

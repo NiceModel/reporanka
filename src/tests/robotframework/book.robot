@@ -8,12 +8,12 @@ Add Book With Correct Details Published In Common Era
     # Add New Book  Meri  Meemikirja  2021
     Add New Book  TESTIKIRJAILIJA  TESTIKIRJA  2021
     Run App
-    Output Should Contain  Uusi lukuvinkki lisätty.
+    Output Should Contain  \nUusi lukuvinkki 'TESTIKIRJAILIJA: TESTIKIRJA (2021)' lisätty.
 
 Add Book With Correct Details Published Before Common Era
     Add New Book  Tuntematon  Rakkausrunoja  127 eaa.
     Run App
-    Output Should Contain  Uusi lukuvinkki lisätty.
+    Output Should Contain  \nUusi lukuvinkki 'Tuntematon: Rakkausrunoja (127 eaa.)' lisätty.
 
 Add Book With No Author
     Add New Book  ${EMPTY}  Kirja  1990

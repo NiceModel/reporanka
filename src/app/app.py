@@ -50,8 +50,11 @@ class App:
             else:
                 check = False
 
-        self.book_service.create_book(author, title, published)
-        self.io.write("Uusi lukuvinkki lisätty.")
+        new = self.book_service.create_book(author, title, published)
+        if new == "duplicate":
+            self.io.write(f"\nLukuvinkki '{author}: {title} ({published})' on jo listassa!")
+        else:
+            self.io.write(f"\nUusi lukuvinkki '{author}: {title} ({published})' lisätty.")
 
     def _list_books(self):
         self.io.write("Listataan lukuvinkit...")
