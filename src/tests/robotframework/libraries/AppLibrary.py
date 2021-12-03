@@ -1,10 +1,10 @@
 """Services for App"""
 
-from app import App
-from stub_io import StubIO
-from stub_io_service import StubIOService
+from app.app import App
+from stubs.stub_io import StubIO
+from stubs.stub_io_service import StubIOService
 from services.book_service import BookService
-from stub_book_repository import StubBookRepository
+from stubs.stub_book_repository import StubBookRepository
 
 
 class AppLibrary:

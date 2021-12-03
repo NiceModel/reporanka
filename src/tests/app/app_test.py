@@ -1,6 +1,7 @@
 import unittest
+from config import INSTRUCTIONS
 from collections import deque
-from app import App
+from app.app import App
 
 
 class StubIO:
@@ -17,12 +18,7 @@ class StubIO:
         return value
 
     def read(self, prompt):
-        instructions = (
-            "\nValitse toiminto"
-            "\n (1) lisää"
-            "\n (2) listaa"
-            "\n (3) hae"
-            "\n (0) lopeta\n")
+        instructions = INSTRUCTIONS
         author = "Kirjailija: "
         title = "Nimi: "
         published = "Julkaisuvuosi: "

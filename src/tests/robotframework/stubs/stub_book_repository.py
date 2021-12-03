@@ -1,12 +1,12 @@
 """Stub for book repository"""
+from config import TEST_DB_PATH
 from entities.book import Book
-from stub_io_service import StubIOService
+from utilities.csv_utilities import read_csv, write_csv
 
 class StubBookRepository:
     """Stub for book repository"""
-    def __init__(self, io=StubIOService()):
-        self.io = io
-        self._books = io.read()
+    def __init__(self):
+        self._books = read_csv(TEST_DB_PATH)
 
     def find_all(self):
         """Get all books"""
@@ -16,7 +16,7 @@ class StubBookRepository:
         """Add book to list and file"""
         if isinstance(book, Book):
             self._books.append(book)
-            self.io.write(book)
+            write_csv(book, TEST_DB_PATH)
             return book
         raise TypeError(
             f"Object should be <class 'Book'>, but was {type(book)}")

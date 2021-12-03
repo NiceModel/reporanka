@@ -1,5 +1,5 @@
 *** Settings ***
-Library  ../AppLibrary.py
+Library  ./libraries/AppLibrary.py
 
 # *** Variables ***
 # ${RUNS}  app._self.running

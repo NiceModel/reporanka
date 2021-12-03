@@ -1,6 +1,7 @@
 """Basic functionality"""
 
-from utilities import check_year
+from utilities.utilities import check_year
+from config import INSTRUCTIONS
 
 class App:
     """Handles the UI functionality for the application"""
@@ -8,11 +9,6 @@ class App:
         self.book_service = book_service
         self.io = io
         self.running = False
-        self.ohjeet = (
-            "\nValitse toiminto"
-            "\n (1) lisää"
-            "\n (2) listaa"
-            "\n (0) lopeta\n")
 
     def run(self):
         """Handles running the application"""
@@ -20,7 +16,7 @@ class App:
         self.io.write("\nLUKUVINKKIKIRJASTO")
 
         while self.running:
-            self.io.write(self.ohjeet)
+            self.io.write(INSTRUCTIONS)
             vastaus = self.io.read("Komento: ")
             if not vastaus:
                 self.running = False

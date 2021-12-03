@@ -1,11 +1,12 @@
+from config import DB_PATH
 from entities.book import Book
-from services.io_service import IOService
+from utilities.csv_utilities import read_csv, write_csv
 
 
 class BookRepository:
-    def __init__(self, io=IOService()):
-        self.io = io
-        self._books = io.read()
+    def __init__(self, fpath=DB_PATH):
+        self._fpath = fpath
+        self._books = read_csv(self._fpath)
 
     def find_all(self):
         return self._books
@@ -13,7 +14,7 @@ class BookRepository:
     def create(self, book):
         if isinstance(book, Book):
             self._books.append(book)
-            self.io.write(book)
+            write_csv(book, self._fpath)
             return book
         raise TypeError(
             f"Object should be <class 'Book'>, but was {type(book)}")
