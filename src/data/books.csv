@@ -1,5 +1,6 @@
-author,title,published
-Mauri Kunnas,Seitsemän koiraveljestä,2002
-John Kiviranta,Luuseri,2008
-Meri,Meemikirja,2021
-Väinö Linna,Tuntematon sotilas,1954
+id,author,title,published
+1,  [('Kunnas', 'Mauri')],  Seitsemän koiraveljestä,  2002
+2,  [('Kontkanen', 'Pekka'), ('Lehtonen', 'Jukka'), ('Luosto', 'Kerkko'), ('Savolainen', 'Sisko')],  Pyramidi 10 - Integraalilaskenta,  2017
+3,  [('Siili', 'Meri')],  Meemikirja,  2021
+1,  [('Kiviranta', 'John')],  Luureri,  2008
+2,  [('Linna', 'Väinö')],  Tuntematon sotilas,  1954
