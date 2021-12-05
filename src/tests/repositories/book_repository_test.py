@@ -35,3 +35,12 @@ class TestBookRepository(unittest.TestCase):
         books = self.book_repo.find_all()
         self.assertEqual(len(books), 1)
         self.assertTrue(isinstance(books, list))
+
+    def test_duplicate_not_added(self):
+        book = Book("Meri", "Meemikirja", "2021")
+        self.book_repo.create(book)
+        book = Book("Meri", "Meemikirja", "2021")
+        self.book_repo.create(book)
+        books = self.book_repo.find_all()
+        self.assertEqual(len(books), 1)
+        self.assertTrue(isinstance(books, list))

@@ -16,10 +16,19 @@ class StubBookRepository:
     def create(self, book):
         """Add book to list and file"""
         if isinstance(book, Book):
-            self._books.append(book)
-            write_csv(book, TEST_DB_PATH)
-            return book
+            if not self._is_duplicate(book):
+                self._books.append(book)
+                write_csv(book, TEST_DB_PATH)
+                return book
+            return "duplicate"
         raise TypeError(
             f"Object should be <class 'Book'>, but was {type(book)}")
+
+    def _is_duplicate(self, new_book):
+        """Checks if a book is already in the repository."""
+        for book in self._books:
+            if str(book) == str(new_book):
+                return True
+        return False
 
 book_repository = StubBookRepository()
