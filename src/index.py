@@ -1,7 +1,7 @@
 """Main program"""
 from services.book_service import BookService
-from console_io import ConsoleIO
-from app import App
+from app.console_io import ConsoleIO
+from app.app import App
 
 
 def main():

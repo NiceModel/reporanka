@@ -6,5 +6,4 @@ class IdGenerator:
         self._next = self._next + 1
         return self._next
 
-
 id_generator = IdGenerator()

@@ -1,20 +1,14 @@
 import unittest
+from config import TEST_DB_PATH
 from services.book_service import BookService
 from repositories.book_repository import BookRepository
-from entities.book import Book
-
-
-class IOServiceStub:
-    def read():
-        return []
-
-    def write(book):
-        return None
+from utilities.csv_utilities import clear_csv
 
 
 class TestBookRepository(unittest.TestCase):
     def setUp(self):
-        self.book_service = BookService(BookRepository(IOServiceStub))
+        clear_csv(TEST_DB_PATH)
+        self.book_service = BookService(BookRepository(TEST_DB_PATH))
 
     def test_init_book_service(self):
         self.assertTrue(isinstance(self.book_service, BookService))

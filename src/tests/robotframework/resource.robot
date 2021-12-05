@@ -1,13 +1,9 @@
 *** Settings ***
-Library  ../AppLibrary.py
-
-# *** Variables ***
-# ${RUNS}  app._self.running
+Library  ./../../libraries/AppLibrary.py
 
 *** Keywords ***
 Run App
     Run Application
-    # Input  ${RUNS} == True
 
 Input Quit Command
     Input  0
@@ -23,9 +19,3 @@ Add New Book
     Input  ${author}
     Input  ${title}
     Input  ${published}
-
-# Input New Command
-#     Input  new
-
-# Exit
-#     Input  ${RUNS} == False

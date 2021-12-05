@@ -1,7 +1,7 @@
 import unittest
+from config import INSTRUCTIONS
 from collections import deque
-from app import App
-
+from app.app import App
 
 class StubIO:
     def __init__(self):
@@ -17,12 +17,7 @@ class StubIO:
         return value
 
     def read(self, prompt):
-        instructions = (
-            "\nValitse toiminto"
-            "\n (1) lisää"
-            "\n (2) listaa"
-            "\n (3) hae"
-            "\n (0) lopeta\n")
+        instructions = INSTRUCTIONS
         author = "Kirjailija: "
         title = "Nimi: "
         published = "Julkaisuvuosi: "
@@ -59,7 +54,7 @@ class TestApp(unittest.TestCase):
             "Kirjailijan nimi on lisättävä!",
             "Kirjan nimi on lisättävä!",
             "Julkaisuvuosi ei ole kelvollinen!",
-            "Uusi lukuvinkki lisätty."
+            "\nUusi lukuvinkki 'Meri: Meemikirja (2021)' lisätty."
         ]
         self.assertEqual(self.app.io.values, expected)
 

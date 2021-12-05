@@ -9,8 +9,7 @@ class StubIO:
     def read(self, prompt):
         if len(self.inputs) > 0:
             return self.inputs.pop(0)
-        else:
-            return "0"
+        return "0"
 
     def add_input(self, value):
         self.inputs.append(value)

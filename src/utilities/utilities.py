@@ -1,4 +1,4 @@
-"""Utility function"""
+"""Utility functions"""
 
 from datetime import date
 
@@ -12,7 +12,8 @@ def check_year(year):
 
     if not year_split:
         return False
-    elif len(year_split) > 1:
+
+    if len(year_split) > 1:
         for suffix in bce:
             if year_split[1].find(suffix):
                 try:
@@ -26,7 +27,4 @@ def check_year(year):
     except ValueError:
         return False
 
-    if 0 <= year_int <= date.today().year:
-        return True
-
-    return False
+    return bool(0 <= year_int <= date.today().year)
