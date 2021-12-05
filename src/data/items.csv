@@ -1,1 +1,2 @@
-type,fields
+type;fields
+book;['Aku Ankka', 'Testi', 'eka', '2001']
