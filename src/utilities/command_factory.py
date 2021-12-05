@@ -1,8 +1,6 @@
 '''Command Factory'''
 import sys
-from utilities import check_year
-from services.book_service import (book_service as default_book_service)
-
+from utilities.utilities import check_year
 
 class CommandFactory:
     '''Produces choosable commands to UI'''

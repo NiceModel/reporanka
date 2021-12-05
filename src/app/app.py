@@ -1,8 +1,8 @@
 """Basic functionality"""
 
-from utilities.utilities import check_year
+# from utilities.utilities import check_year
 from config import INSTRUCTIONS
-from command_factory import CommandFactory
+from utilities.command_factory import CommandFactory
 
 
 class App:
@@ -13,25 +13,25 @@ class App:
         self.commands = CommandFactory(io, book_service)
         self.running = False    
 
-    def run(self):
-        """Handles running the application"""
-        self.running = True
-        self.io.write("\nLUKUVINKKIKIRJASTO")
+    # def run(self):
+    #     """Handles running the application"""
+    #     self.running = True
+    #     self.io.write("\nLUKUVINKKIKIRJASTO")
 
-        while self.running:
-            self.io.write(INSTRUCTIONS)
-            vastaus = self.io.read("Komento: ")
-            if not vastaus:
-                self.running = False
-            elif vastaus == "1":
-                self._add_book()
-            elif vastaus == "2":
-                self._list_books()
-            elif vastaus == "0":
-                self.io.write("Heido!")
-                self.running = False
-            else:
-                self.io.write("Komentoa ei löytynyt, yritä uudelleen.")
+    #     while self.running:
+    #         self.io.write(INSTRUCTIONS)
+    #         vastaus = self.io.read("Komento: ")
+    #         if not vastaus:
+    #             self.running = False
+    #         elif vastaus == "1":
+    #             self._add_book()
+    #         elif vastaus == "2":
+    #             self._list_books()
+    #         elif vastaus == "0":
+    #             self.io.write("Heido!")
+    #             self.running = False
+    #         else:
+    #             self.io.write("Komentoa ei löytynyt, yritä uudelleen.")
 
     def _add_book(self):
         self.io.write("Lisätään lukuvinkki...")
@@ -68,7 +68,7 @@ class App:
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
 
-    def run_new(self):
+    def run(self):
         self.running = True
         while self.running:
             self.io.guide()

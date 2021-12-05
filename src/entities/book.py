@@ -16,4 +16,4 @@ class Book:
         self.published = published
 
     def __str__(self):
-        return f" {self.id}: {self.title} ({self.published})\n    {self.authors}"
+        return f"{self.authors}: {self.title} ({self.published})"
