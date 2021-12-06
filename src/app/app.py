@@ -48,10 +48,10 @@ class App:
         check = True
         while check:
             published = self.io.read("Julkaisuvuosi: ")
-            if not check_year(published):
-                self.io.write("Julkaisuvuosi ei ole kelvollinen!")
-            else:
-                check = False
+            #if not check_year(published):
+            #    self.io.write("Julkaisuvuosi ei ole kelvollinen!")
+            #else:
+            #    check = False
 
         new = self.book_service.create_book(author, title, published)
         if new == "duplicate":

@@ -4,16 +4,16 @@ from utilities.utilities import check_year
 
 class CommandFactory:
     '''Produces choosable commands to UI'''
-    def __init__(self, io, book_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.book_service = book_service
+        self.item_service = item_service
         
         self.commands = {
-            "1": Add(self.io, book_service),
-            "2": List(self.io, self.book_service),
-            "3": Search(self.io, self.book_service),
-            "4": Modify(self.io, self.book_service),
-            "5": Delete(self.io, self.book_service),
+            "1": Add(self.io, item_service),
+            "2": List(self.io, self.item_service),
+            "3": Search(self.io, self.item_service),
+            "4": Modify(self.io, self.item_service),
+            "5": Delete(self.io, self.item_service),
             "0": Quit(self.io)
         }
 
@@ -25,9 +25,9 @@ class CommandFactory:
 
 
 class Add:
-    def __init__(self, io, book_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.book_service = book_service
+        self.item_service = item_service
 
     def perform(self):
 
@@ -64,7 +64,11 @@ class Add:
             else:
                 check = False
 
-        self.book_service.create_book(authors, title, published)
+        #temporary fix for only books
+        item_type = "book"
+        item_fields = [title, author_firstname, author_lastname, published]
+
+        self.item_service.create_item(item_type, item_fields)
         self.io.write("Uusi lukuvinkki lisätty.")
 
 class AddVideo:
@@ -133,41 +137,41 @@ class AddBlog:
         self.io.write("Uusi lukuvinkki lisätty.")
 
 class List:
-    def __init__(self, io, book_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.book_service = book_service
+        self.item_service = item_service
 
     def perform(self):
         self.io.write("\nLukuvinkkilista:\n")
-        books = self.book_service.find_all_books()
-        if books:
-            for book in books:
-                self.io.write(book)
+        items = self.item_service.find_all_items()
+        if items:
+            for item in items:
+                self.io.write(item)
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
 
 class Search:
-    def __init__(self, io, book_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.book_service = book_service
+        self.item_service = item_service
 
     # TODO: Lisää tänne varsinaiset metodit
     def perform(self):
         self.io.write("Haetaan vinkkiä...")
 
 class Modify:
-    def __init__(self, io, book_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.book_service = book_service
+        self.item_service = item_service
 
     # TODO: Lisää tänne varsinaiset metodit
     def perform(self):
         self.io.write("Muokataan vinkkiä...")
 
 class Delete:
-    def __init__(self, io, book_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.book_service = book_service
+        self.item_service = item_service
 
     # TODO: Lisää tänne varsinaiset metodit
     def perform(self):
