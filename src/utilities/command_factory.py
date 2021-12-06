@@ -217,6 +217,17 @@ class Delete:
 
     # TODO: Lisää tänne varsinaiset metodit
     def perform(self):
+        items = self.item_service.find_all_items()
+        self.io.write("Anna poistettavan teoksen nimi...")
+        item_title = self.io.read("Nimi: ")
+
+        while not item_title:
+            self.io.write("Teoksen nimi on annettava!")
+            item_title = self.io.read("Nimi: ")
+        print("typeof")
+        print(type(items))
+        #self.item_service.delete_item(item_title)
+
         self.io.write("Poistetaan vinkki...")
 
 class Unknown:
