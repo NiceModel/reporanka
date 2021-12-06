@@ -3,6 +3,11 @@ import sys
 from utilities.utilities import check_year
 from services.item_service import ITEM_SERVICE as default_item_service
 # from services.video_service import VIDEO_SERVICE as default_video_service
+from entities.book import Book
+from entities.video import Video
+from entities.blog import Blog
+
+ENTITY_DICT = {"book": Book, "video": Video, "blog": Blog}
 
 class CommandFactory:
     '''Produces choosable commands to UI'''
@@ -184,6 +189,7 @@ class List:
         items = self.item_service.find_all_items()
         if items:
             for item in items:
+                item = ENTITY_DICT[item[0]](*item[1])
                 self.io.write(item)
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
