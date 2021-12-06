@@ -33,6 +33,7 @@ def write_csv(fpath, item_type, item_fields):
 
 def clear_csv(fpath):
     f = open(fpath, "w")
+    f.write("type;fields")
     f.truncate()
     f.close()
 
