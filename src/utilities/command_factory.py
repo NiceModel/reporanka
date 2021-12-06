@@ -2,7 +2,6 @@
 import sys
 from utilities.utilities import check_year
 from services.item_service import ITEM_SERVICE as default_item_service
-# from services.video_service import VIDEO_SERVICE as default_video_service
 from entities.book import Book
 from entities.video import Video
 from entities.blog import Blog
@@ -107,14 +106,12 @@ class AddBook:
         self.io.write("\nUusi lukuvinkki lisätty.")
 
 class AddVideo:
-    # def __init__(self, io, video_service=default_video_service):
     def __init__(self, io, item_service):
         self.io = io
         self.item_service = item_service
 
     def perform(self):
 
-        self.io.write("Videon lisäysominaisuus on tulossa :-)")
         title = self.io.read("Videon nimi: ")
         while not title:
             self.io.write("Videon nimi on lisättävä!")
