@@ -1,9 +1,10 @@
 from entities.video import Video
 from utilities.csv_utilities import read_videos_csv, write_videos_csv
+from config import DB_PATH
 
 class VideoRepository:
 
-    def __init__(self, path=NULL):
+    def __init__(self, path=DB_PATH):
         self._path = path
         self._videos = read_videos_csv(self._path)
 

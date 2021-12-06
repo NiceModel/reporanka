@@ -7,7 +7,7 @@ from repositories.item_repository import (
 #from services.id_generator import (id_generator as default_id_generator)
 
 class ItemService:
-    """Class for a book service.
+    """Class for item service.
 
     attr:
         book_repository: BookRepository: repository object where the books are stored
@@ -18,12 +18,12 @@ class ItemService:
         #self._id_generator = id_generator
 
     def create_item(self, item_type, item_fields):
-        """Creates a new book.
+        """Creates a new item.
 
         args:
             authors: list: authors of the book
-            title: str: title of the book
-            published: str: year of publication of the book
+            title: str: title of the book, for example
+            published: str: year of publication of the book, for example
         """
         item = self._item_repository.create(
             item_type,
