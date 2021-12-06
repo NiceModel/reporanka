@@ -1,15 +1,17 @@
 '''Command Factory'''
 import sys
 from utilities.utilities import check_year
+from services.item_service import ITEM_SERVICE as default_item_service
+# from services.video_service import VIDEO_SERVICE as default_video_service
 
 class CommandFactory:
     '''Produces choosable commands to UI'''
-    def __init__(self, io, item_service):
+    def __init__(self, io, item_service=default_item_service):
         self.io = io
         self.item_service = item_service
         
         self.commands = {
-            "1": Add(self.io, item_service),
+            "1": Add(self.io),
             "2": List(self.io, self.item_service),
             "3": Search(self.io, self.item_service),
             "4": Modify(self.io, self.item_service),
@@ -23,8 +25,37 @@ class CommandFactory:
 
         return Unknown(self.io)
 
+class Menu:
+    def __init__(self, io):
+        self.io = io
+
+    def perform(self):
+        pass
 
 class Add:
+    def __init__(self, io, item_service=default_item_service):
+        self.io = io
+        self.item_service = item_service
+
+        self.commands = {
+            "6": AddBook(self.io, self.item_service),
+            "7": AddVideo(self.io, self.item_service),
+            "8": AddBlog(self.io, self.item_service),
+            "9": Menu(self.io),
+            "0": Quit(self.io)
+        }
+
+    def perform(self):
+        while True:
+            self.io.add_menu()
+            command = self.io.read("\nValinta: ")
+            if not command in self.commands:
+                continue
+            else:
+                self.commands[command].perform()
+                break
+
+class AddBook:
     def __init__(self, io, item_service):
         self.io = io
         self.item_service = item_service
@@ -72,34 +103,36 @@ class Add:
         self.io.write("Uusi lukuvinkki lisätty.")
 
 class AddVideo:
+    # def __init__(self, io, video_service=default_video_service):
     def __init__(self, io, video_service):
         self.io = io
         self.video_service = video_service
 
     def perform(self):
 
-        title = self.io.read("Videon nimi: ")
-        while not title:
-            self.io.write("Videon nimi on lisättävä!")
-            title = self.io.read("Videon nimi: ")
+        self.io.write("Videon lisäysominaisuus on tulossa :-)")
+        # title = self.io.read("Videon nimi: ")
+        # while not title:
+        #     self.io.write("Videon nimi on lisättävä!")
+        #     title = self.io.read("Videon nimi: ")
 
-        address = self.io.read("Videon osoite: ")
-        while not address:
-            self.io.write("Videon osoite on lisättävä!")
-            address = self.io.read("Videon osoite: ")
+        # address = self.io.read("Videon osoite: ")
+        # while not address:
+        #     self.io.write("Videon osoite on lisättävä!")
+        #     address = self.io.read("Videon osoite: ")
 
-        creator = self.io.read("Videon tekijä: ")
-        while not creator:
-            self.io.write("Videon tekijä on lisättävä!")
-            creator = self.io.read("Videon tekijä: ")
+        # creator = self.io.read("Videon tekijä: ")
+        # while not creator:
+        #     self.io.write("Videon tekijä on lisättävä!")
+        #     creator = self.io.read("Videon tekijä: ")
 
-        published = self.io.read("Videon julkaisupäivä: ")
-        while not creator:
-            self.io.write("Videon julkaisupäivä on lisättävä!")
-            published = self.io.read("Videon julkaisupäivä: ")
+        # published = self.io.read("Videon julkaisupäivä: ")
+        # while not creator:
+        #     self.io.write("Videon julkaisupäivä on lisättävä!")
+        #     published = self.io.read("Videon julkaisupäivä: ")
 
-        self.video_service.create_video(title, published)
-        self.io.write("Uusi lukuvinkki lisätty.")
+        # self.video_service.create_video(title, published)
+        # self.io.write("Uusi lukuvinkki lisätty.")
 
 class AddBlog:
     def __init__(self, io, blog_service):

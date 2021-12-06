@@ -20,3 +20,13 @@ class ConsoleIO:
             "\n (5) poista"
             "\n (0) lopeta\n")
         print(menu)
+
+    def add_menu(self):
+        """Add/Menu"""
+        menu = (
+            "\nMitä lisätään?"
+            "\n (6) kirja"
+            "\n (7) video"
+            "\n (8) blogi"
+            "\n (9) takaisin valikkoon")
+        print(menu)

@@ -33,40 +33,40 @@ class App:
     #         else:
     #             self.io.write("Komentoa ei löytynyt, yritä uudelleen.")
 
-    def _add_book(self):
-        self.io.write("Lisätään lukuvinkki...")
-        author = self.io.read("Kirjailija: ")
-        while not author:
-            self.io.write("Kirjailijan nimi on lisättävä!")
-            author = self.io.read("Kirjailija: ")
+    # def _add_book(self):
+    #     self.io.write("Lisätään lukuvinkki...")
+    #     author = self.io.read("Kirjailija: ")
+    #     while not author:
+    #         self.io.write("Kirjailijan nimi on lisättävä!")
+    #         author = self.io.read("Kirjailija: ")
 
-        title = self.io.read("Nimi: ")
-        while not title:
-            self.io.write("Kirjan nimi on lisättävä!")
-            title = self.io.read("Nimi: ")
+    #     title = self.io.read("Nimi: ")
+    #     while not title:
+    #         self.io.write("Kirjan nimi on lisättävä!")
+    #         title = self.io.read("Nimi: ")
 
-        check = True
-        while check:
-            published = self.io.read("Julkaisuvuosi: ")
-            #if not check_year(published):
-            #    self.io.write("Julkaisuvuosi ei ole kelvollinen!")
-            #else:
-            #    check = False
+    #     check = True
+    #     while check:
+    #         published = self.io.read("Julkaisuvuosi: ")
+    #         #if not check_year(published):
+    #         #    self.io.write("Julkaisuvuosi ei ole kelvollinen!")
+    #         #else:
+    #         #    check = False
 
-        new = self.book_service.create_book(author, title, published)
-        if new == "duplicate":
-            self.io.write(f"\nLukuvinkki '{author}: {title} ({published})' on jo listassa!")
-        else:
-            self.io.write(f"\nUusi lukuvinkki '{author}: {title} ({published})' lisätty.")
+    #     new = self.book_service.create_book(author, title, published)
+    #     if new == "duplicate":
+    #         self.io.write(f"\nLukuvinkki '{author}: {title} ({published})' on jo listassa!")
+    #     else:
+    #         self.io.write(f"\nUusi lukuvinkki '{author}: {title} ({published})' lisätty.")
 
-    def _list_books(self):
-        self.io.write("Listataan lukuvinkit...")
-        books = self.book_service.find_all_books()
-        if books:
-            for book in books:
-                self.io.write(book)
-        else:
-            self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
+    # def _list_books(self):
+    #     self.io.write("Listataan lukuvinkit...")
+    #     books = self.book_service.find_all_books()
+    #     if books:
+    #         for book in books:
+    #             self.io.write(book)
+    #     else:
+    #         self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
 
     def run(self):
         self.running = True
