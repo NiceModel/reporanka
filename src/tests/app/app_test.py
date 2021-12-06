@@ -3,6 +3,7 @@ from config import INSTRUCTIONS
 from collections import deque
 from app.app import App
 
+"""
 class StubIO:
     def __init__(self):
         self.authors = deque(["", "Meri"])
@@ -34,7 +35,7 @@ class StubIO:
 
 class StubBookService:
     def __init__(self):
-        self.book_list = ["kirja1", "kirja2"]
+        self.item_list = ["kirja1", "kirja2"]
 
     def create_book(self, author, title, published):
         return f"{author}: {title} ({published})"
@@ -75,3 +76,4 @@ class TestApp(unittest.TestCase):
     def test_main_loop(self):
         self.app.run()
         self.assertFalse(self.app.running)
+"""

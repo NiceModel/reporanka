@@ -14,11 +14,11 @@ class TestBookRepository(unittest.TestCase):
         self.assertTrue(isinstance(self.item_service, ItemService))
 
     def test_create_item(self):
-        book = self.item_service.create_item(
-            "Meri", "Meemikirja", "2021"
-        )
-        expected = "Meri: Meemikirja (2021)"
-        self.assertEqual(str(book), expected)
+        item_type = "book"
+        item_fields = ["Meri", "Siili", "Meemikirja", "2021"]
+        self.item_service.create_item(item_type, item_fields)
+        expected = "('book', ['Meri', 'Siili', 'Meemikirja', '2021'])"
+        self.assertEqual(str(self.item_service.find_all_items()[0]), expected)
 
     def test_find_all_items(self):
         books = self.item_service.find_all_items()

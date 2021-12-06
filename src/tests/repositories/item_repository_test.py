@@ -11,7 +11,7 @@ class TestItemRepository(unittest.TestCase):
         self.item_repo = ItemRepository(TEST_DB_PATH)
 
     def test_initialises_repo(self):
-        self.assertTrue(isinstance(self.item_repo._items, tuple))
+        self.assertTrue(isinstance(self.item_repo._items, list))
 
     """
     def test_creates_book_if_book_object(self):
@@ -29,7 +29,7 @@ class TestItemRepository(unittest.TestCase):
     def test_find_all_empty(self):
         books = self.item_repo.find_all()
         self.assertEqual(len(books), 0)
-        self.assertTrue(isinstance(books, tuple))
+        self.assertTrue(isinstance(books, list))
 
     """
     def test_find_all_not_empty(self):

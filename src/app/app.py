@@ -6,10 +6,10 @@ from utilities.command_factory import CommandFactory
 
 class App:
     """Handles the UI functionality for the application"""
-    def __init__(self, book_service, io):
-        self.book_service = book_service
+    def __init__(self, item_service, io):
+        self.item_service = item_service
         self.io = io
-        self.commands = CommandFactory(io, book_service)
+        self.commands = CommandFactory(io, item_service)
         self.running = False
 
     def run(self):
