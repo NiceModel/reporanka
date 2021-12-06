@@ -95,59 +95,61 @@ class AddBook:
             else:
                 check = False
 
-        #temporary fix for only books
         item_type = "book"
         item_fields = [title, author_firstname, author_lastname, published]
 
         self.item_service.create_item(item_type, item_fields)
-        self.io.write("Uusi lukuvinkki lisätty.")
+        self.io.write("\nUusi lukuvinkki lisätty.")
 
 class AddVideo:
     # def __init__(self, io, video_service=default_video_service):
-    def __init__(self, io, video_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.video_service = video_service
+        self.item_service = item_service
 
     def perform(self):
 
         self.io.write("Videon lisäysominaisuus on tulossa :-)")
-        # title = self.io.read("Videon nimi: ")
-        # while not title:
-        #     self.io.write("Videon nimi on lisättävä!")
-        #     title = self.io.read("Videon nimi: ")
+        title = self.io.read("Videon nimi: ")
+        while not title:
+            self.io.write("Videon nimi on lisättävä!")
+            title = self.io.read("Videon nimi: ")
 
-        # address = self.io.read("Videon osoite: ")
-        # while not address:
-        #     self.io.write("Videon osoite on lisättävä!")
-        #     address = self.io.read("Videon osoite: ")
+        address = self.io.read("Videon osoite: ")
+        while not address:
+            self.io.write("Videon osoite on lisättävä!")
+            address = self.io.read("Videon osoite: ")
 
-        # creator = self.io.read("Videon tekijä: ")
-        # while not creator:
-        #     self.io.write("Videon tekijä on lisättävä!")
-        #     creator = self.io.read("Videon tekijä: ")
+        creator = self.io.read("Videon tekijä: ")
+        while not creator:
+            self.io.write("Videon tekijä on lisättävä!")
+            creator = self.io.read("Videon tekijä: ")
 
-        # published = self.io.read("Videon julkaisupäivä: ")
-        # while not creator:
-        #     self.io.write("Videon julkaisupäivä on lisättävä!")
-        #     published = self.io.read("Videon julkaisupäivä: ")
+        published = self.io.read("Videon julkaisupäivä: ")
+        while not creator:
+            self.io.write("Videon julkaisupäivä on lisättävä!")
+            published = self.io.read("Videon julkaisupäivä: ")
+        
+        item_type = "video"
+        item_fields = [title, address, creator, published]
 
-        # self.video_service.create_video(title, published)
-        # self.io.write("Uusi lukuvinkki lisätty.")
+        self.item_service.create_item(item_type, item_fields)
+        self.io.write("\nUusi lukuvinkki lisätty.")
 
 class AddBlog:
-    def __init__(self, io, blog_service):
+    def __init__(self, io, item_service):
         self.io = io
-        self.blog_service = blog_service
+        self.item_service = item_service
 
     def perform(self):
 
         name = self.io.read("Blogin nimi: ")
-        while not title:
+        while not name:
             self.io.write("Blogin nimi on lisättävä!")
             name = self.io.read("Blogin nimi: ")
 
         post = self.io.read("Postaus: ")
-        while not title:
+        while not post:
             self.io.write("Postauksen nimi on lisättävä!")
             post= self.io.read("Postaus: ")
 
@@ -157,17 +159,20 @@ class AddBlog:
             address = self.io.read("Blogin osoite: ")
 
         blogger = self.io.read("Blogin kirjoittaja: ")
-        while not creator:
+        while not blogger:
             self.io.write("Blogin kirjoittaja on lisättävä!")
             blogger = self.io.read("Blogin kirjoittaja ")
 
         published = self.io.read("Postauksen julkaisupäivä: ")
-        while not creator:
+        while not published:
             self.io.write("Postauksen julkaisupäivä on lisättävä!")
             published = self.io.read("Postauksen julkaisupäivä: ")
 
-        self.blog_service.create_blog(name, post, address, blogger, published)
-        self.io.write("Uusi lukuvinkki lisätty.")
+        item_type = "blog"
+        item_fields = [name, post, blogger, address, published]
+
+        self.item_service.create_item(item_type, item_fields)
+        self.io.write("\nUusi lukuvinkki lisätty.")
 
 class List:
     def __init__(self, io, item_service):

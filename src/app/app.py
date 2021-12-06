@@ -4,7 +4,6 @@
 from config import INSTRUCTIONS
 from utilities.command_factory import CommandFactory
 
-
 class App:
     """Handles the UI functionality for the application"""
     def __init__(self, book_service, io):
