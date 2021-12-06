@@ -10,8 +10,8 @@ class Video:
         creator: str: publisher of the video
         published: date: publication date of the video
     """
-    def __init__(self, id, title, address, creator, published):
-        self.id = id
+    def __init__(self, title, address, creator, published):
+        #self.id = id
         self.title = title
         self.address = address
         self.creator = creator

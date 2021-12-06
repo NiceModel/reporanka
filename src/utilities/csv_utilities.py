@@ -14,7 +14,7 @@ def read_csv(fpath):
 
     with open(fpath, "r") as file:
         next(file)
-        return [(item.split(";")[0][1:], re.findall("\'(.+?)\'", item)) for item in file]
+        return [(item.split(";")[0], re.findall("\'(.+?)\'", item)) for item in file]
 
 def write_csv(fpath, item_type, item_fields):
     """Writes to the datafile.
