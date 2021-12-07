@@ -224,11 +224,17 @@ class Delete:
         while not item_title:
             self.io.write("Teoksen nimi on annettava!")
             item_title = self.io.read("Nimi: ")
-        print("typeof")
-        print(type(items))
-        #self.item_service.delete_item(item_title)
 
-        self.io.write("Poistetaan vinkki...")
+        for item in items:
+            if str(item[1][0]) == item_title:
+                found_item = item
+                print(found_item)
+                self.item_service.delete_item(item_title)
+
+                self.io.write("Poistetaan vinkki...")
+            else:
+                print("Teosta ei löytynyt")
+                break
 
 class Unknown:
     def __init__(self, io):

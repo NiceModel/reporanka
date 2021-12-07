@@ -1,7 +1,8 @@
 """A repository model for storing Book objects"""
 from config import DB_PATH
 from entities.book import Book
-from utilities.csv_utilities import read_csv, write_csv
+from utilities.csv_utilities import read_csv, write_csv, delete_csv
+import csv
 
 class ItemRepository:
     """Repository class for storing Book objects.
@@ -39,5 +40,8 @@ class ItemRepository:
             if str(item) == str(new_item):
                 return True
         return False
+    def _delete_item(self, item_title):
+        self._items = delete_csv(self._fpath, item_title)
+
 
 ITEM_REPOSITORY = ItemRepository()

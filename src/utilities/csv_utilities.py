@@ -60,3 +60,17 @@ def read_blogs_csv(path):
 def write_blogs_csv(blog, path):
     with open(path, "a") as f:
         f.write(f"\n{blog.id};{blog.name};{blog.post};{blog.address};{blog.blogger};{blog.published}")
+
+def delete_csv(path,title):
+    temp = []
+    with open(path) as f:
+        reader = read_csv(path)
+        for item in reader:
+            if item[1][0] != title:
+                temp.append(item)
+        print(temp)
+    with open(path,"w") as fs:
+        Writer = csv.writer(fs)
+        Writer.writerows(temp)
+        print("Tiedosto päivitetty")
+    return temp
