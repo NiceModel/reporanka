@@ -65,15 +65,24 @@ def write_blogs_csv(blog, path):
 
 ##### TÄÄLLÄ LUULTAVASTI KAIKKI ONGELMA
 def delete_csv(path,title):
-    temp = []
-    with open(path) as f:
-        reader = read_csv(path)
-        for item in reader:
-            if item[1][0] != title:
-                temp.append(item)
-        print(temp)
-    with open(path,"w") as fs:
-        Writer = csv.writer(fs)
-        Writer.writerows(temp)
-        print("Tiedosto päivitetty")
-    return temp
+    with open(path,"r") as f:
+        lines = f.readlines()
+    with open(path,"w") as f:
+        for line in lines:
+            if title not in line:
+                f.write(line)
+        f.truncate()
+
+    return read_csv(path)
+    # temp = []
+    # with open(path) as f:
+    #         reader = read_csv(path)
+    #         for item in reader:
+    #             if item[1][0] != title:
+    #                 temp.append(item)
+    #         print(temp)
+    # with open(path,"w") as fs:
+    #     Writer = csv.writer(fs)
+    #     Writer.writerows(temp)
+    #     print("Tiedosto päivitetty")
+    # return temp

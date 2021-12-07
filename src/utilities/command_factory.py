@@ -230,8 +230,8 @@ class Delete:
                 found_item = item
                 print(found_item)
                 self.item_service.delete_item(item_title)
-
                 self.io.write("Poistetaan vinkki...")
+                break
             else:
                 print("Teosta ei löytynyt")
                 break

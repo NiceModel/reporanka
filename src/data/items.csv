@@ -1,8 +1,5 @@
 type;fields
 book;['Aku Ankka', 'Testi', 'eka', '2001']
-book;['Akun eväät', 'Iines', 'Ankka', '2000']
-book;['Hiirenloukku', 'Mikki', 'Hiiri', '1956']
 book;['Niksipirkka', 'Pelle', 'Peloton', '1977']
-blog;['tättärää', 'piipaa', 'hönö', 'gggg', '6.12.2021']
 video;['kotivideo', 'kkkkkkk', 'tönö', '1.1.2020']
 book;['Meemikirja', 'Meri', 'Siili', '2021']

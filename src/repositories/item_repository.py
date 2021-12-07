@@ -40,6 +40,7 @@ class ItemRepository:
             if str(item) == str(new_item):
                 return True
         return False
+        
     def _delete_item(self, item_title):
         self._items = delete_csv(self._fpath, item_title)
 
