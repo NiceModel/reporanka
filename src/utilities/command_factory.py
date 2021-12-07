@@ -198,8 +198,13 @@ class Delete(Menu):
         else:
             for i in range(len(titles)):
                 if titles[i] == deleted:
-                    self.item_service.delete_item(deleted)
-            self.io.write("Poistetaan vinkki...")
+                    response = self.io.read("\nOletko varma? K/E ")
+
+                    if response == "K":
+                        self.item_service.delete_item(deleted)
+                        self.io.write("Poistetaan vinkki...")
+                    else:
+                        pass
 
 class Unknown(Menu):
     """Menu subclass for an unknown user input."""
