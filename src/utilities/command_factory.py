@@ -86,7 +86,7 @@ class Add(Menu):
             "1": AddBook(self.io, self.item_service),
             "2": AddVideo(self.io, self.item_service),
             "3": AddBlog(self.io, self.item_service),
-            "4": Menu(self.io, self.item_service),
+            "4": MainMenu(self.io, self.item_service),
             "0": Quit(self.io, self. item_service)
         }
 
@@ -132,6 +132,8 @@ class List(Menu):
                     self.io.write(f"{item_type.capitalize()} - {item_str}")
                 except TypeError:
                     pass
+                except KeyError:
+                    pass
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
 
@@ -139,6 +141,15 @@ class Search(Menu):
     """Menu subclass for searching specific items."""
     def __init__(self, io, item_service):
         Menu.__init__(self, io, item_service)
+
+class MainMenu(Menu):
+    """Menu subclass for an unknown user input."""
+    def __init__(self, io, item_service):
+        Menu.__init__(self, io, item_service)
+
+    def perform(self):
+        """Does nothing if the app does not recognise a command."""
+        pass
 
 class Modify(Menu):
     """Menu subclass for modifying an item's data."""
