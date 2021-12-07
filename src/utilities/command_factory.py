@@ -135,7 +135,7 @@ class List(Menu):
                 except KeyError:
                     pass
         else:
-            self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
+            self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
 
 class Search(Menu):
     """Menu subclass for searching specific items."""
@@ -175,15 +175,29 @@ class Delete(Menu):
 
     def perform(self):
         items = self.item_service.find_all_items()
-        item_titles = [itm[1][1] for itm in items]
-
+        titles = []
+        if items:
+            self.io.write("Vinkit:")
+            for item in items:
+                item_type = item[0]
+                try:
+                    item_str = ENTITY_DICT[item[0]](*item[1])
+                    self.io.write(f"{item_type.capitalize()} - {item_str}")
+                    titles.append(item_str.title)
+                except TypeError:
+                    pass
+                except KeyError:
+                    pass
+        else:
+            self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
+        
         deleted = self._delete_item()
 
-        if deleted not in item_titles:
+        if deleted not in titles:
             self.io.write('Teosta ei löytynyt.')
         else:
-            for i in range(len(items)):
-                if item_titles[i] == deleted:
+            for i in range(len(titles)):
+                if titles[i] == deleted:
                     self.item_service.delete_item(deleted)
             self.io.write("Poistetaan vinkki...")
 
