@@ -6,6 +6,8 @@ Tästä repositoriosta löytyy lukuvinkkisovellus, joka on kehitetty Helsingin Y
 
 Backlogeille ja tuntikirjanpidolle ym. on käytössä Google Sheets, jota pääsee katsomaan [täällä](https://docs.google.com/spreadsheets/d/1F-_b98SG2x79MAu5fpZetq0ALNqiHoFdLUIKrC1T9-I/edit?usp=sharing). Lisäksi ensimmäisen tapaamisen brainstorming-sessiossa käytimme Flingaa, ja brainstromingin tuloksia voi vilkaista [täällä](https://edu.flinga.fi/s/EMA2DL6).
 
+Viimeisin coverage report löytyy [täältä](https://github.com/NiceModel/reporanka/blob/main/documentation/Screenshot%20from%202021-12-07%2016-49-19.png).
+
 ### Asennusohjeet
 *Ohjeissa oletetaan, että olet luonut ssh-avaimen koneellesi ja lisännyt sen GitHubiin*
 
