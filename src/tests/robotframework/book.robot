@@ -7,12 +7,12 @@ Test Setup  Add Test Book And Add Command
 Add Book With Correct Details
     Add New Book  TESTIKIRJAILIJA  TESTIKIRJA  2021
     Run App
-    Output Should Contain  \nUusi lukuvinkki 'TESTIKIRJAILIJA: TESTIKIRJA (2021)' lisätty.
+    Output Should Contain  \nUusi lukuvinkki lisätty.
 
 Add Duplicate Book
     Add New Book  Meri  Meemikirja  2021
     Run App
-    Output Should Contain  \nLukuvinkki 'Meri: Meemikirja (2021)' on jo listassa!
+    Output Should Contain  \nLukuvinkki on jo tallennettu aiemmin!
 
 Add Book With No Author
     Add New Book  ${EMPTY}  Kirja  1990

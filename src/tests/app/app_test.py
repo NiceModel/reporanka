@@ -24,7 +24,10 @@ class TestApp(unittest.TestCase):
         self.assertFalse(self.app.running)
 
     def test_main_loop(self):
-        with self.assertRaises(SystemExit) as cm:
-            self.app.run()
+        # with self.assertRaises(SystemExit) as cm:
+        #     self.app.run()
 
-        self.assertEqual(cm.exception.code, 0)
+        # self.assertEqual(cm.exception.code, 0)
+        self.app.running = True
+        self.app.run()
+        self.assertFalse(self.app.running)

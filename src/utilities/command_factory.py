@@ -65,6 +65,7 @@ class Menu:
             self.io.write("\nLukuvinkki on jo tallennettu aiemmin!")
         else:
             self.io.write("\nUusi lukuvinkki lisätty.")
+        return True
 
     def _add_info(self, prompt, error_msg):
         """Internal method to read and write info from/to the console."""
@@ -97,7 +98,7 @@ class Add(Menu):
             command = self.io.read("\nValinta: ")
             if command in self.cmds:
                 self.cmds[command].perform()
-                break
+                return True
 
 class AddBook(Menu):
     """Menu subclass for adding books."""
@@ -136,6 +137,7 @@ class List(Menu):
                     pass
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
+        return True
 
 class Search(Menu):
     """Menu subclass for searching specific items."""
@@ -149,7 +151,7 @@ class MainMenu(Menu):
 
     def perform(self):
         """Does nothing if the app does not recognise a command."""
-        pass
+        return True
 
 class Modify(Menu):
     """Menu subclass for modifying an item's data."""
@@ -190,7 +192,7 @@ class Delete(Menu):
                     pass
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
-        
+
         deleted = self._delete_item()
 
         if deleted not in titles:
@@ -205,6 +207,7 @@ class Delete(Menu):
                         self.io.write("Poistetaan vinkki...")
                     else:
                         pass
+        return True
 
 class Unknown(Menu):
     """Menu subclass for an unknown user input."""
@@ -213,7 +216,8 @@ class Unknown(Menu):
 
     def perform(self):
         """Does nothing if the app does not recognise a command."""
-        pass
+        self.io.write('Komentoa ei löytynyt, yritä uudelleen.')
+        return True
 
 class Quit(Menu):
     """Menu subclass for quitting the application."""
@@ -223,4 +227,5 @@ class Quit(Menu):
     def perform(self):
         """Quits the application."""
         self.io.write("Kiitti & moi!")
-        sys.exit(0)
+        # sys.exit(0)
+        return False

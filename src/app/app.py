@@ -19,4 +19,4 @@ class App:
         while self.running:
             self.io.write(INSTRUCTIONS)
             command = self.io.read("Komento: ")
-            self.commands.get_command(command).perform()
+            self.running = self.commands.get_command(command).perform()
