@@ -17,10 +17,11 @@ INSTRUCTIONS = (
 
 ADD_MENU = (
     "\nMitä lisätään?"
-    "\n (6) kirja"
-    "\n (7) video"
-    "\n (8) blogi"
-    "\n (9) takaisin valikkoon")
+    "\n (1) kirja"
+    "\n (2) video"
+    "\n (3) blogi"
+    "\n (4) takaisin valikkoon"
+    "\n (0) lopeta")
 
 CMD_PROMPTS = {
     "book": [("Kirjailijan/kirjailijoiden nimet: ", "Kirjailijan nimi on lisättävä!"),

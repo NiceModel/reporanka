@@ -15,9 +15,9 @@ class TestBookRepository(unittest.TestCase):
 
     def test_create_item(self):
         item_type = "book"
-        item_fields = ["Meri", "Siili", "Meemikirja", "2021"]
+        item_fields = ["Meri", "Meemikirja", "2021"]
         self.item_service.create_item(item_type, item_fields)
-        expected = "('book', ['Meri', 'Siili', 'Meemikirja', '2021'])"
+        expected = "('book', ['Meri', 'Meemikirja', '2021'])"
         self.assertEqual(str(self.item_service.find_all_items()[0]), expected)
 
     def test_find_all_items(self):
@@ -26,30 +26,27 @@ class TestBookRepository(unittest.TestCase):
 
     def test_create_item_returns_correct_book(self):
         item_type = "book"
-        item_fields = ["Dune", "Frank", "Herbert", "1965"]
+        item_fields = ["Frank Herbert", "Dune", "1965"]
         self.item_service.create_item(item_type, item_fields)
 
         book = self.item_service.find_all_items()[0]
         print(book)
 
-        self.assertEqual(book[1][1], "Frank")
-        self.assertEqual(book[1][2], "Herbert")
-        self.assertEqual(book[1][0], "Dune")
-        self.assertEqual(book[1][3], "1965")
+        self.assertEqual(book[1][0], "Frank Herbert")
+        self.assertEqual(book[1][1], "Dune")
+        self.assertEqual(book[1][2], "1965")
 
     def test_find_all_items_returns_alphabetically(self):
         item_type = "book"
-        item_fields = ["Dune", "Frank", "Herbert", "1965"]
+        item_fields = ["Frank Herbert", "Dune", "1965"]
         self.item_service.create_item(item_type, item_fields)
-        item_fields = ["The Hitchhiker's Guide to the Galaxy", "Douglas", "Adams", "1979"]
+        item_fields = ["Douglas Adams", "The Hitchhiker's Guide to the Galaxy", "1979"]
         self.item_service.create_item(item_type, item_fields)
-        item_fields = ["The Fellowship of the Ring", "J. R. R.", "Tolkien", "1954"]
+        item_fields = ["J.R.R. Tolkien", "The Fellowship of the Ring", "1954"]
         self.item_service.create_item(item_type, item_fields)
 
         books = self.item_service.find_all_items()
-        #book_titles_alphabetic = [
-        #    "Dune", "The Fellowship of the Ring", "The Hitchhiker's Guide to the Galaxy"]
-        book_lastnames_alphabetic = ["Adams", "Herbert", "Tolkien"]
+        book_names_alphabetic = ["Douglas Adams", "Frank Herbert", "J.R.R. Tolkien"]
 
-        for book, book_alphabetic in zip(books, book_lastnames_alphabetic):
-            self.assertEqual(book[1][2], book_alphabetic)
+        for book, book_alphabetic in zip(books, book_names_alphabetic):
+            self.assertEqual(book[1][0], book_alphabetic)
