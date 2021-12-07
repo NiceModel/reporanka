@@ -1,8 +1,5 @@
 type;fields
-book;['Aku Ankka', 'Testi', 'eka', '2001']
-book;['Akun eväät', 'Iines', 'Ankka', '2000']
-book;['Hiirenloukku', 'Mikki', 'Hiiri', '1956']
-book;['Niksipirkka', 'Pelle', 'Peloton', '1977']
-blog;['tättärää', 'piipaa', 'hönö', 'gggg', '6.12.2021']
-video;['kotivideo', 'kkkkkkk', 'tönö', '1.1.2020']
-book;['Meemikirja', 'Meri', 'Siili', '2021']
+book;['JK Rowling', 'Harry Potter ja viisasten kivi', '1997']
+video;['Team StarKid', 'A Very Potter Musical Act 1 Part 1', '\x16https://youtu.be/wmwM_AKeMCk', '5.7.2009']
+blog;['Satu Saunio', 'Kamomillan konditoria', 'Kamomillan koekeittiö ja vihreäkuulajuustokakku', 'https://www.kamomillankonditoria.com/2017/12/vihreakuulajuustokakku.html', '8.12.2017']
+None;[]

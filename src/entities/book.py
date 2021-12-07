@@ -9,12 +9,11 @@ class Book:
         title: str: the title of the book
         published: str: the publication year of the book
     """
-    def __init__(self, title, author_firstname, author_lastname, published):
+    def __init__(self, author, title, published):
         #self.id = id
-        self.author_firstname = author_firstname
-        self.author_lastname = author_lastname
+        self.author = author
         self.title = title
         self.published = published
 
     def __str__(self):
-        return f"{self.author_firstname} {self.author_lastname}: {self.title} ({self.published})"
+        return f"{self.author}: {self.title} ({self.published})"
