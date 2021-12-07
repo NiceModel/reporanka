@@ -4,15 +4,10 @@ Test Setup  Add Test Book And Add Command
 
 *** Test Cases ***
 
-Add Book With Correct Details Published In Common Era
+Add Book With Correct Details
     Add New Book  TESTIKIRJAILIJA  TESTIKIRJA  2021
     Run App
     Output Should Contain  \nUusi lukuvinkki 'TESTIKIRJAILIJA: TESTIKIRJA (2021)' lisätty.
-
-Add Book With Correct Details Published Before Common Era
-    Add New Book  Tuntematon  Rakkausrunoja  127 eaa.
-    Run App
-    Output Should Contain  \nUusi lukuvinkki 'Tuntematon: Rakkausrunoja (127 eaa.)' lisätty.
 
 Add Duplicate Book
     Add New Book  Meri  Meemikirja  2021
@@ -34,13 +29,10 @@ Add Book With No Year
     Run App
     Output Should Contain  Julkaisuvuosi ei ole kelvollinen!
 
-Add Book With Invalid Year
-    Add New Book  Meri  Meemikirja  27000
-    Run App
-    Output Should Contain  Julkaisuvuosi ei ole kelvollinen!
-
 *** Keywords ***
 Add Test Book And Add Command
-    Input Add Command
+    Input Add Command In Main Menu
+    Input Add Book Command In Add Menu
     Add New Book  Meri  Meemikirja  2021
-    Input Add Command
+    Input Add Command In Main Menu
+    Input Add Book Command In Add Menu

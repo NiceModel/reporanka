@@ -10,11 +10,11 @@ class Blog:
         published: str: publication date of the blog post
     """
 
-    def __init__(self, blogger, post, name, address, published):
+    def __init__(self, blogger, post_title, blog_name, address, published):
         #self.id = id
         self.blogger = blogger
-        self.title = name
-        self.name = post
+        self.title = post_title
+        self.name = blog_name
         self.address = address
         self.published = published
 
