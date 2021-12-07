@@ -127,8 +127,11 @@ class List(Menu):
         if items:
             for item in items:
                 item_type = item[0]
-                item_str = ENTITY_DICT[item[0]](*item[1])
-                self.io.write(f"{item_type.capitalize()} - {item_str}")
+                try:
+                    item_str = ENTITY_DICT[item[0]](*item[1])
+                    self.io.write(f"{item_type.capitalize()} - {item_str}")
+                except TypeError:
+                    pass
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
 
