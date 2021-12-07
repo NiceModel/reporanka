@@ -15,6 +15,7 @@ class App:
     def run(self):
         """Starts the application."""
         self.running = True
+        print("\nLUKUVINKKIKIRJASTO")
         while self.running:
             self.io.write(INSTRUCTIONS)
             command = self.io.read("Komento: ")
