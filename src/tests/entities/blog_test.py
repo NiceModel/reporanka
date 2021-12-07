@@ -3,24 +3,19 @@ import unittest
 from entities.blog import Blog
 
 class TestBlog(unittest.TestCase):
+    def setUp(self):
+        self.blog = Blog("sopuli", "testipostaus",  "sopulin blogi", "url", "1.1.2022")
 
     def test_init_blog(self):
-        self.blog = Blog("SopulinBlogi", "testaus",  "sopuli", "urli", "1.1.2022")
         name = self.blog.name
         post = self.blog.post
         address = self.blog.address
         blogger = self.blog.blogger
         published = self.blog.published
-        self.assertEqual((name, post, address, blogger, published), ("SopulinBlogi", "testaus", "urli", "sopuli", "1.1.2022"))
+        self.assertEqual((name, post, address, blogger, published), ('sopulin blogi', 'testipostaus', 'url', 'sopuli', '1.1.2022')
+)
 
     def test_blog_string(self):
-        self.blog = Blog("SopulinBlogi", "testaus",  "sopuli", "urli", "1.1.2022")
-        expected = "SopulinBlogi: testaus, urli, sopuli, (1.1.2022)"
+        expected = "sopuli: sopulin blogi, testipostaus, 1.1.2022, (url)"
         actual = str(self.blog)
         self.assertEqual(actual, expected)
-
-    
-
-
-
-

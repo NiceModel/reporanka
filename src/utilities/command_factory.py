@@ -1,6 +1,6 @@
 '''Command Factory'''
 import sys
-from utilities.utilities import check_year
+from config import CMD_PROMPTS, ADD_MENU
 from services.item_service import ITEM_SERVICE as default_item_service
 from entities.book import Book
 from entities.video import Video
@@ -9,179 +9,119 @@ from entities.blog import Blog
 ENTITY_DICT = {"book": Book, "video": Video, "blog": Blog}
 
 class CommandFactory:
-    '''Produces choosable commands to UI'''
+    '''Produces choosable commands to UI
+
+    attr:
+        io: console io for interacting with the user
+        item_service: service for interacting with reading tip items
+    '''
     def __init__(self, io, item_service=default_item_service):
         self.io = io
         self.item_service = item_service
-        
-        self.commands = {
-            "1": Add(self.io),
+
+        self.cmds = {
+            "1": Add(self.io, self.item_service),
             "2": List(self.io, self.item_service),
-            "3": Search(self.io, self.item_service),
-            "4": Modify(self.io, self.item_service),
-            "5": Delete(self.io, self.item_service),
-            "0": Quit(self.io)
+            "3": Delete(self.io, self.item_service),
+            "4": Search(self.io, self.item_service),
+            "5": Modify(self.io, self.item_service),
+            "0": Quit(self.io, self.item_service)
         }
 
     def get_command(self, command):
-        if command in self.commands:
-            return self.commands[command]
+        """Returns the command the user has chosen from predefined inputs."""
+        if command in self.cmds:
+            return self.cmds[command]
 
-        return Unknown(self.io)
+        return Unknown(self.io, self.item_service)
 
 class Menu:
-    def __init__(self, io):
-        self.io = io
+    """Superclass for menu actions.
 
-    def perform(self):
-        pass
-
-class Add:
-    def __init__(self, io, item_service=default_item_service):
+    attr:
+        io: module for reading/writing inputs/outputs
+        item_service: service for interacting with reading tip items
+        cat: str: specifies the category of a reading tip item
+        cmds: list: prompts for user input, specific to item category
+    """
+    def __init__(self, io, item_service, cat=None):
         self.io = io
         self.item_service = item_service
+        self.cat = cat
 
-        self.commands = {
-            "6": AddBook(self.io, self.item_service),
-            "7": AddVideo(self.io, self.item_service),
-            "8": AddBlog(self.io, self.item_service),
-            "9": Menu(self.io),
-            "0": Quit(self.io)
+        if self.cat is None:
+            self.cmds = []
+        else:
+            self.cmds = CMD_PROMPTS[cat]
+
+    def perform(self):
+        """Performs the chosen action."""
+        item = []
+        for cmd in self.cmds:
+            item.append(self._add_info(*cmd))
+
+        added = self.item_service.create_item(self.cat, item)
+        if added == "duplicate":
+            self.io.write("\nLukuvinkki on jo tallennettu aiemmin!")
+        else:
+            self.io.write("\nUusi lukuvinkki lisätty.")
+
+    def _add_info(self, prompt, error_msg):
+        """Internal method to read and write info from/to the console."""
+        adding = True
+        while adding:
+            info = self.io.read(prompt)
+            if not info:
+                self.io.write(error_msg)
+            else:
+                adding = False
+        return info
+
+class Add(Menu):
+    """Menu subclass for adding different types of reading tip items."""
+    def __init__(self, io, item_service=default_item_service):
+        Menu.__init__(self, io, item_service)
+
+        self.cmds = {
+            "1": AddBook(self.io, self.item_service),
+            "2": AddVideo(self.io, self.item_service),
+            "3": AddBlog(self.io, self.item_service),
+            "4": Menu(self.io, self.item_service),
+            "0": Quit(self.io, self. item_service)
         }
 
     def perform(self):
+        """Method to let the user choose the item to be added."""
         while True:
-            self.io.add_menu()
+            self.io.write(ADD_MENU)
             command = self.io.read("\nValinta: ")
-            if not command in self.commands:
-                continue
-            else:
-                self.commands[command].perform()
+            if command in self.cmds:
+                self.cmds[command].perform()
                 break
 
-class AddBook:
+class AddBook(Menu):
+    """Menu subclass for adding books."""
     def __init__(self, io, item_service):
-        self.io = io
+        Menu.__init__(self, io, item_service, 'book')
+
+class AddVideo(Menu):
+    """Menu subclass for adding videos."""
+    def __init__(self, io, item_service):
+        Menu.__init__(self, io, item_service, 'video')
+
+class AddBlog(Menu):
+    """Menu subclass for adding blog posts."""
+    def __init__(self, io, item_service):
+        Menu.__init__(self, io, item_service, 'blog')
         self.item_service = item_service
 
-    def perform(self):
-
-        authors = []
-        while True:
-            author_firstname = self.io.read("Kirjailijan etunimi: ")
-            while not author_firstname:
-                self.io.write("Kirjailijan etunimi on lisättävä!")
-                author_firstname = self.io.read("Kirjailijan etunimi: ")
-
-            author_lastname = self.io.read("Kirjailijan sukunimi: ")
-            while not author_lastname:
-                self.io.write("Kirjailijan sukunimi on lisättävä!")
-                author_lastname = self.io.read("Kirjailijan sukunimi: ")
-
-            authors.append((author_lastname, author_firstname))
-            
-            new_author = self.io.read("Lisää uusi kirjailija? Kyllä: Paina jotain merkkiä + Enter. Ei: Enter\n")
-            if not new_author:
-                break
-            else:
-                continue
-
-        title = self.io.read("Kirjan nimi: ")
-        while not title:
-            self.io.write("Kirjan nimi on lisättävä!")
-            title = self.io.read("Kirjan nimi: ")
-
-        check = True
-        while check:
-            published = self.io.read("Julkaisuvuosi: ")
-            if not check_year(published):
-                self.io.write("Julkaisuvuosi ei ole kelvollinen!")
-            else:
-                check = False
-
-        item_type = "book"
-        item_fields = [title, author_firstname, author_lastname, published]
-
-        self.item_service.create_item(item_type, item_fields)
-        self.io.write("\nUusi lukuvinkki lisätty.")
-
-class AddVideo:
+class List(Menu):
+    """Menu subclass for listing the reading tips."""
     def __init__(self, io, item_service):
-        self.io = io
-        self.item_service = item_service
+        Menu.__init__(self, io, item_service)
 
     def perform(self):
-
-        title = self.io.read("Videon nimi: ")
-        while not title:
-            self.io.write("Videon nimi on lisättävä!")
-            title = self.io.read("Videon nimi: ")
-
-        address = self.io.read("Videon osoite: ")
-        while not address:
-            self.io.write("Videon osoite on lisättävä!")
-            address = self.io.read("Videon osoite: ")
-
-        creator = self.io.read("Videon tekijä: ")
-        while not creator:
-            self.io.write("Videon tekijä on lisättävä!")
-            creator = self.io.read("Videon tekijä: ")
-
-        published = self.io.read("Videon julkaisupäivä: ")
-        while not creator:
-            self.io.write("Videon julkaisupäivä on lisättävä!")
-            published = self.io.read("Videon julkaisupäivä: ")
-        
-        item_type = "video"
-        item_fields = [title, address, creator, published]
-
-        self.item_service.create_item(item_type, item_fields)
-        self.io.write("\nUusi lukuvinkki lisätty.")
-
-class AddBlog:
-    def __init__(self, io, item_service):
-        self.io = io
-        self.item_service = item_service
-
-    def perform(self):
-
-        name = self.io.read("Blogin nimi: ")
-        while not name:
-            self.io.write("Blogin nimi on lisättävä!")
-            name = self.io.read("Blogin nimi: ")
-
-        post = self.io.read("Postaus: ")
-        while not post:
-            self.io.write("Postauksen nimi on lisättävä!")
-            post= self.io.read("Postaus: ")
-
-        address = self.io.read("Blogin osoite: ")
-        while not address:
-            self.io.write("Blogin osoite on lisättävä!")
-            address = self.io.read("Blogin osoite: ")
-
-        blogger = self.io.read("Blogin kirjoittaja: ")
-        while not blogger:
-            self.io.write("Blogin kirjoittaja on lisättävä!")
-            blogger = self.io.read("Blogin kirjoittaja ")
-
-        published = self.io.read("Postauksen julkaisupäivä: ")
-        while not published:
-            self.io.write("Postauksen julkaisupäivä on lisättävä!")
-            published = self.io.read("Postauksen julkaisupäivä: ")
-
-        item_type = "blog"
-        item_fields = [name, post, blogger, address, published]
-
-        self.item_service.create_item(item_type, item_fields)
-        self.io.write("\nUusi lukuvinkki lisätty.")
-
-class List:
-    def __init__(self, io, item_service):
-        self.io = io
-        self.item_service = item_service
-
-    def perform(self):
+        """Finds the reading tips and prints them to console."""
         self.io.write("\nLukuvinkkilista:\n")
         items = self.item_service.find_all_items()
         if items:
@@ -192,46 +132,62 @@ class List:
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä ):")
 
-class Search:
+class Search(Menu):
+    """Menu subclass for searching specific items."""
     def __init__(self, io, item_service):
-        self.io = io
-        self.item_service = item_service
+        Menu.__init__(self, io, item_service)
 
-    # TODO: Lisää tänne varsinaiset metodit
-    def perform(self):
-        self.io.write("Haetaan vinkkiä...")
-
-class Modify:
+class Modify(Menu):
+    """Menu subclass for modifying an item's data."""
     def __init__(self, io, item_service):
-        self.io = io
-        self.item_service = item_service
+        Menu.__init__(self, io, item_service)
 
-    # TODO: Lisää tänne varsinaiset metodit
-    def perform(self):
-        self.io.write("Muokataan vinkkiä...")
-
-class Delete:
+class Delete(Menu):
+    """Menu subclass for deleting an item."""
     def __init__(self, io, item_service):
-        self.io = io
-        self.item_service = item_service
+        Menu.__init__(self, io, item_service, 'delete')
 
-    # TODO: Lisää tänne varsinaiset metodit
+    def _delete_item(self):
+        """Internal method to read and write info from/to the console."""
+        prompt, error_msg = self.cmds[0]
+        deleting = True
+        while deleting:
+            info = self.io.read(prompt)
+            if not info:
+                self.io.write(error_msg)
+            else:
+                deleting = False
+        return info
+
     def perform(self):
-        self.io.write("Poistetaan vinkki...")
+        items = self.item_service.find_all_items()
+        item_titles = [itm[1][1] for itm in items]
 
-class Unknown:
-    def __init__(self, io):
-        self.io = io
+        deleted = self._delete_item()
+
+        if deleted not in item_titles:
+            self.io.write('Teosta ei löytynyt.')
+        else:
+            for i in range(len(items)):
+                if item_titles[i] == deleted:
+                    self.item_service.delete_item(deleted)
+            self.io.write("Poistetaan vinkki...")
+
+class Unknown(Menu):
+    """Menu subclass for an unknown user input."""
+    def __init__(self, io, item_service):
+        Menu.__init__(self, io, item_service)
 
     def perform(self):
+        """Does nothing if the app does not recognise a command."""
         pass
 
-class Quit:
-    def __init__(self, io):
-        self.io = io
+class Quit(Menu):
+    """Menu subclass for quitting the application."""
+    def __init__(self, io, item_service):
+        Menu.__init__(self, io, item_service)
 
     def perform(self):
+        """Quits the application."""
         self.io.write("Kiitti & moi!")
         sys.exit(0)
-
-

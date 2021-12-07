@@ -1,6 +1,5 @@
-"""Module for a book service to connect a book repository to the application."""
+"""Module for an item service to connect an item repository to the application."""
 
-from entities.book import Book
 from repositories.item_repository import (
     ITEM_REPOSITORY as default_item_repository
 )
@@ -10,7 +9,7 @@ class ItemService:
     """Class for item service.
 
     attr:
-        book_repository: BookRepository: repository object where the books are stored
+        item_repository: ItemRepository: repository object where the books are stored
         id_generator: IdGenerator: generator for id numbers
     """
     def __init__(self, item_repository=default_item_repository):
@@ -32,10 +31,13 @@ class ItemService:
         return item
 
     def find_all_items(self):
-        """Returns list of all items first sorted by item type and then by author lastname"""
+        """Returns list of all items first sorted by item type and then by author"""
         items = self._item_repository.find_all()
-        items_sorted = sorted(items, key=lambda item: (item[0], item[1][2]))
+        items_sorted = sorted(items, key=lambda item: (item[0], item[1]))
 
         return items_sorted
+
+    def delete_item(self, item_title):
+        self._item_repository._delete_item(item_title)
 
 ITEM_SERVICE = ItemService()

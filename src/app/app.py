@@ -13,8 +13,9 @@ class App:
         self.running = False
 
     def run(self):
+        """Starts the application."""
         self.running = True
         while self.running:
-            self.io.guide()
+            self.io.write(INSTRUCTIONS)
             command = self.io.read("Komento: ")
             self.commands.get_command(command).perform()
