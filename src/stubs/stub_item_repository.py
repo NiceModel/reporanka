@@ -1,20 +1,15 @@
-"""A repository model for storing Book objects"""
-from config import DB_PATH
-from utilities.csv_utilities import read_csv, write_csv
+"""Stub for item repository"""
+from config import TEST_DB_PATH
+from utilities.csv_utilities import read_csv, write_csv, clear_csv
 
-class ItemRepository:
-    """Repository class for storing Book objects.
-
-    attr:
-        fpath: str: path to a csv file where the book database is stored
-        items: list: list of reading tips
-    """
-    def __init__(self, fpath=DB_PATH):
-        self._fpath = fpath
-        self._items = read_csv(self._fpath)
+class StubItemRepository:
+    """Stub for book repository"""
+    def __init__(self):
+        clear_csv(TEST_DB_PATH)
+        self._items = read_csv(TEST_DB_PATH)
 
     def find_all(self):
-        """Returns all the items in the repository"""
+        """Get all books"""
         return self._items
 
     def create(self, item_type, item_fields):
@@ -26,7 +21,7 @@ class ItemRepository:
         if self._is_duplicate((item_type, item_fields)):
             return "duplicate"
         self._items.append((item_type, item_fields))
-        write_csv(self._fpath, item_type, item_fields)
+        write_csv(TEST_DB_PATH, item_type, item_fields)
         return (item_type, item_fields)
 
     def _is_duplicate(self, new_item):
@@ -35,4 +30,4 @@ class ItemRepository:
             return True
         return False
 
-ITEM_REPOSITORY = ItemRepository()
+ITEM_REPOSITORY = StubItemRepository()

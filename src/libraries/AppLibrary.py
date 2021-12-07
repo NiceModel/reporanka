@@ -1,18 +1,18 @@
-"""Services for App"""
+"""Library for running robot framework tests."""
 
 from app.app import App
 from stubs.stub_io import StubIO
-from services.book_service import BookService
-from stubs.stub_book_repository import StubBookRepository
+from stubs.stub_item_repository import StubItemRepository
+from services.item_service import ItemService
 
 class AppLibrary:
     """Services for App"""
     def __init__(self):
         self._io = StubIO()
-        self._book_repository = StubBookRepository()
-        self._book_service = BookService(self._book_repository)
+        self._item_repository = StubItemRepository()
+        self._item_service = ItemService(self._item_repository)
         self._app = App(
-            self._book_service,
+            self._item_service,
             self._io,
         )
 
@@ -32,4 +32,3 @@ class AppLibrary:
     def run_application(self):
         """Run application"""
         self._app.run()
-

@@ -13,6 +13,7 @@ class App:
         self.running = False
 
     def run(self):
+        """Starts the application."""
         self.running = True
         while self.running:
             self.io.write(INSTRUCTIONS)

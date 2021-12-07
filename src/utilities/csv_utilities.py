@@ -1,9 +1,5 @@
 """Service for reading from and writing to the items datafile"""
 import re
-import csv
-from entities.book import Book
-from entities.video import Video
-from entities.blog import Blog
 
 def read_csv(fpath):
     """Reads from the datafile.
@@ -32,31 +28,8 @@ def write_csv(fpath, item_type, item_fields):
 #    return int(r[0])
 
 def clear_csv(fpath):
+    """Utility for clearing a csv file completely."""
     f = open(fpath, "w")
     f.write("type;fields")
     f.truncate()
     f.close()
-
-def read_videos_csv(path):
-    temp = []
-    with open(path) as f:
-        for r in f:
-            r = r.replace("\n", "")
-            temp.append(Video(*r.split(";")))
-        return temp
-
-def write_videos_csv(video, path):
-    with open(path, "a") as f:
-        f.write(f"\n{video.id};{video.title};{video.address};{video.creator};{video.published}")
-
-def read_blogs_csv(path):
-    temp = []
-    with open(path) as f:
-        for r in f:
-            r = r.replace("\n", "")
-            temp.append(Blog(*r.split(";")))
-        return temp
-
-def write_blogs_csv(blog, path):
-    with open(path, "a") as f:
-        f.write(f"\n{blog.id};{blog.name};{blog.post};{blog.address};{blog.blogger};{blog.published}")
