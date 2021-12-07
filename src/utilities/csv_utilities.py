@@ -61,6 +61,9 @@ def write_blogs_csv(blog, path):
     with open(path, "a") as f:
         f.write(f"\n{blog.id};{blog.name};{blog.post};{blog.address};{blog.blogger};{blog.published}")
 
+
+
+##### TÄÄLLÄ LUULTAVASTI KAIKKI ONGELMA
 def delete_csv(path,title):
     temp = []
     with open(path) as f:
