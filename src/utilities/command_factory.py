@@ -22,9 +22,9 @@ class CommandFactory:
         self.cmds = {
             "1": Add(self.io, self.item_service),
             "2": List(self.io, self.item_service),
-            "3": Search(self.io, self.item_service),
-            "4": Modify(self.io, self.item_service),
-            "5": Delete(self.io, self.item_service),
+            "3": Delete(self.io, self.item_service),
+            "4": Search(self.io, self.item_service),
+            "5": Modify(self.io, self.item_service),
             "0": Quit(self.io, self.item_service)
         }
 
@@ -168,7 +168,7 @@ class Delete(Menu):
         if deleted not in item_titles:
             self.io.write('Teosta ei löytynyt.')
         else:
-            for i in range(items):
+            for i in range(len(items)):
                 if item_titles[i] == deleted:
                     self.item_service.delete_item(deleted)
             self.io.write("Poistetaan vinkki...")

@@ -36,6 +36,7 @@ class ItemRepository:
         return False
 
     def _delete_item(self, item_title):
-        self._items = delete_csv(self._fpath, item_title)
+        delete_csv(self._fpath, item_title)
+        self._items = read_csv(self._fpath)
 
 ITEM_REPOSITORY = ItemRepository()

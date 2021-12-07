@@ -13,6 +13,7 @@ INSTRUCTIONS = (
     "\nValitse toiminto"
     "\n (1) lisää"
     "\n (2) listaa"
+    "\n (3) poista"
     "\n (0) lopeta\n")
 
 ADD_MENU = (

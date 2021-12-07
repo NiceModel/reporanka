@@ -20,7 +20,7 @@ def write_csv(fpath, item_type, item_fields):
     """
 
     with open(fpath, "a") as file:
-        file.write(f"\n{item_type};{item_fields}")
+        file.write(f"{item_type};{item_fields}\n")
 
 #def get_last_id(fpath):
 #    with open(fpath) as f:

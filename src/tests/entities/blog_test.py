@@ -12,9 +12,10 @@ class TestBlog(unittest.TestCase):
         address = self.blog.address
         blogger = self.blog.blogger
         published = self.blog.published
-        self.assertEqual((name, post, address, blogger, published), ("testipostaus", "sopulin blogi", "url", "sopuli", "1.1.2022"))
+        self.assertEqual((name, post, address, blogger, published), ('sopulin blogi', 'testipostaus', 'url', 'sopuli', '1.1.2022')
+)
 
     def test_blog_string(self):
-        expected = "sopuli: testipostaus, sopulin blogi, 1.1.2022, (url)"
+        expected = "sopuli: sopulin blogi, testipostaus, 1.1.2022, (url)"
         actual = str(self.blog)
         self.assertEqual(actual, expected)
