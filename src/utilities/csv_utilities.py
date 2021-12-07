@@ -33,3 +33,29 @@ def clear_csv(fpath):
     f.write("type;fields")
     f.truncate()
     f.close()
+
+##### TÄÄLLÄ LUULTAVASTI KAIKKI ONGELMA
+def delete_csv(fpath, title):
+    with open(fpath, "r") as f:
+        lines = f.readlines()
+
+    clear_csv(fpath)
+
+    with open(fpath, "w") as f:
+        for line in lines:
+            if title not in line:
+                f.write(line)
+        f.truncate()
+
+    # temp = []
+    # with open(path) as f:
+    #         reader = read_csv(path)
+    #         for item in reader:
+    #             if item[1][0] != title:
+    #                 temp.append(item)
+    #         print(temp)
+    # with open(path,"w") as fs:
+    #     Writer = csv.writer(fs)
+    #     Writer.writerows(temp)
+    #     print("Tiedosto päivitetty")
+    # return temp

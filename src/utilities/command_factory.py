@@ -95,11 +95,6 @@ class Add(Menu):
         while True:
             self.io.write(ADD_MENU)
             command = self.io.read("\nValinta: ")
-            # if not command in self.cmds:
-            #     continue
-            # else:
-            #     self.cmds[command].perform()
-            #     break
             if command in self.cmds:
                 self.cmds[command].perform()
                 break
@@ -150,7 +145,33 @@ class Modify(Menu):
 class Delete(Menu):
     """Menu subclass for deleting an item."""
     def __init__(self, io, item_service):
-        Menu.__init__(self, io, item_service)
+        Menu.__init__(self, io, item_service, 'delete')
+
+    def _delete_item(self):
+        """Internal method to read and write info from/to the console."""
+        prompt, error_msg = self.cmds[0]
+        deleting = True
+        while deleting:
+            info = self.io.read(prompt)
+            if not info:
+                self.io.write(error_msg)
+            else:
+                deleting = False
+        return info
+
+    def perform(self):
+        items = self.item_service.find_all_items()
+        item_titles = [itm[1][1] for itm in items]
+
+        deleted = self._delete_item()
+
+        if deleted not in item_titles:
+            self.io.write('Teosta ei löytynyt.')
+        else:
+            for i in range(items):
+                if item_titles[i] == deleted:
+                    self.item_service.delete_item(deleted)
+            self.io.write("Poistetaan vinkki...")
 
 class Unknown(Menu):
     """Menu subclass for an unknown user input."""
