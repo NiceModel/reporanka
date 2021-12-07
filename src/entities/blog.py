@@ -12,10 +12,10 @@ class Blog:
 
     def __init__(self, blogger, post, name, address, published):
         #self.id = id
-        self.name = name
-        self.title = post
-        self.address = address
         self.blogger = blogger
+        self.title = name
+        self.name = post
+        self.address = address
         self.published = published
 
     def __str__(self):
