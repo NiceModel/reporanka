@@ -176,10 +176,11 @@ class Delete(Menu):
         return info
 
     def perform(self):
+        self.io.write("\nVinkit:\n")
         items = self.item_service.find_all_items()
         titles = []
         if items:
-            self.io.write("Vinkit:")
+            # self.io.write("\nVinkit:\n")
             for item in items:
                 item_type = item[0]
                 try:

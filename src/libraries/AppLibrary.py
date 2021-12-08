@@ -21,13 +21,26 @@ class AppLibrary:
         self._io.add_input(value)
 
     def output_should_contain(self, value):
-        """Validation for output"""
+        """Validation #1 for output"""
         outputs = set(self._io.outputs)
 
         if value not in outputs:
+            outputs.clear()
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
+        outputs.clear()
+
+    def output_should_not_contain(self, value):
+        """Validation #2 for output, negation to validation #1"""
+        outputs = set(self._io.outputs)
+
+        if value in outputs:
+            outputs.clear()
+            raise AssertionError(
+                f"Output \"{value}\" should NOT be in {str(outputs)}"
+            )
+        outputs.clear()
 
     def run_application(self):
         """Run application"""

@@ -40,6 +40,6 @@ CMD_PROMPTS = {
              ("Blogin osoite: ", "Blogin osoite on lisättävä!"),
              ("Postauksen julkaisupäivä: ", "Postauksen julkaisupäivä on lisättävä!")
              ],
-    "delete": [("Anna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
+    "delete": [("\nAnna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
               ]
 }

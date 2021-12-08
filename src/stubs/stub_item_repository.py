@@ -1,12 +1,13 @@
 """Stub for item repository"""
 from config import TEST_DB_PATH
-from utilities.csv_utilities import read_csv, write_csv, clear_csv
+from utilities.csv_utilities import read_csv, write_csv, clear_csv, delete_csv
 
 class StubItemRepository:
     """Stub for book repository"""
     def __init__(self):
         clear_csv(TEST_DB_PATH)
         self._items = read_csv(TEST_DB_PATH)
+        self._fpath = TEST_DB_PATH
 
     def find_all(self):
         """Get all books"""
@@ -29,5 +30,10 @@ class StubItemRepository:
         if new_item in self._items:
             return True
         return False
+
+    def _delete_item(self, item_title):
+        """Deletes a certain item from repository."""
+        delete_csv(self._fpath, item_title)
+        self._items = read_csv(self._fpath)
 
 ITEM_REPOSITORY = StubItemRepository()

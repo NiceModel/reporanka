@@ -5,6 +5,9 @@ Library  ./../../libraries/AppLibrary.py
 Run App
     Run Application
 
+Input Empty
+    Input   ''
+
 Input Quit Command
     Input  0
 
