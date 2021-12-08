@@ -39,7 +39,3 @@ class TestItemRepository(unittest.TestCase):
         self.item_repo.create(self.type, self.fields)
         items = self.item_repo.find_all()
         self.assertEqual(len(items), 1)
-
-    def test_delete_item(self, item_title):
-        delete_csv(self._fpath, item_title)
-        self._items = read_csv(self._fpath)
