@@ -1,7 +1,7 @@
 import unittest
 from config import TEST_DB_PATH
 from repositories.item_repository import ItemRepository
-from utilities.csv_utilities import clear_csv, delete_csv, read_csv
+from utilities.csv_utilities import clear_csv
 
 
 class TestItemRepository(unittest.TestCase):
