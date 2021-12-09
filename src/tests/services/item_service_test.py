@@ -17,7 +17,7 @@ class TestBookRepository(unittest.TestCase):
         item_type = "book"
         item_fields = ["Meri", "Meemikirja", "2021"]
         self.item_service.create_item(item_type, item_fields)
-        expected = "(4, 'book', ['Meri', 'Meemikirja', '2021'])"
+        expected = "('0004', 'book', ['Meri', 'Meemikirja', '2021'])"
         self.assertEqual(str(self.item_service.find_all_items()[0]), expected)
 
     def test_find_all_items(self):
