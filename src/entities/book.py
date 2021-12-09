@@ -15,5 +15,9 @@ class Book:
         self.title = title
         self.published = published
 
+    @property
+    def short_str(self):
+        return f"{self.author}: {self.title}"
+
     def __str__(self):
         return f"{self.author}: {self.title} ({self.published})"

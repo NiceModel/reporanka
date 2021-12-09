@@ -17,5 +17,9 @@ class Video:
         self.creator = creator
         self.published = published
 
+    @property
+    def short_str(self):
+        return f"{self.creator}: {self.title}"
+
     def __str__(self):
         return f"{self.creator}: {self.title}, {self.address}, ({self.published})"
