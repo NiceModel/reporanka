@@ -10,14 +10,14 @@ class TestBookRepository(unittest.TestCase):
         clear_csv(TEST_DB_PATH)
         self.item_service = ItemService(ItemRepository(TEST_DB_PATH))
 
-    def test_init_book_service(self):
+    def test_init_item_service(self):
         self.assertTrue(isinstance(self.item_service, ItemService))
 
     def test_create_item(self):
         item_type = "book"
         item_fields = ["Meri", "Meemikirja", "2021"]
         self.item_service.create_item(item_type, item_fields)
-        expected = "('book', ['Meri', 'Meemikirja', '2021'])"
+        expected = "(4, 'book', ['Meri', 'Meemikirja', '2021'])"
         self.assertEqual(str(self.item_service.find_all_items()[0]), expected)
 
     def test_find_all_items(self):
@@ -32,9 +32,9 @@ class TestBookRepository(unittest.TestCase):
         book = self.item_service.find_all_items()[0]
         print(book)
 
-        self.assertEqual(book[1][0], "Frank Herbert")
-        self.assertEqual(book[1][1], "Dune")
-        self.assertEqual(book[1][2], "1965")
+        self.assertEqual(book[2][0], "Frank Herbert")
+        self.assertEqual(book[2][1], "Dune")
+        self.assertEqual(book[2][2], "1965")
 
     def test_find_all_items_returns_alphabetically(self):
         item_type = "book"
@@ -49,4 +49,4 @@ class TestBookRepository(unittest.TestCase):
         book_names_alphabetic = ["Douglas Adams", "Frank Herbert", "J.R.R. Tolkien"]
 
         for book, book_alphabetic in zip(books, book_names_alphabetic):
-            self.assertEqual(book[1][0], book_alphabetic)
+            self.assertEqual(book[2][0], book_alphabetic)
