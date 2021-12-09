@@ -26,9 +26,7 @@ Delete Non-Existing Item
 
 *** Keywords ***
 Add Test Items And Input Delete Command
-    Add Test Book
-    Add Test Video
-    Add Test Blog
+    Add Test Items
     Input Delete Command In Main Menu
 
 Delete Test Book

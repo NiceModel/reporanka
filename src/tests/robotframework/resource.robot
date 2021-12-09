@@ -64,3 +64,8 @@ Add Test Video
 
 Add Test Blog
     Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056  8.1.2019
+
+Add Test Items
+    Add Test Book
+    Add Test Video
+    Add Test Blog

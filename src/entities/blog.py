@@ -18,5 +18,9 @@ class Blog:
         self.address = address
         self.published = published
 
+    @property
+    def short_str(self):
+        return f"{self.name}: {self.title}"
+
     def __str__(self):
         return f"{self.blogger}: {self.name}, {self.title}, {self.published}, ({self.address})"

@@ -78,6 +78,31 @@ class Menu:
                 adding = False
         return info
 
+    def _list(self, str_len='long'):
+        items = self.item_service.find_all_items()
+        titles = []
+        if items:
+            for item in items:
+                item_str = self._is_valid(item)
+                if item_str is not None:
+                    if str_len == 'long':
+                        output = f"{item[0].capitalize()} – {item_str}"
+                    else:
+                        output = item_str.short_str
+                    self.io.write(output)
+                    titles.append(item_str.title)
+        else:
+            self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
+
+    def _is_valid(self, item):
+        try:
+            return ENTITY_DICT[item[0]](*item[1])
+        except TypeError:
+            return None
+        except KeyError:
+            return None
+
+
 class Add(Menu):
     """Menu subclass for adding different types of reading tip items."""
     def __init__(self, io, item_service=default_item_service):
@@ -124,19 +149,7 @@ class List(Menu):
     def perform(self):
         """Finds the reading tips and prints them to console."""
         self.io.write("\nLukuvinkkilista:\n")
-        items = self.item_service.find_all_items()
-        if items:
-            for item in items:
-                item_type = item[0]
-                try:
-                    item_str = ENTITY_DICT[item[0]](*item[1])
-                    self.io.write(f"{item_type.capitalize()} - {item_str}")
-                except TypeError:
-                    pass
-                except KeyError:
-                    pass
-        else:
-            self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
+        self._list()
         return True
 
 class Search(Menu):
@@ -179,19 +192,7 @@ class Delete(Menu):
         self.io.write("\nVinkit:\n")
         items = self.item_service.find_all_items()
         titles = []
-        if items:
-            for item in items:
-                item_type = item[0]
-                try:
-                    item_str = ENTITY_DICT[item[0]](*item[1])
-                    self.io.write(f"{item_type.capitalize()} - {item_str}")
-                    titles.append(item_str.title)
-                except TypeError:
-                    pass
-                except KeyError:
-                    pass
-        else:
-            self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
+        self._list('short')
 
         deleted = self._delete_item()
 
