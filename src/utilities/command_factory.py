@@ -94,6 +94,8 @@ class Menu:
         else:
             self.io.write("Sovellukseen ei ole tallennettu vinkkejä :(")
 
+        return titles
+
     def _is_valid(self, item):
         try:
             return ENTITY_DICT[item[0]](*item[1])
@@ -190,9 +192,7 @@ class Delete(Menu):
 
     def perform(self):
         self.io.write("\nVinkit:\n")
-        items = self.item_service.find_all_items()
-        titles = []
-        self._list('short')
+        titles = self._list('short')
 
         deleted = self._delete_item()
 
