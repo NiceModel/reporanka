@@ -5,7 +5,7 @@ class IdGenerator:
     """Generator for item ids"""
     
     def __init__(self):
-        self.id_number = len(ITEM_REPOSITORY.find_all())
+        self.id_number = max([int(item[0]) for item in ITEM_REPOSITORY.find_all()])
 
     def get_id(self):
         """Updates id and returns new id"""
