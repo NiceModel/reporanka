@@ -5,9 +5,6 @@ Library  ./../../libraries/AppLibrary.py
 Run App
     Run Application
 
-Input Empty
-    Input   ''
-
 Input Quit Command
     Input  0
 
@@ -34,6 +31,27 @@ Input Back To Main Menu Command In Add Menu
 
 Add New Book
     [Arguments]  ${author}  ${title}  ${published}
+    Input Add Command In Main Menu
+    Input Add Book Command In Add Menu
     Input  ${author}
     Input  ${title}
+    Input  ${published}
+
+Add New Video
+    [Arguments]  ${creator}  ${title}  ${url}  ${published}
+    Input Add Command In Main Menu
+    Input Add Video Command In Add Menu
+    Input  ${creator}
+    Input  ${title}
+    Input  ${url}
+    Input  ${published}
+
+Add New Blog
+    [Arguments]  ${blogger}  ${blog}  ${post}  ${url}  ${published}
+    Input Add Command In Main Menu
+    Input Add Blog Command In Add Menu
+    Input  ${blogger}
+    Input  ${blog}
+    Input  ${post}
+    Input  ${url}
     Input  ${published}

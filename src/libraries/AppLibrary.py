@@ -25,7 +25,6 @@ class AppLibrary:
         outputs = set(self._io.outputs)
 
         if value not in outputs:
-            outputs.clear()
             raise AssertionError(
                 f"Output \"{value}\" is not in {str(outputs)}"
             )
@@ -36,7 +35,6 @@ class AppLibrary:
         outputs = set(self._io.outputs)
 
         if value in outputs:
-            outputs.clear()
             raise AssertionError(
                 f"Output \"{value}\" should NOT be in {str(outputs)}"
             )
