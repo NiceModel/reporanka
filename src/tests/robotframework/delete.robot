@@ -1,24 +1,41 @@
 *** Settings ***
 Resource  resource.robot
-Test Setup  Add Items And Input Delete Command
+Test Setup  Add Test Items And Input Delete Command
 
 *** Test Cases ***
-Delete Command Can Be Chosen
+Choose Delete Command
     Run App
     Output Should Contain  \nVinkit:\n
 
-Delete Existing Book
-    Delete Book
+App Verifies Deletion
+    Delete Test Book
+    Verify Delete
+    Run App
     Output Should Contain  Poistetaan vinkki...
 
-*** Keywords ***
-Delete Book
-    Input  Meemikirja
-    Input  K
+Item Is Not Deleted Without Verification
+    Delete Test Book
+    Do Not Verify Delete
     Run App
+    Output Should Contain  Vinkkiä ei poistettu.
 
-Add Items And Input Delete Command
-    Input Add Command In Main Menu
-    Input Add Book Command In Add Menu
-    Add New Book  Meri  Meemikirja  2021
+Delete Non-Existing Item
+    Input  Trainspotting
+    Run App
+    Output Should Contain  Teosta ei löytynyt.
+
+*** Keywords ***
+Add Test Items And Input Delete Command
+    Add Test Book
+    Add Test Video
+    Add Test Blog
     Input Delete Command In Main Menu
+
+Delete Test Book
+    Input  Eating Animals
+
+Verify Delete
+    Input  K
+
+Do Not Verify Delete
+    Input  E

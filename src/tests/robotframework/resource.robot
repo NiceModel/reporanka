@@ -55,3 +55,12 @@ Add New Blog
     Input  ${post}
     Input  ${url}
     Input  ${published}
+
+Add Test Book
+    Add New Book  Jonathan Safran Foer  Eating Animals  2009
+
+Add Test Video
+    Add New Video  Studio Killers  Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO  https://youtu.be/hyj4JFSErrw  24.12.2015
+
+Add Test Blog
+    Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056  8.1.2019

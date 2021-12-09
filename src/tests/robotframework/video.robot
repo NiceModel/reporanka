@@ -33,7 +33,3 @@ Add Video With No Publishing Date
     Add New Video  Team StarKid  A Very Potter Musical Act 1 Part 1  https://youtu.be/wmwM_AKeMCk  ${EMPTY}
     Run App
     Output Should Contain  Videon julkaisupäivä on lisättävä!
-
-*** Keywords ***
-Add Test Video
-    Add New Video  Studio Killers  Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO  https://youtu.be/hyj4JFSErrw  24.12.2015

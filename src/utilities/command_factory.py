@@ -180,7 +180,6 @@ class Delete(Menu):
         items = self.item_service.find_all_items()
         titles = []
         if items:
-            # self.io.write("\nVinkit:\n")
             for item in items:
                 item_type = item[0]
                 try:
@@ -207,7 +206,7 @@ class Delete(Menu):
                         self.item_service.delete_item(deleted)
                         self.io.write("Poistetaan vinkki...")
                     else:
-                        pass
+                        self.io.write("Vinkkiä ei poistettu.")
         return True
 
 class Unknown(Menu):

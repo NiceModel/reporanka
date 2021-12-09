@@ -28,7 +28,3 @@ Add Book With No Year
     Add New Book  Victor Hugo  Les Misérables  ${EMPTY}
     Run App
     Output Should Contain  Julkaisuvuosi ei ole kelvollinen!
-
-*** Keywords ***
-Add Test Book
-    Add New Book  Jonathan Safran Foer  Eating Animals  2009

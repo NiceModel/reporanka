@@ -38,7 +38,3 @@ Add Blog With No Publishing Date
     Add New Blog  Roxy & Ben  SO VEGAN  Butternut Squash Wellington  https://www.wearesovegan.com/butternut-squash-wellington/  ${EMPTY}
     Run App
     Output Should Contain  Postauksen julkaisupäivä on lisättävä!
-
-*** Keywords ***
-Add Test Blog
-    Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056  8.1.2019
