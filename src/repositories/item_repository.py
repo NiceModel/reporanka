@@ -31,7 +31,7 @@ class ItemRepository:
 
     def _is_duplicate(self, new_item):
         """Checks if an item is already in the repository."""
-        if new_item in self._items:
+        if new_item in [item[1:] for item in self._items]:
             return True
         return False
 
