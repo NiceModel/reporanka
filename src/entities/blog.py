@@ -10,13 +10,17 @@ class Blog:
         published: str: publication date of the blog post
     """
 
-    def __init__(self, blogger, post_title, blog_name, address, published):
+    def __init__(self, blogger, blog_name, post_title, address, published):
         #self.id = id
         self.blogger = blogger
         self.title = post_title
         self.name = blog_name
         self.address = address
         self.published = published
+
+    @property
+    def short_str(self):
+        return f"{self.name}: {self.title}"
 
     def __str__(self):
         return f"{self.blogger}: {self.name}, {self.title}, {self.published}, ({self.address})"

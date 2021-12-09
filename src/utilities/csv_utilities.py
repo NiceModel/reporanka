@@ -30,7 +30,7 @@ def write_csv(fpath, item_type, item_fields):
 def clear_csv(fpath):
     """Utility for clearing a csv file completely."""
     f = open(fpath, "w")
-    f.write("type;fields")
+    f.write("type;fields\n")
     f.truncate()
     f.close()
 

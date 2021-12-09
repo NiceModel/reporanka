@@ -1,9 +1,6 @@
 type;fields
-video;['Team StarKid', 'A Very Potter Musical Act 1 Part 1', 'https://youtu.be/wmwM_AKeMCk', '5.7.2009']
-blog;['Satu Saunio', 'Kamomillan koekeittiö ja vihreäkuulajuustokakku', 'Kamomillan konditoria', 'https://www.kamomillankonditoria.com/2017/12/vihreakuulajuustokakku.html', '8.12.2017']
-book;['JK Rowling', 'Harry Potter ja salaisuuksien kammio, '1998']
-book;['JK Rowling', 'Harry Potter ja viisasten kivi', '1997']
 None;[]
-blog;['bloggaaja-ihminen', 'Ihmiset', 'ollaan ihmisii kaikki', 'www.bloginurl.com', '1.6.2011']
 video;['Spike Lee', 'Olen Jasperi', 'www.video.com', '2001']
-book;['meri', 'kirja', '2021']
+book;['JK Rowling', 'Harry Potter ja viisasten kivi', '1997']
+blog;['Satu Saunio','Kamomillan konditoria', 'Kamomillan koekeittiö ja vihreäkuulajuustokakku', 'https://www.kamomillankonditoria.com/2017/12/vihreakuulajuustokakku.html', '8.12.2017']
+None;[]
