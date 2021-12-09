@@ -11,6 +11,6 @@ class IdGenerator:
         """Updates id and returns new id"""
         
         self.id_number += 1
-        return self.id_number 
+        return str(self.id_number).zfill(4)
 
 ID_GENERATOR = IdGenerator()

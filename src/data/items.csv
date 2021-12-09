@@ -1,4 +1,4 @@
 id;type;fields
-1;book;['Kirjailija1', 'Testikirja1', '2000']
-2;video;['Tekij�1', 'TestiVideo1', 'testiurli.com', '1999']
-3;blog;['Bloggaaja1', 'TestiBlogi1', 'TestiPostaus1', 'Testiblogi.com', '1674']
+0001;book;['Kirjailija1', 'Testikirja1', '2000']
+0002;video;['Tekij�1', 'TestiVideo1', 'testiurli.com', '1999']
+0003;blog;['Bloggaaja1', 'TestiBlogi1', 'TestiPostaus1', 'Testiblogi.com', '1674']
