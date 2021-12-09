@@ -127,10 +127,10 @@ class List(Menu):
         items = self.item_service.find_all_items()
         if items:
             for item in items:
-                item_type = item[0]
+                item_type = item[1]
                 try:
-                    item_str = ENTITY_DICT[item[0]](*item[1])
-                    self.io.write(f"{item_type.capitalize()} - {item_str}")
+                    item_str = ENTITY_DICT[item[1]](*item[2])
+                    self.io.write(f"id: {item[0]}, tyyppi: {item_type.capitalize()}, tiedot: {item_str}")
                 except TypeError:
                     pass
                 except KeyError:
