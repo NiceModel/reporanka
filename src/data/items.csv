@@ -2,5 +2,5 @@ type;fields
 None;[]
 video;['Spike Lee', 'Olen Jasperi', 'www.video.com', '2001']
 book;['JK Rowling', 'Harry Potter ja viisasten kivi', '1997']
-blog;['Satu Saunio', 'Kamomillan koekeittiö ja vihreäkuulajuustokakku', 'Kamomillan konditoria', 'https://www.kamomillankonditoria.com/2017/12/vihreakuulajuustokakku.html', '8.12.2017']
+blog;['Satu Saunio','Kamomillan konditoria', 'Kamomillan koekeittiö ja vihreäkuulajuustokakku', 'https://www.kamomillankonditoria.com/2017/12/vihreakuulajuustokakku.html', '8.12.2017']
 None;[]
