@@ -86,7 +86,7 @@ class Menu:
                 item_str = self._is_valid(item)
                 if item_str is not None:
                     if str_len == 'long':
-                        output = f"id: {item[0]}, tyyppi: {item[1].capitalize()}, tiedot: {item_str}")
+                        output = f"id: {item[0]}, tyyppi: {item[1].capitalize()}, tiedot: {item_str}"
                     else:
                         output = item_str.short_str
                     self.io.write(output)
