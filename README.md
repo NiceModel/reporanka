@@ -1,6 +1,7 @@
 # Lukuvinkkisovellus
 
-![Github Actions](https://github.com/NiceModel/reporanka/workflows/CI/badge.svg)
+![Github Actions](https://github.com/NiceModel/reporanka/workflows/CI/badge.svg) [![codecov](https://codecov.io/gh/NiceModel/reporanka/branch/main/graph/badge.svg?token=MKB73DT68H)](https://codecov.io/gh/NiceModel/reporanka)
+
 
 Tästä repositoriosta löytyy lukuvinkkisovellus, joka on kehitetty Helsingin Yliopiston Ohjelmistotuotanto-kurssin miniprojektina syksyllä 2021. Projektin päämääränä on oppia ketterää ohjelmistokehitystä ja ryhmätyöskentelytaitoja. 
 
