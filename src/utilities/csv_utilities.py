@@ -10,9 +10,9 @@ def read_csv(fpath):
 
     with open(fpath, "r", encoding="utf-8") as file:
         next(file)
-        return [(item.split(";")[0], re.findall("\'(.+?)\'", item)) for item in file]
+        return [(item.split(";")[0], item.split(";")[1], re.findall("\'(.+?)\'", item)) for item in file]
 
-def write_csv(fpath, item_type, item_fields):
+def write_csv(fpath, id, item_type, item_fields):
     """Writes to the datafile.
 
     Writes in two columns:
@@ -20,7 +20,7 @@ def write_csv(fpath, item_type, item_fields):
     """
 
     with open(fpath, "a") as file:
-        file.write(f"{item_type};{item_fields}\n")
+        file.write(f"{id};{item_type};{item_fields}\n")
 
 #def get_last_id(fpath):
 #    with open(fpath) as f:
