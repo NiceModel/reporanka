@@ -8,7 +8,7 @@ def read_csv(fpath):
         A tuple of (item type: string, item fields: list)
     """
 
-    with open(fpath, "r", encoding="utf-8") as file:
+    with open(fpath, "r", encoding="latin1") as file:
         next(file)
         return [(item.split(";")[0], item.split(";")[1], re.findall("\'(.+?)\'", item)) for item in file]
 
