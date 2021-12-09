@@ -38,5 +38,4 @@ class TestItemRepository(unittest.TestCase):
         self.item_repo.create(0, self.type, self.fields)
         self.item_repo.create(0, self.type, self.fields)
         items = self.item_repo.find_all()
-        print(items)
         self.assertEqual(len(items), 1)
