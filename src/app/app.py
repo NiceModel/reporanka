@@ -2,7 +2,7 @@
 
 # from utilities.utilities import check_year
 from config import INSTRUCTIONS
-from utilities.command_factory import CommandFactory
+from app.command_factory import CommandFactory
 
 class App:
     """Handles the UI functionality for the application"""

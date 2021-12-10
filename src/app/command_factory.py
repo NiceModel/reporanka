@@ -1,5 +1,4 @@
 '''Command Factory'''
-import sys
 from config import CMD_PROMPTS, ADD_MENU
 from services.item_service import ITEM_SERVICE as default_item_service
 from entities.book import Book

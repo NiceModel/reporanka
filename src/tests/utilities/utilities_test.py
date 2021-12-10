@@ -22,3 +22,7 @@ class TestUtilities(unittest.TestCase):
     def test_check_year_invalid_bce(self):
         year = utilities.check_year("udjkdj bce")
         self.assertFalse(year)
+
+    def test_check_year_empty(self):
+        year = utilities.check_year('')
+        self.assertFalse(year)

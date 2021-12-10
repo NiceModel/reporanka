@@ -5,7 +5,7 @@ from entities.book import Book
 
 class TestBook(unittest.TestCase):
     def setUp(self):
-        self.book = Book('merz', 'meemikirja', '2021')
+        self.book = Book('Naomi Klein', 'No Logo', '1999')
 
     def test_init_book_works(self):
         author = self.book.author
@@ -13,10 +13,14 @@ class TestBook(unittest.TestCase):
         published = self.book.published
         self.assertEqual(
             (author, title, published),
-            ('merz', 'meemikirja', '2021')
+            ('Naomi Klein', 'No Logo', '1999')
         )
 
     def test_returns_book_str(self):
-        expected = "merz: meemikirja (2021)"
+        expected = "Naomi Klein: No Logo (1999)"
         actual = str(self.book)
         self.assertEqual(actual, expected)
+
+    def test_book_short_string(self):
+        expected = 'Naomi Klein: No Logo'
+        self.assertEqual(self.book.short_str, expected)

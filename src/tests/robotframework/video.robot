@@ -33,3 +33,8 @@ Add Video With No Publishing Date
     Add New Video  Team StarKid  A Very Potter Musical Act 1 Part 1  https://youtu.be/wmwM_AKeMCk  ${EMPTY}
     Run App
     Output Should Contain  Videon julkaisupäivä on lisättävä!
+
+*** Keywords ***
+Clear Data And Add Test Video
+    Clear Data
+    Add Test Video

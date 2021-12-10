@@ -26,6 +26,7 @@ Delete Non-Existing Item
 
 *** Keywords ***
 Add Test Items And Input Delete Command
+    Clear Data
     Add Test Items
     Input Delete Command In Main Menu
 
