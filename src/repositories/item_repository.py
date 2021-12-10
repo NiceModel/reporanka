@@ -17,7 +17,7 @@ class ItemRepository:
         """Returns all the items in the repository"""
         return self._items
 
-    def create(self, item_type, item_fields):
+    def create(self, id, item_type, item_fields):
         """Creates a new item.
         args:
             item_type: str: the category the item belongs to
@@ -25,13 +25,13 @@ class ItemRepository:
         """
         if self._is_duplicate((item_type, item_fields)):
             return "duplicate"
-        self._items.append((item_type, item_fields))
-        write_csv(self._fpath, item_type, item_fields)
-        return (item_type, item_fields)
+        self._items.append((id, item_type, item_fields))
+        write_csv(self._fpath, id, item_type, item_fields)
+        return (id, item_type, item_fields)
 
     def _is_duplicate(self, new_item):
         """Checks if an item is already in the repository."""
-        if new_item in self._items:
+        if new_item in [item[1:] for item in self._items]:
             return True
         return False
 

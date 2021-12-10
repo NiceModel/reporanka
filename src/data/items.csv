@@ -1,6 +1,4 @@
-type;fields
-None;[]
-video;['Spike Lee', 'Olen Jasperi', 'www.video.com', '2001']
-book;['JK Rowling', 'Harry Potter ja viisasten kivi', '1997']
-blog;['Satu Saunio','Kamomillan konditoria', 'Kamomillan koekeittiö ja vihreäkuulajuustokakku', 'https://www.kamomillankonditoria.com/2017/12/vihreakuulajuustokakku.html', '8.12.2017']
-None;[]
+id;type;fields
+0001;book;['Kirjailija1', 'Testikirja1', '2000']
+0002;video;['Tekij�1', 'TestiVideo1', 'testiurli.com', '1999']
+0003;blog;['Bloggaaja1', 'TestiBlogi1', 'TestiPostaus1', 'Testiblogi.com', '1674']
