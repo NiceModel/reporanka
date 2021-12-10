@@ -1,5 +1,4 @@
 '''Command Factory'''
-import sys
 from config import CMD_PROMPTS, ADD_MENU
 from services.item_service import ITEM_SERVICE as default_item_service
 from entities.book import Book
@@ -86,7 +85,7 @@ class Menu:
                 item_str = self._is_valid(item)
                 if item_str is not None:
                     if str_len == 'long':
-                        output = f"{item[0].capitalize()} – {item_str}"
+                        output = f"id: {item[0]}, tyyppi: {item[1].capitalize()}, tiedot: {item_str}"
                     else:
                         output = item_str.short_str
                     self.io.write(output)
@@ -98,7 +97,7 @@ class Menu:
 
     def _is_valid(self, item):
         try:
-            return ENTITY_DICT[item[0]](*item[1])
+            return ENTITY_DICT[item[1]](*item[2])
         except TypeError:
             return None
         except KeyError:
@@ -152,6 +151,7 @@ class List(Menu):
         """Finds the reading tips and prints them to console."""
         self.io.write("\nLukuvinkkilista:\n")
         self._list()
+
         return True
 
 class Search(Menu):

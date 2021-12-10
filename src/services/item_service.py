@@ -1,9 +1,10 @@
 """Module for an item service to connect an item repository to the application."""
-
+from utilities.utilities import generate_id
 from repositories.item_repository import (
     ITEM_REPOSITORY as default_item_repository
 )
-#from services.id_generator import (id_generator as default_id_generator)
+
+# from utilities.id_generator import ID_GENERATOR
 
 class ItemService:
     """Class for item service.
@@ -24,7 +25,10 @@ class ItemService:
             title: str: title of the book, for example
             published: str: year of publication of the book, for example
         """
+        # item_id = ID_GENERATOR.get_id()
+        item_id = generate_id()
         item = self._item_repository.create(
+            item_id,
             item_type,
             item_fields
         )
@@ -33,11 +37,11 @@ class ItemService:
     def find_all_items(self):
         """Returns list of all items first sorted by item type and then by author"""
         items = self._item_repository.find_all()
-        items_sorted = sorted(items, key=lambda item: (item[0], item[1]))
+        items_sorted = sorted(items, key=lambda item: (item[1], item[2]))
 
         return items_sorted
 
     def delete_item(self, item_title):
-        self._item_repository._delete_item(item_title)
+        self._item_repository.delete_item(item_title)
 
 ITEM_SERVICE = ItemService()

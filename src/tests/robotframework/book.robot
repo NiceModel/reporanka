@@ -1,6 +1,6 @@
 *** Settings ***
 Resource  resource.robot
-Test Setup  Add Test Book
+Test Setup  Clear Data And Add Test Book
 
 *** Test Cases ***
 
@@ -28,3 +28,8 @@ Add Book With No Year
     Add New Book  Victor Hugo  Les Misérables  ${EMPTY}
     Run App
     Output Should Contain  Julkaisuvuosi ei ole kelvollinen!
+
+*** Keywords ***
+Clear Data And Add Test Book
+    Clear Data
+    Add Test Book
