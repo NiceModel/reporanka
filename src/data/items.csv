@@ -1,4 +1,3 @@
 id;type;fields
-0001;book;['Kirjailija1', 'Testikirja1', '2000']
-0002;video;['Tekij�1', 'TestiVideo1', 'testiurli.com', '1999']
-0003;blog;['Bloggaaja1', 'TestiBlogi1', 'TestiPostaus1', 'Testiblogi.com', '1674']
+144661;book;['Litmanen', 'Kuningas', '2020']
+142784;video;['Strobo', 'Valo', 'www.dungeon.world', '2021']
