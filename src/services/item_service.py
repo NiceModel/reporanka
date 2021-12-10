@@ -41,6 +41,6 @@ class ItemService:
         return items_sorted
 
     def delete_item(self, item_title):
-        self._item_repository._delete_item(item_title)
+        self._item_repository.delete_item(item_title)
 
 ITEM_SERVICE = ItemService()

@@ -8,7 +8,7 @@ class TestItemRepository(unittest.TestCase):
     def setUp(self):
         clear_csv(TEST_DB_PATH)
         self.item_repo = ItemRepository(TEST_DB_PATH)
-        self.test_item = (0, 'test', ['author', 'title', 'published'])
+        self.test_item = (0, 'book', ['Naomi Klein', 'No Logo', '1999'])
         self.type = self.test_item[1]
         self.fields = self.test_item[2]
 
@@ -39,3 +39,9 @@ class TestItemRepository(unittest.TestCase):
         self.item_repo.create(0, self.type, self.fields)
         items = self.item_repo.find_all()
         self.assertEqual(len(items), 1)
+
+    def test_delete_item(self):
+        self.item_repo.create(0, self.type, self.fields)
+        self.item_repo.delete_item('No Logo')
+        items = self.item_repo.find_all()
+        self.assertEqual(len(items), 0)
