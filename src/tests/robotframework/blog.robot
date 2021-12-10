@@ -38,3 +38,8 @@ Add Blog With No Publishing Date
     Add New Blog  Roxy & Ben  SO VEGAN  Butternut Squash Wellington  https://www.wearesovegan.com/butternut-squash-wellington/  ${EMPTY}
     Run App
     Output Should Contain  Postauksen julkaisupäivä on lisättävä!
+
+*** Keywords ***
+Clear Data And Add Test Blog
+    Clear Data
+    Add Test Blog

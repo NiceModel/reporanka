@@ -1,10 +1,11 @@
 *** Settings ***
 Resource  resource.robot
+Test Setup  Clear Data
 
 *** Variables ***
-${BOOK}  Book – Jonathan Safran Foer: Eating Animals (2009)
-${BLOG}  Blog – Pedro Medeiros: Pixel Grimoire, How to start making pixel art #6, 8.1.2019, (https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056)
-${VIDEO}  Video – Studio Killers: Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO, https://youtu.be/hyj4JFSErrw, (24.12.2015)
+${BOOK}  id: 0000, tyyppi: Book, tiedot: Jonathan Safran Foer: Eating Animals (2009)
+${BLOG}  id: 0000, tyyppi: Blog, tiedot: Pedro Medeiros: Pixel Grimoire, How to start making pixel art #6, 8.1.2019, (https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056)
+${VIDEO}  id: 0000, tyyppi: Video, tiedot: Studio Killers: Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO, https://youtu.be/hyj4JFSErrw, (24.12.2015)
 
 
 *** Test Cases ***

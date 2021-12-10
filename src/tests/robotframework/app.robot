@@ -1,5 +1,6 @@
 *** Settings ***
 Resource  resource.robot
+Test Setup  Clear Test File
 
 *** Test Cases ***
 Application Starts Succesfully

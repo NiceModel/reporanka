@@ -69,3 +69,6 @@ Add Test Items
     Add Test Book
     Add Test Video
     Add Test Blog
+
+Clear Data
+    Clear Test File
