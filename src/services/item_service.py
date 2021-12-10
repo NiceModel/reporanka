@@ -25,9 +25,9 @@ class ItemService:
             title: str: title of the book, for example
             published: str: year of publication of the book, for example
         """
-        id = ID_GENERATOR.get_id()
+        item_id = ID_GENERATOR.get_id()
         item = self._item_repository.create(
-            id,
+            item_id,
             item_type,
             item_fields
         )
