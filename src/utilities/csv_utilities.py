@@ -7,25 +7,20 @@ def read_csv(fpath):
     Returns:
         A tuple of (item type: string, item fields: list)
     """
-
     with open(fpath, "r", encoding="latin1") as file:
         next(file)
-        return [(item.split(";")[0], item.split(";")[1], re.findall("\'(.+?)\'", item)) for item in file]
+        return [(
+            item.split(";")[0], item.split(";")[1], re.findall("\'(.+?)\'", item)
+            ) for item in file]
 
-def write_csv(fpath, id, item_type, item_fields):
+def write_csv(fpath, item_id, item_type, item_fields):
     """Writes to the datafile.
 
     Writes in two columns:
         item type: string, item fields: list
     """
-
     with open(fpath, "a") as file:
-        file.write(f"{id};{item_type};{item_fields}\n")
-
-#def get_last_id(fpath):
-#    with open(fpath) as f:
-#        for r in f: pass
-#    return int(r[0])
+        file.write(f"{item_id};{item_type};{item_fields}\n")
 
 def clear_csv(fpath):
     """Utility for clearing a csv file completely."""
@@ -34,7 +29,6 @@ def clear_csv(fpath):
     f.truncate()
     f.close()
 
-##### TÄÄLLÄ LUULTAVASTI KAIKKI ONGELMA
 def delete_csv(fpath, title):
     with open(fpath, "r") as f:
         lines = f.readlines()
@@ -46,16 +40,3 @@ def delete_csv(fpath, title):
             if title not in line:
                 f.write(line)
         f.truncate()
-
-    # temp = []
-    # with open(path) as f:
-    #         reader = read_csv(path)
-    #         for item in reader:
-    #             if item[1][0] != title:
-    #                 temp.append(item)
-    #         print(temp)
-    # with open(path,"w") as fs:
-    #     Writer = csv.writer(fs)
-    #     Writer.writerows(temp)
-    #     print("Tiedosto päivitetty")
-    # return temp

@@ -1,10 +1,10 @@
 """Module for an item service to connect an item repository to the application."""
-
+from utilities.utilities import generate_id
 from repositories.item_repository import (
     ITEM_REPOSITORY as default_item_repository
 )
 
-from utilities.id_generator import ID_GENERATOR
+# from utilities.id_generator import ID_GENERATOR
 
 class ItemService:
     """Class for item service.
@@ -25,7 +25,8 @@ class ItemService:
             title: str: title of the book, for example
             published: str: year of publication of the book, for example
         """
-        item_id = ID_GENERATOR.get_id()
+        # item_id = ID_GENERATOR.get_id()
+        item_id = generate_id()
         item = self._item_repository.create(
             item_id,
             item_type,

@@ -1,12 +1,16 @@
 """Utility functions"""
 
 from datetime import date
+from string import ascii_lowercase, digits
+import secrets
+
+def generate_id():
+    """Generates a random alphanumeric four-character identifier"""
+    chars = ascii_lowercase + digits
+    return ''.join(secrets.choice(chars) for _ in range(4))
 
 def check_year(year):
     """Checks for the validity of 'year' input"""
-    if not year:
-        return None
-
     bce = ["bce", "bc", "eaa", "ekr"]
     year_split = year.split()
 
