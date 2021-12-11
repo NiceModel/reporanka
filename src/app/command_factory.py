@@ -1,5 +1,5 @@
 '''Command Factory'''
-from config import CMD_PROMPTS, ADD_MENU
+from config import CMD_PROMPTS, ADD_MENU, LIST_MENU
 from services.item_service import ITEM_SERVICE as default_item_service
 from entities.book import Book
 from entities.video import Video
@@ -23,7 +23,8 @@ class CommandFactory:
             "2": List(self.io, self.item_service),
             "3": Delete(self.io, self.item_service),
             "4": Search(self.io, self.item_service),
-            "5": Modify(self.io, self.item_service),
+            "5": Details(self.io, self.item_service),
+            "6": Modify(self.io, self.item_service),
             "0": Quit(self.io, self.item_service)
         }
 
@@ -103,6 +104,14 @@ class Menu:
         except KeyError:
             return None
 
+class MainMenu(Menu):
+    """Menu subclass for an unknown user input."""
+    def __init__(self, io, item_service):
+        Menu.__init__(self, io, item_service)
+
+    def perform(self):
+        """Does nothing if the app does not recognise a command."""
+        return True
 
 class Add(Menu):
     """Menu subclass for adding different types of reading tip items."""
@@ -147,26 +156,71 @@ class List(Menu):
     def __init__(self, io, item_service):
         Menu.__init__(self, io, item_service)
 
+        self.cmds = {
+            "1": GetDetails(self.io, self.item_service),
+            "2": Delete(self.io, self.item_service),
+            "3": MainMenu(self.io, self.item_service),
+            "0": Quit(self.io, self. item_service)
+        }
+
     def perform(self):
         """Finds the reading tips and prints them to console."""
         self.io.write("\nLukuvinkkilista:\n")
         self._list()
 
-        return True
+        while True:
+            self.io.write(LIST_MENU)
+            command = self.io.read("\nValinta: ")
+            if command in self.cmds:
+                self.cmds[command].perform()
+                return True
+
+        # return True
 
 class Search(Menu):
     """Menu subclass for searching specific items."""
     def __init__(self, io, item_service):
         Menu.__init__(self, io, item_service)
 
-class MainMenu(Menu):
-    """Menu subclass for an unknown user input."""
-    def __init__(self, io, item_service):
+class Details(Menu):
+    """Menu subclass for giving possibility to get the detailed information of a certain reading tip item."""
+    def __init__(self, io, item_service=default_item_service):
         Menu.__init__(self, io, item_service)
 
+        # TODO: tämä odottamassa - toiminnot puuttuvat
+        self.cmds = {
+            "1": Modify(self.io, self.item_service),
+            "2": Delete(self.io, self.item_service),
+            "3": MainMenu(self.io, self.item_service),
+            "0": Quit(self.io, self. item_service)
+        }
+
     def perform(self):
-        """Does nothing if the app does not recognise a command."""
-        return True
+        """Method to let the user choose a function after listing the items."""
+        while True:
+            self.io.write(LIST_MENU)
+            command = self.io.read("\nValinta: ")
+            if command in self.cmds:
+                self.cmds[command].perform()
+                return True
+
+class GetDetails(Menu):
+    """Menu subclass for showing the details of a reading tip item."""
+    def __init__(self, io, item_service=default_item_service):
+        Menu.__init__(self, io, item_service, 'details')
+
+    def perform(self):
+        """Method to write out the item details."""
+        prompt, error_msg = self.cmds[0]
+        getting_id = True
+        while getting_id:
+            info = self.io.read(prompt)
+            if not info:
+                self.io.write(error_msg)
+            else:
+                getting_id = False
+        return info
+        # TODO: 1. tarkistettava id 2. jos ok, haettava id:llä itemin tiedot
 
 class Modify(Menu):
     """Menu subclass for modifying an item's data."""
@@ -201,9 +255,9 @@ class Delete(Menu):
         else:
             for i in range(len(titles)):
                 if titles[i] == deleted:
-                    response = self.io.read("\nOletko varma? K/E ")
+                    response = self.io.read("\nOletko varma? K/E ").lower()
 
-                    if response == "K":
+                    if response == "k":
                         self.item_service.delete_item(deleted)
                         self.io.write("Poistetaan vinkki...")
                     else:
