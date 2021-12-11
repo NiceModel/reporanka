@@ -8,40 +8,95 @@ class TestItemRepository(unittest.TestCase):
     def setUp(self):
         clear_csv(TEST_DB_PATH)
         self.item_repo = ItemRepository(TEST_DB_PATH)
-        self.test_item = ('0000', 'book', ['Naomi Klein', 'No Logo', '1999'])
-        self.type = self.test_item[1]
-        self.fields = self.test_item[2]
+        self.book = ['Patrick Ness', 'The Knife of Never Letting Go', '2008', '0001']
+        self.blog = [
+            'Eero Tarmo', 'Soundi.fi',
+            'Androgyyniä laulua ja irtonaista kävelyä – tältä kuulostaa Arto Tuunelan kevät',
+            'https://www.soundi.fi/jutut/pariisin-kevat-nokkamies-kasasi-kevat-aiheisen-soittolistan/',
+            '13.3.2016', '0002'
+        ]
+        self.video = [
+            'Christian Duenas', 'Pygame Menu System Tutorial Part 2: Building the Menu and States',
+            'https://youtu.be/bmRFi7-gy5Y', '24.7.2020', '0003'
+        ]
+        self.item = ["Pablo Picasso", "Ls Demoiselles d'Avignon", "1907"]
 
     def test_initialises_repo(self):
-        self.assertTrue(isinstance(self.item_repo._items, list))
+        # self.assertTrue(isinstance(self.item_repo._items, list))
+        self.assertTrue(isinstance(self.item_repo._items, dict))
 
-    def test_create_item(self):
-        new_item = self.item_repo.create('0000', self.type, self.fields)
-        self.assertEqual(new_item, self.test_item)
+    # def test_create_item(self):
+    #     new_item = self.item_repo.create('0000', self.type, self.fields)
+    #     self.assertEqual(new_item, self.test_item)
+
+    def test_create_book(self):
+        book = self.item_repo.create('book', self.book)
+        self.assertTrue(book)
+
+    def test_create_blog(self):
+        blog = self.item_repo.create('blog', self.blog)
+        self.assertTrue(blog)
+
+    def test_create_video(self):
+        video = self.item_repo.create('video', self.video)
+        self.assertTrue(video)
+
+    def test_create_nonexisting_type(self):
+        item = self.item_repo.create('painting', self.item)
+        self.assertFalse(item)
+
+    # def test_create_duplicate_item(self):
+    #     self.item_repo.create(0, self.type, self.fields)
+    #     new_item = self.item_repo.create('0000', self.type, self.fields)
+    #     self.assertEqual(new_item, 'duplicate')
 
     def test_create_duplicate_item(self):
-        self.item_repo.create(0, self.type, self.fields)
-        new_item = self.item_repo.create('0000', self.type, self.fields)
-        self.assertEqual(new_item, 'duplicate')
+        self.item_repo.create('book', self.book)
+        new_item = self.item_repo.create('book', self.book)
+        self.assertFalse(new_item)
 
-    def test_find_all_empty(self):
-        items = self.item_repo.find_all()
+    # def test_find_all_empty(self):
+    #     items = self.item_repo.find_all()
+    #     self.assertEqual(len(items), 0)
+    #     self.assertTrue(isinstance(items, list))
+
+    def test_list_items_empty(self):
+        items = self.item_repo.list_items()
         self.assertEqual(len(items), 0)
-        self.assertTrue(isinstance(items, list))
 
-    def test_find_all_not_empty(self):
-        self.item_repo.create('0000', self.type, self.fields)
-        items = self.item_repo.find_all()
+    # def test_find_all_not_empty(self):
+    #     self.item_repo.create('0000', self.type, self.fields)
+    #     items = self.item_repo.find_all()
+    #     self.assertEqual(len(items), 1)
+
+    def test_list_items_not_empty(self):
+        self.item_repo.create('book', self.book)
+        items = self.item_repo.list_items()
         self.assertEqual(len(items), 1)
+
+    # def test_duplicate_not_added_to_items(self):
+    #     self.item_repo.create('0000', self.type, self.fields)
+    #     self.item_repo.create('0000', self.type, self.fields)
+    #     items = self.item_repo.find_all()
+    #     self.assertEqual(len(items), 1)
 
     def test_duplicate_not_added_to_items(self):
-        self.item_repo.create('0000', self.type, self.fields)
-        self.item_repo.create('0000', self.type, self.fields)
-        items = self.item_repo.find_all()
+        self.item_repo.create('book', self.book)
+        self.item_repo.create('book', self.book)
+        items = self.item_repo.list_items()
         self.assertEqual(len(items), 1)
 
+    # def test_delete_item(self):
+    #     self.item_repo.create('0000', self.type, self.fields)
+    #     self.item_repo.delete_item('No Logo')
+    #     items = self.item_repo.find_all()
+    #     self.assertEqual(len(items), 0)
+
     def test_delete_item(self):
-        self.item_repo.create('0000', self.type, self.fields)
-        self.item_repo.delete_item('No Logo')
-        items = self.item_repo.find_all()
-        self.assertEqual(len(items), 0)
+        self.item_repo.create('book', self.book)
+        self.item_repo.create('blog', self.blog)
+        self.item_repo.create('video', self.video)
+        self.item_repo.delete_item('0001')
+        items = self.item_repo.list_items()
+        for item in items:
+            self.assertNotEqual(item[1], '0001')

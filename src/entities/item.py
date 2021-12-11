@@ -9,7 +9,8 @@ class Item:
         id: str: unique identifier for the item
         creator: str: creator of the item
         title: str: title of the item
-        published: str: publishing date or year of the item'''
+        published: str: publishing date or year of the item
+    '''
     def __init__(self, creator, title, published, item_id, cat='item'):
         self._cat = cat
         self._id = generate_id() if item_id is None else item_id
@@ -28,8 +29,8 @@ class Item:
     @property
     def details(self):
         return {
-            'type': self._cat, 'id': self._id, 'creator': self._creator,
-            'title': self._title, 'published': self._published
+            'type': self._cat, 'creator': self._creator,
+            'title': self._title, 'published': self._published, 'id': self._id
         }
 
     @property
@@ -54,8 +55,8 @@ class Book(Item):
     @property
     def details(self):
         return {
-            'type': self._cat, 'id': self._id, 'author': self._creator,
-            'name': self._title, 'published': self._published
+            'type': self._cat, 'author': self._creator,
+            'name': self._title, 'published': self._published, 'id': self._id
         }
 
 class Blog(Item):
@@ -78,9 +79,9 @@ class Blog(Item):
     @property
     def details(self):
         return {
-            'type': self._cat, 'id': self._id, 'creator': self._creator,
+            'type': self._cat, 'creator': self._creator,
             'blog': self._name, 'post': self._title,
-            'url': self._url, 'published': self._published
+            'url': self._url, 'published': self._published, 'id': self._id
         }
 
 class Video(Item):
@@ -101,6 +102,6 @@ class Video(Item):
     @property
     def details(self):
         return {
-            'type': self._cat, 'id': self._id, 'creator': self._creator,
-            'name': self._title, 'url': self._url, 'published': self._published
+            'type': self._cat, 'creator': self._creator,
+            'name': self._title, 'url': self._url, 'published': self._published, 'id': self._id
         }
