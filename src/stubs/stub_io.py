@@ -8,7 +8,12 @@ class StubIO:
     def write(self, value, table=False):
         """Write to console."""
         if table:
-            self.outputs.append('taulukko')
+            for val in value:
+                if isinstance(val, str):
+                    self.outputs.append(val)
+                else:
+                    for itm in val:
+                        self.outputs.append(itm)
         else:
             self.outputs.append(value)
 

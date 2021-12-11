@@ -1,7 +1,5 @@
 """Basic functionality"""
-# from utilities.utilities import check_year
 from config import TITLE
-# from app.command_factory import CommandFactory
 from app.menu import Menu
 
 class App:
@@ -19,20 +17,10 @@ class App:
     def __init__(self, item_service, io):
         self._item_service = item_service
         self._io = io
-        # self._commands = CommandFactory(io, item_service)
         self.running = False
         self.menu = 'main'
         self._main_menu = Menu(io, item_service)
         self._add_menu = Menu(io, item_service, 'add')
-
-    # def run(self):
-    #     """Starts the application."""
-    #     self.running = True
-    #     self.io.write("\nLUKUVINKKIKIRJASTO")
-    #     while self.running:
-    #         self.io.write(INSTRUCTIONS)
-    #         command = self.io.read("Komento: ")
-    #         self.running = self.commands.get_command(command).perform()
 
     def run(self):
         """Starts the application and runs until the user chooses to quit."""

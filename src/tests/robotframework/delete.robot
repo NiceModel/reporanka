@@ -31,7 +31,7 @@ Add Test Items And Input Delete Command
     Input Delete Command In Main Menu
 
 Delete Test Book
-    Input  Eating Animals
+    Input  1001
 
 Verify Delete
     Input  K

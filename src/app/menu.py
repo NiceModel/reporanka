@@ -29,8 +29,9 @@ class Menu:
                 "1": "add",
                 "2": List(self._io, item_service),
                 "3": Delete(self._io, item_service),
-                # "4": Search(self.io, self.item_service),
-                # "5": Modify(self.io, self.item_service),
+                # "4": "details",
+                # "5": Search(self.io, self.item_service),
+                # "6": Modify(self.io, self.item_service),
                 "0": Quit(self._io, item_service)
             }
         elif self._name == 'add':
@@ -75,30 +76,3 @@ class Menu:
         if isinstance(action, Action):
             return True
         return False
-
-# class MainMenu(Menu):
-#     def __init__(self, io, item_service):
-#         super().__init__(io, item_service)
-#         self._instructions = INSTRUCTIONS
-#         self._name = 'main'
-#         self._cmds = {
-#             "1": "add",
-#             "2": List(self._io, self._item_service),
-#             "3": Delete(self._io, self._item_service),
-#             # "4": Search(self.io, self.item_service),
-#             # "5": Modify(self.io, self.item_service),
-#             "0": Quit(self._io, self._item_service)
-#         }
-
-# class AddMenu(Menu):
-#     def __init__(self, io, item_service):
-#         super().__init__(io, item_service)
-#         self._instructions = ADD_MENU
-#         self._name = 'add'
-#         self._cmds = {
-#             "1": AddBook(self._io, self._item_service),
-#             "2": AddVideo(self._io, self._item_service),
-#             "3": AddBlog(self._io, self._item_service),
-#             "4": "main",
-#             "0": Quit(self._io, self._item_service)
-#         }

@@ -35,7 +35,8 @@ class Item:
 
     @property
     def csv_data(self):
-        return ';'.join(self.details.values())
+        data = [self._cat, self._creator, self._title, self._published, self._id]
+        return ';'.join(data)
 
     def __str__(self):
         return f'{self._creator}: {self._title} ({self._published})'
@@ -84,6 +85,11 @@ class Blog(Item):
             'url': self._url, 'published': self._published, 'id': self._id
         }
 
+    @property
+    def csv_data(self):
+        data = [self._cat, self._creator, self._name, self._title, self._url, self._published, self._id]
+        return ';'.join(data)
+
 class Video(Item):
     '''Class for video entities.
     
@@ -105,3 +111,8 @@ class Video(Item):
             'type': self._cat, 'creator': self._creator,
             'name': self._title, 'url': self._url, 'published': self._published, 'id': self._id
         }
+
+    @property
+    def csv_data(self):
+        data = [self._cat, self._creator, self._title, self._url, self._published, self._id]
+        return ';'.join(data)

@@ -1,7 +1,6 @@
 from collections import deque
 
 from config import CMD_PROMPTS, OUTPUTS, YES, NO
-from app.command_factory import ENTITY_DICT
 
 class Action:
     '''Superclass for menu actions'''
@@ -42,32 +41,6 @@ class Action:
 
         return ids
 
-    # def _list(self, str_len='long'):
-    #     items = self._item_service.find_all_items()
-    #     titles = []
-    #     if items:
-    #         for item in items:
-    #             item_str = self._is_valid(item)
-    #             if item_str is not None:
-    #                 if str_len == 'long':
-    #                     output = f"id: {item[0]}, tyyppi: {item[1].capitalize()}, tiedot: {item_str}"
-    #                 else:
-    #                     output = item_str.short_str
-    #                 self._io.write(output)
-    #                 titles.append(item_str.title)
-    #     else:
-    #         self._io.write(OUTPUTS["empty list"])
-
-    #     return titles
-
-    # def _is_valid(self, item):
-    #     try:
-    #         return ENTITY_DICT[item[1]](*item[2])
-    #     except TypeError:
-    #         return None
-    #     except KeyError:
-    #         return None
-
 class Add(Action):
     '''Superclass for add actions'''
     def __init__(self, io, item_service, action):
@@ -80,7 +53,6 @@ class Add(Action):
             item.append(self._get_info(*cmd))
 
         added = self._item_service.create_item(self._action, item)
-        # if added == "duplicate":
         if not added:
             self._io.write(OUTPUTS["already in list"])
         else:
@@ -115,7 +87,6 @@ class Delete(Action):
 
     def perform(self):
         self._io.write(OUTPUTS['list'])
-        # items = self._list('short')
         items = self._list()
 
         if items:
