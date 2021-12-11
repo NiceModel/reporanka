@@ -5,7 +5,7 @@ Test Setup  Add Test Items And Input Delete Command
 *** Test Cases ***
 Choose Delete Command
     Run App
-    Output Should Contain  \nVinkit:\n
+    Output Should Contain  \nTallennetut vinkit:\n
 
 App Verifies Deletion
     Delete Test Book

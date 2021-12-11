@@ -50,7 +50,7 @@ OUTPUTS = {
     "empty list": "Sovellukseen ei ole tallennettu vinkkejä :(",
     "choice": "\nValinta: ",
     "list": "\nTallennetut vinkit:\n",
-    "item not found": "Teosta ei löytynt.",
+    "item not found": "Teosta ei löytynyt.",
     "confirm": "\nOletko varma (K/E)? ",
     "deleting": "Poistetaan vinkki...",
     "not deleted": "Vinkkiä ei poistettu.",

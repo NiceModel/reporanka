@@ -13,7 +13,7 @@ List Items When List Is Not Empty
     Add Test Items
     Input List Command In Main Menu
     Run App
-    Output Should Contain  \nLukuvinkkilista:\n
+    Output Should Contain  \nTallennetut vinkit:\n
 
 List Items When List Is Empty
     Input List Command In Main Menu

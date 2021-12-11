@@ -5,7 +5,7 @@ from app.actions import (
 )
 
 class Menu:
-    '''Superclass for menus.
+    '''A class for menus.
     
     args:
         io: io for user inputs/console outputs
