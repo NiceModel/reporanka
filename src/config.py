@@ -55,7 +55,11 @@ OUTPUTS = {
     "deleting": "Poistetaan vinkki...",
     "not deleted": "Vinkkiä ei poistettu.",
     "unknown command": "Komentoa ei löytynyt, yritä uudelleen.",
-    "quit": "Kiitti & moi!"
+    "quit": "Kiitti & moi!",
+    "creator": "tekijä",
+    "author": "kirjailija",
+    "id": "id",
+    "name": "nimi" 
 }
 
 TITLE = "\nLUKUVINKKIKIRJASTO"

@@ -1,5 +1,5 @@
 """Module for an item service to connect an item repository to the application."""
-from utilities.utilities import generate_id
+# from utilities.utilities import generate_id
 from repositories.item_repository import (
     ITEM_REPOSITORY as default_item_repository
 )
@@ -17,22 +17,25 @@ class ItemService:
         self._item_repository = item_repository
         #self._id_generator = id_generator
 
-    def create_item(self, item_type, item_fields):
-        """Creates a new item.
+    def create_item(self, item_type, item_data):
+        return self._item_repository.create(item_type, item_data)
 
-        args:
-            authors: list: authors of the book
-            title: str: title of the book, for example
-            published: str: year of publication of the book, for example
-        """
-        # item_id = ID_GENERATOR.get_id()
-        item_id = generate_id()
-        item = self._item_repository.create(
-            item_id,
-            item_type,
-            item_fields
-        )
-        return item
+    # def create_item(self, item_type, item_fields):
+    #     """Creates a new item.
+
+    #     args:
+    #         authors: list: authors of the book
+    #         title: str: title of the book, for example
+    #         published: str: year of publication of the book, for example
+    #     """
+    #     # item_id = ID_GENERATOR.get_id()
+    #     # item_id = generate_id()
+    #     item = self._item_repository.create(
+    #         item_id,
+    #         item_type,
+    #         item_fields
+    #     )
+    #     return item
 
     def find_all_items(self):
         """Returns list of all items first sorted by item type and then by author"""
@@ -41,7 +44,17 @@ class ItemService:
 
         return items_sorted
 
-    def delete_item(self, item_title):
-        self._item_repository.delete_item(item_title)
+    def list_by_type_alphabetically(self):
+        items = self._item_repository.list_items()
+        return sorted(items, key=lambda item: (item[0], item[2]))
+
+    # def delete_item(self, item_title):
+    #     self._item_repository.delete_item(item_title)
+
+    def delete_item(self, item_id):
+        return self._item_repository.delete_item(item_id)
+
+    def save(self):
+        self._item_repository.save()
 
 ITEM_SERVICE = ItemService()

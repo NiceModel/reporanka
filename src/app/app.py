@@ -17,7 +17,7 @@ class App:
         add_menu: Menu: a menu object for adding items
     """
     def __init__(self, item_service, io):
-        # self._item_service = item_service
+        self._item_service = item_service
         self._io = io
         # self._commands = CommandFactory(io, item_service)
         self.running = False
@@ -43,3 +43,4 @@ class App:
                 self.running, self.menu = self._main_menu.display()
             elif self.menu == 'add':
                 self.running, self.menu = self._add_menu.display()
+        self._item_service.save()

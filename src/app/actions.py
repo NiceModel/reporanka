@@ -1,3 +1,5 @@
+from collections import deque
+
 from config import CMD_PROMPTS, OUTPUTS, YES, NO
 from app.command_factory import ENTITY_DICT
 
@@ -27,31 +29,44 @@ class Action:
                 adding = False
         return info
 
-    def _list(self, str_len='long'):
-        items = self._item_service.find_all_items()
-        titles = []
+    def _list(self):
+        headers = ['type', 'id', 'creator', 'title']
+        items = deque(self._item_service.list_by_type_alphabetically())
         if items:
-            for item in items:
-                item_str = self._is_valid(item)
-                if item_str is not None:
-                    if str_len == 'long':
-                        output = f"id: {item[0]}, tyyppi: {item[1].capitalize()}, tiedot: {item_str}"
-                    else:
-                        output = item_str.short_str
-                    self._io.write(output)
-                    titles.append(item_str.title)
+            ids = [item[1] for item in items]
+            items.appendleft(headers)
+            self._io.write(items, True)
         else:
+            ids = []
             self._io.write(OUTPUTS["empty list"])
 
-        return titles
+        return ids
 
-    def _is_valid(self, item):
-        try:
-            return ENTITY_DICT[item[1]](*item[2])
-        except TypeError:
-            return None
-        except KeyError:
-            return None
+    # def _list(self, str_len='long'):
+    #     items = self._item_service.find_all_items()
+    #     titles = []
+    #     if items:
+    #         for item in items:
+    #             item_str = self._is_valid(item)
+    #             if item_str is not None:
+    #                 if str_len == 'long':
+    #                     output = f"id: {item[0]}, tyyppi: {item[1].capitalize()}, tiedot: {item_str}"
+    #                 else:
+    #                     output = item_str.short_str
+    #                 self._io.write(output)
+    #                 titles.append(item_str.title)
+    #     else:
+    #         self._io.write(OUTPUTS["empty list"])
+
+    #     return titles
+
+    # def _is_valid(self, item):
+    #     try:
+    #         return ENTITY_DICT[item[1]](*item[2])
+    #     except TypeError:
+    #         return None
+    #     except KeyError:
+    #         return None
 
 class Add(Action):
     '''Superclass for add actions'''
@@ -65,7 +80,8 @@ class Add(Action):
             item.append(self._get_info(*cmd))
 
         added = self._item_service.create_item(self._action, item)
-        if added == "duplicate":
+        # if added == "duplicate":
+        if not added:
             self._io.write(OUTPUTS["already in list"])
         else:
             self._io.write(OUTPUTS["added"])
@@ -99,7 +115,8 @@ class Delete(Action):
 
     def perform(self):
         self._io.write(OUTPUTS['list'])
-        items = self._list('short')
+        # items = self._list('short')
+        items = self._list()
 
         if items:
             prompt, error_msg = self._cmds[0]
