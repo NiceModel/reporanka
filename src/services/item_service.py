@@ -37,12 +37,12 @@ class ItemService:
     #     )
     #     return item
 
-    def find_all_items(self):
-        """Returns list of all items first sorted by item type and then by author"""
-        items = self._item_repository.find_all()
-        items_sorted = sorted(items, key=lambda item: (item[1], item[2]))
+    # def find_all_items(self):
+    #     """Returns list of all items first sorted by item type and then by author"""
+    #     items = self._item_repository.find_all()
+    #     items_sorted = sorted(items, key=lambda item: (item[1], item[2]))
 
-        return items_sorted
+    #     return items_sorted
 
     def list_by_type_alphabetically(self):
         items = self._item_repository.list_items()

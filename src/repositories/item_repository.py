@@ -79,9 +79,9 @@ class ItemRepository:
     #         return True
     #     return False
     
-    # def delete_all_items(self):
-    #     clear_csv(self._fpath)
-    #     self._items = read_csv(self._fpath)
+    def delete_all_items(self):
+        clear_csv(self._fpath)
+        self._items = {}
 
     # def delete_item(self, item_title):
     #     delete_csv(self._fpath, item_title)

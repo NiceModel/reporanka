@@ -4,6 +4,7 @@ from app.app import App
 from repositories.item_repository import TEST_ITEM_REPO
 from stubs.stub_io import StubIO
 from stubs.stub_item_service import StubItemService
+from utilities.csv_utilities import clear_csv
 
 class AppLibrary:
     """Services for App"""
