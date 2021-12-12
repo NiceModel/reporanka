@@ -1,4 +1,6 @@
 from collections import deque
+import re
+from typing import Deque
 
 from config import CMD_PROMPTS, OUTPUTS, YES, NO
 
@@ -143,6 +145,37 @@ class Details(Action):
                 found_item = self._item_service.find_by_id(_id)
         self._show_item_info(found_item)
         return True
+
+class Search(Action):
+
+    def __init__(self, io, item_service):
+        super().__init__(io, item_service, 'search')
+
+    def perform(self):
+        self._io.write(OUTPUTS['search help'])
+        items = self._item_service.list_by_type_alphabetically()
+        headers = ['type', 'id', 'creator', 'title']
+        results = deque()
+
+        if items:
+            prompt, error_msg = self._cmds[0]
+            search_word = str(self._get_info(prompt, error_msg))
+            for item in items:
+                result = re.findall(search_word, str(item[2:]), re.IGNORECASE)
+                if result:
+                    results.append(item)
+
+            if results:
+                self._io.write(OUTPUTS['search results'])
+                results.appendleft(headers)
+                self._io.write(results, True)
+            else:
+                self._io.write(OUTPUTS['item not found'])
+        else:
+            self._io.write(OUTPUTS["empty list"])
+
+        return True
+
 
 class Quit(Action):
     def __init__(self, io, item_service):

@@ -15,6 +15,7 @@ INSTRUCTIONS = (
     "\n (2) listaa"
     "\n (3) poista"
     "\n (4) hae tarkemmat tiedot id:llä"
+    "\n (5) haku"
     "\n (0) lopeta\n")
 
 ADD_MENU = (
@@ -43,6 +44,8 @@ CMD_PROMPTS = {
              ],
     "delete": [("\nAnna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
               ],
+    "search":[("Syötä hakusana: ", "Kirjoita hakusana!")
+            ],
     "details": [("\nAnna id: ", "ID on annettava!")]
 }
 
@@ -61,7 +64,9 @@ OUTPUTS = {
     "creator": "tekijä",
     "author": "kirjailija",
     "id": "id",
-    "name": "nimi" 
+    "name": "nimi" ,
+    "search results": "\nHakusanalla löytyvät vinkit:\n",
+    "search help": "Voit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan"
 }
 
 TITLE = "\nLUKUVINKKIKIRJASTO"
