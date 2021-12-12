@@ -17,6 +17,9 @@ Input List Command In Main Menu
 Input Delete Command In Main Menu
     Input  3
 
+Input Search Command In Main Menu
+    Input  5
+
 Input Add Book Command In Add Menu
     Input  1
 
