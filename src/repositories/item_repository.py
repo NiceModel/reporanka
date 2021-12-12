@@ -59,5 +59,11 @@ class ItemRepository:
         clear_csv(self._fpath)
         self._items = {}
 
+    def find_by_id(self, item_id):
+        for item in self._items.values():
+            if(item.item_id == item_id):
+                return item.details
+        return False
+        
 ITEM_REPOSITORY = ItemRepository()
 TEST_ITEM_REPO = ItemRepository(TEST_DB_PATH)

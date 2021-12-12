@@ -24,5 +24,8 @@ class ItemService:
 
     def save(self):
         self._item_repository.save()
+    
+    def find_by_id(self, item_id):
+        return self._item_repository.find_by_id(item_id)
 
 ITEM_SERVICE = ItemService()

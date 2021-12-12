@@ -41,6 +41,12 @@ class Action:
 
         return ids
 
+    def _show_item_info(self, id):
+        headers = ['type', 'author', 'name', 'published', 'id']
+        ## Tänne pitäisi lisätä metodi listaukseen
+        return True
+        
+
 class Add(Action):
     '''Superclass for add actions'''
     def __init__(self, io, item_service, action):
@@ -114,6 +120,25 @@ class Delete(Action):
             elif choice == NO:
                 self._io.write(OUTPUTS['not deleted'])
                 return
+class Details(Action):
+    def __init__(self, io, item_service):
+         super().__init__(io, item_service, 'details')
+
+    def perform(self):
+        items = self._list()
+        found_item = None
+        if items:
+            prompt, error_msg = self._cmds[0]
+            _id = self._get_info(prompt, error_msg)
+            print(_id)
+            if _id not in items:
+                self._io.write(OUTPUTS['item not found'])
+            else:
+                found_item = self._item_service.find_by_id(_id)
+                ## Palauttaa itemin
+                ##print(found_item)
+        self._show_item_info(_id)
+        return True
 
 class Quit(Action):
     def __init__(self, io, item_service):

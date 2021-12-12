@@ -14,6 +14,7 @@ INSTRUCTIONS = (
     "\n (1) lisää"
     "\n (2) listaa"
     "\n (3) poista"
+    "\n (4) hae tarkemmat tiedot id:llä"
     "\n (0) lopeta\n")
 
 ADD_MENU = (
@@ -41,7 +42,8 @@ CMD_PROMPTS = {
              ("Postauksen julkaisupäivä: ", "Postauksen julkaisupäivä on lisättävä!")
              ],
     "delete": [("\nAnna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
-              ]
+              ],
+    "details": [("\nAnna id: ", "ID on annettava!")]
 }
 
 OUTPUTS = {
