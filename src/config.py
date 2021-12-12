@@ -43,3 +43,25 @@ CMD_PROMPTS = {
     "delete": [("\nAnna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
               ]
 }
+
+OUTPUTS = {
+    "already in list": "\nLukuvinkki on jo tallennettu aiemmin!",
+    "added": "\nUusi lukuvinkki lisätty.",
+    "empty list": "Sovellukseen ei ole tallennettu vinkkejä :(",
+    "choice": "\nValinta: ",
+    "list": "\nTallennetut vinkit:\n",
+    "item not found": "Teosta ei löytynyt.",
+    "confirm": "\nOletko varma (K/E)? ",
+    "deleting": "Poistetaan vinkki...",
+    "not deleted": "Vinkkiä ei poistettu.",
+    "unknown command": "Komentoa ei löytynyt, yritä uudelleen.",
+    "quit": "Kiitti & moi!",
+    "creator": "tekijä",
+    "author": "kirjailija",
+    "id": "id",
+    "name": "nimi" 
+}
+
+TITLE = "\nLUKUVINKKIKIRJASTO"
+YES = 'K'
+NO = 'E'

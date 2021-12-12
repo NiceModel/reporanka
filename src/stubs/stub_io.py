@@ -5,9 +5,17 @@ class StubIO:
         self.inputs = inputs or []
         self.outputs = []
 
-    def write(self, value):
+    def write(self, value, table=False):
         """Write to console."""
-        self.outputs.append(value)
+        if table:
+            for val in value:
+                if isinstance(val, str):
+                    self.outputs.append(val)
+                else:
+                    for itm in val:
+                        self.outputs.append(itm)
+        else:
+            self.outputs.append(value)
 
     def read(self, prompt):
         """Read from console."""

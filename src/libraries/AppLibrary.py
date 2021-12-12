@@ -1,17 +1,17 @@
 """Library for running robot framework tests."""
 
 from app.app import App
-from repositories.item_repository import TEST_ITEM_REPO
+from services.item_service import ItemService
 from stubs.stub_io import StubIO
-from stubs.stub_item_service import StubItemService
+from stubs.stub_item_repository import StubItemRepository
 
 class AppLibrary:
     """Services for App"""
     def __init__(self):
         self._io = StubIO()
-        self._item_repository = TEST_ITEM_REPO
+        self._item_repository = StubItemRepository()
         self.clear_test_file()
-        self._item_service = StubItemService(TEST_ITEM_REPO)
+        self._item_service = ItemService(self._item_repository)
         self._app = App(
             self._item_service,
             self._io,

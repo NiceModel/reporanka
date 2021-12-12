@@ -8,6 +8,7 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.8"
 invoke = "^1.6.0"
 shortuuid = "^1.0.8"
+tabulate = "^0.8.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
