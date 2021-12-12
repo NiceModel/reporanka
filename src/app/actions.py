@@ -31,6 +31,7 @@ class Action:
     def _list(self):
         headers = ['type', 'id', 'creator', 'title']
         items = deque(self._item_service.list_by_type_alphabetically())
+        
         if items:
             ids = [item[1] for item in items]
             items.appendleft(headers)
@@ -41,9 +42,15 @@ class Action:
 
         return ids
 
-    def _show_item_info(self, id):
-        headers = ['type', 'author', 'name', 'published', 'id']
-        ## Tänne pitäisi lisätä metodi listaukseen
+    def _show_item_info(self, item):
+        headers = ['type', 'creator', 'name', 'published', 'id']
+        item = deque([item.values()])
+        if item:
+            item.appendleft(headers)
+        else:
+            item = []
+            self._io.write(OUTPUTS["empty item"])
+        self._io.write(item, True)
         return True
         
 
@@ -137,7 +144,7 @@ class Details(Action):
                 found_item = self._item_service.find_by_id(_id)
                 ## Palauttaa itemin
                 ##print(found_item)
-        self._show_item_info(_id)
+        self._show_item_info(found_item)
         return True
 
 class Quit(Action):
