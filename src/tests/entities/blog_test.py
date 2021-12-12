@@ -1,6 +1,6 @@
 import unittest
 
-from entities.blog import Blog
+from entities.item import Blog
 
 class TestBlog(unittest.TestCase):
     def setUp(self):

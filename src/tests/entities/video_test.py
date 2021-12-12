@@ -1,6 +1,6 @@
 import unittest
 
-from entities.video import Video
+from entities.item import Video
 
 class TestVideo(unittest.TestCase):
     def setUp(self):

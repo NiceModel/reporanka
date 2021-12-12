@@ -1,6 +1,6 @@
 import unittest
 
-from entities.book import Book
+from entities.item import Book
 
 
 class TestBook(unittest.TestCase):
