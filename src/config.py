@@ -14,8 +14,12 @@ INSTRUCTIONS = (
     "\n (1) lisää"
     "\n (2) listaa"
     "\n (3) poista"
+<<<<<<< HEAD
     "\n (4) hae"
     "\n (5) haku"
+=======
+    "\n (4) hae tarkemmat tiedot id:llä"
+>>>>>>> 9067d8db0739c6dcff15badc6c1f525866f2251c
     "\n (0) lopeta\n")
 
 ADD_MENU = (
@@ -44,8 +48,12 @@ CMD_PROMPTS = {
              ],
     "delete": [("\nAnna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
               ],
+<<<<<<< HEAD
     "search":[("Syötä hakusana: ", "Kirjoita hakusana!")
             ]
+=======
+    "details": [("\nAnna id: ", "ID on annettava!")]
+>>>>>>> 9067d8db0739c6dcff15badc6c1f525866f2251c
 }
 
 OUTPUTS = {
