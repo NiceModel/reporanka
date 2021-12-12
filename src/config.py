@@ -24,20 +24,6 @@ ADD_MENU = (
     "\n (4) takaisin valikkoon"
     "\n (0) lopeta")
 
-LIST_MENU = (
-    "\nValitse toiminto"
-    "\n (1) hae vinkin lisätiedot id-numerolla"
-    "\n (2) poista"
-    "\n (3) takaisin valikkoon"
-    "\n (0) lopeta")
-
-DETAILS_MENU = (
-    "\nValitse toiminto"
-    "\n (1) muokkaa vinkkiä"
-    "\n (2) poista"
-    "\n (3) takaisin valikkoon"
-    "\n (0) lopeta")
-
 CMD_PROMPTS = {
     "book": [("Kirjailijan/kirjailijoiden nimet: ", "Kirjailijan nimi on lisättävä!"),
              ("Kirjan nimi: ", "Kirjan nimi on lisättävä!"),
@@ -55,6 +41,5 @@ CMD_PROMPTS = {
              ("Postauksen julkaisupäivä: ", "Postauksen julkaisupäivä on lisättävä!")
              ],
     "delete": [("\nAnna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
-              ],
-    "details": [("\nAnna haettavan vinkin id-numero: ", "Id-numero on annettava!", "Id-numeroa ei ole olemassa!")]
+              ]
 }
