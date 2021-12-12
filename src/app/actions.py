@@ -137,13 +137,10 @@ class Details(Action):
         if items:
             prompt, error_msg = self._cmds[0]
             _id = self._get_info(prompt, error_msg)
-            print(_id)
             if _id not in items:
                 self._io.write(OUTPUTS['item not found'])
             else:
                 found_item = self._item_service.find_by_id(_id)
-                ## Palauttaa itemin
-                ##print(found_item)
         self._show_item_info(found_item)
         return True
 
