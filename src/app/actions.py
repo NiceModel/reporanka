@@ -31,10 +31,12 @@ class Action:
         return info
 
     def _list(self):
+        """Writes all items to the console, tabulated. Truncates over 20 character long fields"""
         headers = ['type', 'id', 'creator', 'title']
-        items = deque(self._item_service.list_by_type_alphabetically())
-        
+        items = self._item_service.list_by_type_alphabetically()
+
         if items:
+            items = deque([[item_field if len(item_field) <= 20 else f"{item_field[:20]}..." for item_field in item] for item in items])
             ids = [item[1] for item in items]
             items.appendleft(headers)
             self._io.write(items, True)
