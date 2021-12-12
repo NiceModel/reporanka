@@ -102,7 +102,7 @@ class Video(Item):
         url: str: web address of the video
     '''
     def __init__(self, creator, title, url, published, item_id=None):
-        super().__init__(creator, title, published, item_id)
+        super().__init__(creator, title, published, item_id, 'video')
         self._url = url
 
     @property

@@ -15,7 +15,7 @@ INSTRUCTIONS = (
     "\n (2) listaa"
     "\n (3) poista"
     "\n (4) hae tarkemmat tiedot id:llä"
-    "\n (5) haku"
+    "\n (5) hae vinkkejä hakusanalla"
     "\n (0) lopeta\n")
 
 ADD_MENU = (
@@ -42,7 +42,7 @@ CMD_PROMPTS = {
              ("Blogin osoite: ", "Blogin osoite on lisättävä!"),
              ("Postauksen julkaisupäivä: ", "Postauksen julkaisupäivä on lisättävä!")
              ],
-    "delete": [("\nAnna poistettavan teoksen nimi: ", "Teoksen nimi on annettava!")
+    "delete": [("\nAnna poistettavan teoksen id: ", "Teoksen id on annettava!")
               ],
     "search":[("Syötä hakusana: ", "Kirjoita hakusana!")
             ],
@@ -66,7 +66,7 @@ OUTPUTS = {
     "id": "id",
     "name": "nimi" ,
     "search results": "\nHakusanalla löytyvät vinkit:\n",
-    "search help": "Voit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan",
+    "search help": "\nVoit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan",
     "broken input": "Syötteessäsi on ongelma."
 }
 

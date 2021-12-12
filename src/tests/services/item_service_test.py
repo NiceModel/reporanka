@@ -104,3 +104,4 @@ class TestItemService(unittest.TestCase):
         # items = self.item_service.find_all_items()
         items = self.item_service.list_by_type_alphabetically()
         self.assertEqual(len(items), len(TEST_ITEMS)-1)
+        

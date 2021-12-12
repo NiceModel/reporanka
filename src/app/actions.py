@@ -129,13 +129,14 @@ class Delete(Action):
     def _confirm(self, item):
         while True:
             choice = self._io.read(OUTPUTS['confirm'])
-            if choice == YES:
+            if choice.upper() == YES:
                 self._item_service.delete_item(item)
                 self._io.write(OUTPUTS['deleting'])
                 return
-            elif choice == NO:
+            elif choice.upper() == NO:
                 self._io.write(OUTPUTS['not deleted'])
                 return
+
 class Details(Action):
     def __init__(self, io, item_service):
          super().__init__(io, item_service, 'details')
@@ -162,16 +163,9 @@ class Search(Action):
         self._io.write(OUTPUTS['search help'])
         items = self._item_service.list_by_type_alphabetically()
         headers = ['type', 'id', 'creator', 'title']
-        results = deque()
-
+        
         if items:
-            prompt, error_msg = self._cmds[0]
-            search_word = str(self._get_info(prompt, error_msg))
-            for item in items:
-                result = re.findall(search_word, str(item[2:]), re.IGNORECASE)
-                if result:
-                    results.append(item)
-
+            results = self._search(items)
             if results:
                 self._io.write(OUTPUTS['search results'])
                 results.appendleft(headers)
@@ -182,6 +176,18 @@ class Search(Action):
             self._io.write(OUTPUTS["empty list"])
 
         return True
+
+    def _search(self, items):
+        results = deque()
+
+        prompt, error_msg = self._cmds[0]
+        search_word = str(self._get_info(prompt, error_msg))
+        for item in items:
+            result = re.findall(search_word, str(item[2:]), re.IGNORECASE)
+            if result:
+                results.append(item)
+
+        return results
 
 
 class Quit(Action):
