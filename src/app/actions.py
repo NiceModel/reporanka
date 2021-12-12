@@ -46,14 +46,19 @@ class Action:
 
     def _show_item_info(self, item):
         headers = ['type', 'creator', 'name', 'published', 'id']
-        item = deque([item.values()])
         if item:
+            item = deque([item.values()])
             item.appendleft(headers)
+            self._io.write(item, True)
+        elif item == None:
+            self._io.write(OUTPUTS["broken input"])
+            return
         else:
             item = []
             self._io.write(OUTPUTS["empty item"])
-        self._io.write(item, True)
-        return True
+            return
+        
+        return item
         
 
 class Add(Action):

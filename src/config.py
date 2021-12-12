@@ -66,7 +66,8 @@ OUTPUTS = {
     "id": "id",
     "name": "nimi" ,
     "search results": "\nHakusanalla löytyvät vinkit:\n",
-    "search help": "Voit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan"
+    "search help": "Voit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan",
+    "broken input": "Syötteessäsi on ongelma."
 }
 
 TITLE = "\nLUKUVINKKIKIRJASTO"
