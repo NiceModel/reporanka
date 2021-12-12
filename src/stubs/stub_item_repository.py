@@ -51,7 +51,7 @@ class StubItemRepository:
         return False
 
     def list_items(self):
-        return [str(item) for item in self._items.values()]
+        return [item.info for item in self._items.values()]
 
     def delete_all_items(self):
         clear_csv(self._fpath)
