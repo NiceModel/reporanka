@@ -26,3 +26,7 @@ class StubIO:
     def add_input(self, value):
         """Add inputs to predefined values for test purposes."""
         self.inputs.append(value)
+
+    def clear_outputs(self):
+        """Clear previous outputs"""
+        self.outputs = []
