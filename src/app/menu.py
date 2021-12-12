@@ -1,11 +1,7 @@
 from config import OUTPUTS, INSTRUCTIONS, ADD_MENU
 from app.actions import (
     Action, AddBook, AddBlog, AddVideo,
-<<<<<<< HEAD
-    List, Delete, Search, Quit
-=======
-    List, Delete, Quit, Details
->>>>>>> 9067d8db0739c6dcff15badc6c1f525866f2251c
+    List, Delete, Quit, Details, Search
 )
 
 class Menu:
@@ -33,13 +29,8 @@ class Menu:
                 "1": "add",
                 "2": List(self._io, item_service),
                 "3": Delete(self._io, item_service),
-<<<<<<< HEAD
-                # "4": "details",
-                "5": Search(self._io, item_service),
-=======
                 "4": Details(self._io, item_service),
-                # "5": Search(self.io, self.item_service),
->>>>>>> 9067d8db0739c6dcff15badc6c1f525866f2251c
+                "5": Search(self._io, item_service),
                 # "6": Modify(self.io, self.item_service),
                 "0": Quit(self._io, item_service)
             }
