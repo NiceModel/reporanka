@@ -64,25 +64,24 @@ class Action:
         if item:
             info = [[key, val] for key, val in item.items()]
             self._io.write(info, True)
+
+            url = ''
+            if info[0][1] == 'blog':
+                if 'http' not in info[4][1]:
+                    url = 'https://' + info[4][1]
+                else:
+                    url = info[4][1]
+        
+            if info[0][1] == 'video':
+                if 'http' not in info[3][1]:
+                    url = 'https://' + info[3][1]
+                else:
+                    url = info[3][1]
+        
+            webbrowser.open(url)
+
         else:
             self._io.write(OUTPUTS['broken input'])
-
-        url = ''
-        if info[0][1] == 'blog':
-            if 'http' not in info[4][1]:
-                url = 'https://' + info[4][1]
-            else:
-                url = info[4][1]
-        
-        if info[0][1] == 'video':
-            if 'http' not in info[3][1]:
-                url = 'https://' + info[3][1]
-            else:
-                url = info[3][1]
-        
-        webbrowser.open(url)
-        print("URL")
-        print(url)
             
 
 class Add(Action):
@@ -210,8 +209,8 @@ class Details(Action):
                 self._io.write(OUTPUTS['item not found'])
             else:
                 found_item = self._item_service.find_by_id(item_id)
-        self._io.write(OUTPUTS['details results'])
-        self._show_details(found_item)
+                self._io.write(OUTPUTS['details results'])
+                self._show_details(found_item)
         return True
 
 class Search(Action):
