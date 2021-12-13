@@ -67,6 +67,7 @@ OUTPUTS = {
     "author": "kirjailija",
     "id": "id",
     "name": "nimi",
+    "details results": "\nVinkin tarkemmat tiedot:\n",
     "search results": "\nHakusanalla löytyvät vinkit:\n",
     "search help": "\nVoit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan",
     "broken input": "Syötteessäsi on ongelma.",

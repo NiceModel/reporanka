@@ -1,6 +1,11 @@
 *** Settings ***
 Library  ./../../libraries/AppLibrary.py
 
+*** Variables ***
+${ID1}      1a1a
+${ID2}      2b2b
+${ID3}      3c3c
+
 *** Keywords ***
 Run App
     Run Application
@@ -16,6 +21,9 @@ Input List Command In Main Menu
 
 Input Delete Command In Main Menu
     Input  3
+
+Input Search By Id In Main Menu
+    Input  4
 
 Input Search Command In Main Menu
     Input  5
@@ -75,6 +83,20 @@ Add Test Items
     Add Test Book
     Add Test Video
     Add Test Blog
+
+# Add Test Book And Id
+#     Add New Book  Jonathan Safran Foer  Eating Animals  2009  ${ID1}
+
+# Add Test Video And Id
+#     Add New Video  Studio Killers  Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO  https://youtu.be/hyj4JFSErrw  24.12.2015  ${ID2}
+
+# Add Test Blog And Id
+#     Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056  8.1.2019  ${ID3}
+
+# Add Test Items With Ids
+#     Add Test Book And Id
+#     Add Test Video And Id
+#     Add Test Blog And Id
 
 Clear Data
     Clear Test File
