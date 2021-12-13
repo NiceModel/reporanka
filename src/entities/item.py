@@ -20,14 +20,17 @@ class Item:
 
     @property
     def item_id(self):
+        '''Returns the unique identifier of the item.'''
         return self._id
 
     @property
     def info(self):
+        '''Returns basic information of the item.'''
         return [self._cat, self._id, self._creator, self._title]
 
     @property
     def details(self):
+        '''Returns detailed information of the item.'''
         return {
             'type': self._cat, 'creator': self._creator,
             'title': self._title, 'published': self._published, 'id': self._id
@@ -35,6 +38,9 @@ class Item:
 
     @property
     def csv_data(self):
+        '''Returns item data in string format. Suitable for saving
+        to a csv file.
+        '''
         data = [self._cat, self._creator, self._title, self._published, self._id]
         return ';'.join(data)
 
@@ -62,7 +68,7 @@ class Book(Item):
 
 class Blog(Item):
     '''Class for blog post entities.
-    
+
     attr:
         cat: str: 'blog'
         id: str: unique identifier for the item
@@ -87,12 +93,15 @@ class Blog(Item):
 
     @property
     def csv_data(self):
-        data = [self._cat, self._creator, self._name, self._title, self._url, self._published, self._id]
+        data = [
+            self._cat, self._creator, self._name,
+            self._title, self._url, self._published, self._id
+            ]
         return ';'.join(data)
 
 class Video(Item):
     '''Class for video entities.
-    
+
     attr:
         cat: str: 'video'
         id: str: unique identifier for the item

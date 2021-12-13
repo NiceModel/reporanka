@@ -56,6 +56,11 @@ class TestBook(unittest.TestCase):
         actual = self.book.details
         self.assertEqual(actual, expected)
 
+    def test_csv_data_property(self):
+        expected = f"{self.cat};{self.author};{self.title};{self.published};{self.item_id}"
+        actual = self.book.csv_data
+        self.assertEqual(actual, expected)
+
 class TestBlog(unittest.TestCase):
     def setUp(self):
         self.cat = "blog"
@@ -74,6 +79,12 @@ class TestBlog(unittest.TestCase):
             'url': self.url, 'published': self.published, 'id': self.item_id
         }
         actual = self.blog.details
+        self.assertEqual(actual, expected)
+
+    def test_csv_data_property(self):
+        expected = f"{self.cat};{self.creator};{self.name};{self.title};{self.url};{self.published};{self.item_id}"
+        actual = self.blog.csv_data
+        self.assertEqual(actual, expected)
 
 class TestVideo(unittest.TestCase):
     def setUp(self):
@@ -83,11 +94,17 @@ class TestVideo(unittest.TestCase):
         self.title = "Pygame Menu System Tutorial Part 2: Building the Menu and States"
         self.url = "https://youtu.be/bmRFi7-gy5Y"
         self.published = "24.7.2020"
-        self.blog = Video(self.creator, self.title, self.url, self.published, self.item_id)
+        self.video = Video(self.creator, self.title, self.url, self.published, self.item_id)
 
     def test_blog_details(self):
         expected = {
-            'type': self.cat, 'creator': self.creator, 'post': self.title,
+            'type': self.cat, 'creator': self.creator, 'name': self.title,
             'url': self.url, 'published': self.published, 'id': self.item_id
         }
-        actual = self.blog.details
+        actual = self.video.details
+        self.assertEqual(actual, expected)
+
+    def test_csv_data_property(self):
+        expected = f"{self.cat};{self.creator};{self.title};{self.url};{self.published};{self.item_id}"
+        actual = self.video.csv_data
+        self.assertEqual(actual, expected)

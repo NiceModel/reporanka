@@ -1,4 +1,4 @@
-"""Utility functions"""
+"""Module for utility functions"""
 from string import ascii_lowercase, digits
 import secrets
 

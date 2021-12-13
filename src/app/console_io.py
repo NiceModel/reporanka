@@ -1,6 +1,6 @@
+"""Module for reading/writing from/to the console."""
 from tabulate import tabulate
 
-"""IO for console"""
 class ConsoleIO:
     """IO for console"""
     def write(self, value, table=False):

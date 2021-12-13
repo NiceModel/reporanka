@@ -46,6 +46,7 @@ class AppLibrary:
         self._app.run()
 
     def clear_test_file(self):
+        """Clears the test file"""
         self._item_repository.delete_all_items()
 
     def clear_outputs(self):

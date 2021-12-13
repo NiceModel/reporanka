@@ -1,3 +1,4 @@
+'''Module for menu objects.'''
 from config import OUTPUTS, INSTRUCTIONS, ADD_MENU
 from app.actions import (
     Action, AddBook, AddBlog, AddVideo,
@@ -6,7 +7,7 @@ from app.actions import (
 
 class Menu:
     '''A class for menus.
-    
+
     args:
         io: io for user inputs/console outputs
         item_service: service for interacting with the item library

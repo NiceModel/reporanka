@@ -12,7 +12,7 @@ class StubItemRepository:
 
     def create(self, item_type, item_data):
         item_data.append(str(self._id))
-        self._id +=1
+        self._id += 1
         if item_type == 'book':
             item = Book(*item_data)
         elif item_type == 'blog':
@@ -21,7 +21,7 @@ class StubItemRepository:
             item = Video(*item_data)
         else:
             return False
-        
+
         if self._is_duplicate(item):
             return False
 

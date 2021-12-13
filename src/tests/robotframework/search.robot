@@ -20,14 +20,14 @@ Choose Search Command
     Run App
     Output Should Contain  \nVoit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan
 
-Search Items When Item Existing
+Search Existing Item
     Add Test Items
     Input Search Command In Main Menu
     Search Test Book
     Run App
     Output Should Contain  \nHakusanalla löytyvät vinkit:\n
 
-Search Items When Not Existing
+Search Non-Existing Item
     Add Test Items
     Input Search Command In Main Menu
     Search NonTest Book

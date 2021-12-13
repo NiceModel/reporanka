@@ -44,8 +44,7 @@ CMD_PROMPTS = {
              ],
     "delete": [("\nAnna poistettavan teoksen id: ", "Teoksen id on annettava!")
               ],
-    "search":[("Syötä hakusana: ", "Kirjoita hakusana!")
-            ],
+    "search":[("Syötä hakusana: ", "Kirjoita hakusana!")],
     "details": [("\nAnna id: ", "ID on annettava!")]
 }
 
@@ -64,12 +63,13 @@ OUTPUTS = {
     "creator": "tekijä",
     "author": "kirjailija",
     "id": "id",
-    "name": "nimi" ,
+    "name": "nimi",
     "search results": "\nHakusanalla löytyvät vinkit:\n",
     "search help": "\nVoit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan",
     "broken input": "Syötteessäsi on ongelma."
 }
 
 TITLE = "\nLUKUVINKKIKIRJASTO"
+HEADERS = ['type', 'id', 'creator', 'title']
 YES = 'K'
 NO = 'E'

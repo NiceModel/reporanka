@@ -23,7 +23,9 @@ class App:
         self._add_menu = Menu(io, item_service, 'add')
 
     def run(self):
-        """Starts the application and runs until the user chooses to quit."""
+        """Starts the application and runs until the user chooses to quit.
+        Saves item repository to a csv file before quitting.
+        """
         self.running = True
         self._io.write(TITLE)
         while self.running:

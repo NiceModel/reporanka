@@ -1,7 +1,7 @@
 import unittest
 from config import TEST_DB_PATH
 from repositories.item_repository import ItemRepository
-from utilities.csv_utilities import clear_csv
+from utilities.csv_utilities import clear_csv, read_csv
 
 
 class TestItemRepository(unittest.TestCase):
@@ -22,12 +22,7 @@ class TestItemRepository(unittest.TestCase):
         self.item = ["Pablo Picasso", "Ls Demoiselles d'Avignon", "1907"]
 
     def test_initialises_repo(self):
-        # self.assertTrue(isinstance(self.item_repo._items, list))
         self.assertTrue(isinstance(self.item_repo._items, dict))
-
-    # def test_create_item(self):
-    #     new_item = self.item_repo.create('0000', self.type, self.fields)
-    #     self.assertEqual(new_item, self.test_item)
 
     def test_create_book(self):
         book = self.item_repo.create('book', self.book)
@@ -45,52 +40,25 @@ class TestItemRepository(unittest.TestCase):
         item = self.item_repo.create('painting', self.item)
         self.assertFalse(item)
 
-    # def test_create_duplicate_item(self):
-    #     self.item_repo.create(0, self.type, self.fields)
-    #     new_item = self.item_repo.create('0000', self.type, self.fields)
-    #     self.assertEqual(new_item, 'duplicate')
-
     def test_create_duplicate_item(self):
         self.item_repo.create('book', self.book)
         new_item = self.item_repo.create('book', self.book)
         self.assertFalse(new_item)
 
-    # def test_find_all_empty(self):
-    #     items = self.item_repo.find_all()
-    #     self.assertEqual(len(items), 0)
-    #     self.assertTrue(isinstance(items, list))
-
     def test_list_items_empty(self):
         items = self.item_repo.list_items()
         self.assertEqual(len(items), 0)
-
-    # def test_find_all_not_empty(self):
-    #     self.item_repo.create('0000', self.type, self.fields)
-    #     items = self.item_repo.find_all()
-    #     self.assertEqual(len(items), 1)
 
     def test_list_items_not_empty(self):
         self.item_repo.create('book', self.book)
         items = self.item_repo.list_items()
         self.assertEqual(len(items), 1)
 
-    # def test_duplicate_not_added_to_items(self):
-    #     self.item_repo.create('0000', self.type, self.fields)
-    #     self.item_repo.create('0000', self.type, self.fields)
-    #     items = self.item_repo.find_all()
-    #     self.assertEqual(len(items), 1)
-
     def test_duplicate_not_added_to_items(self):
         self.item_repo.create('book', self.book)
         self.item_repo.create('book', self.book)
         items = self.item_repo.list_items()
         self.assertEqual(len(items), 1)
-
-    # def test_delete_item(self):
-    #     self.item_repo.create('0000', self.type, self.fields)
-    #     self.item_repo.delete_item('No Logo')
-    #     items = self.item_repo.find_all()
-    #     self.assertEqual(len(items), 0)
 
     def test_delete_item(self):
         self.item_repo.create('book', self.book)
@@ -100,3 +68,31 @@ class TestItemRepository(unittest.TestCase):
         items = self.item_repo.list_items()
         for item in items:
             self.assertNotEqual(item[1], '0001')
+
+    def test_save_file_not_empty(self):
+        self.item_repo.create('book', self.book)
+        self.item_repo.create('blog', self.blog)
+        self.item_repo.create('video', self.video)
+        self.item_repo.save()
+        data = read_csv(TEST_DB_PATH)
+        self.assertEqual(len(data), 3)
+
+    def test_delete_all(self):
+        self.item_repo.create('book', self.book)
+        self.item_repo.create('blog', self.blog)
+        self.item_repo.create('video', self.video)
+        self.item_repo.delete_all_items()
+        items = self.item_repo.list_items()
+        self.assertFalse(items)
+
+    def test_find_existing_item(self):
+        self.item_repo.create('book', self.book)
+        item = self.item_repo.find_by_id('0001')
+        self.assertEqual(item['id'], '0001')
+
+    def test_find_nonexisting_item_empty_repo(self):
+        self.assertIsNone(self.item_repo.find_by_id('0004'))
+
+    def test_find_nonexisting_item_nonempty_repo(self):
+        self.item_repo.create('book', self.book)
+        self.assertIsNone(self.item_repo.find_by_id('0004'))
