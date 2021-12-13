@@ -24,7 +24,7 @@ class ItemRepository:
             item = Video(*item_data)
         else:
             return False
-        
+
         if self._is_duplicate(item):
             return False
 
@@ -60,10 +60,10 @@ class ItemRepository:
         self._items = {}
 
     def find_by_id(self, item_id):
-        for item in self._items.values():
-            if(item.item_id == item_id):
-                return item.details
-        return False
+        for key, val in self._items.items():
+            if key == item_id:
+                return val.details
+        return None
         
 ITEM_REPOSITORY = ItemRepository()
 TEST_ITEM_REPO = ItemRepository(TEST_DB_PATH)

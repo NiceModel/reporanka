@@ -2,6 +2,7 @@
 from repositories.item_repository import (
     ITEM_REPOSITORY as default_item_repository
 )
+
 class ItemService:
     """Class for item service.
 
@@ -24,8 +25,6 @@ class ItemService:
 
     def save(self):
         self._item_repository.save()
-    
+
     def find_by_id(self, item_id):
         return self._item_repository.find_by_id(item_id)
-
-ITEM_SERVICE = ItemService()
