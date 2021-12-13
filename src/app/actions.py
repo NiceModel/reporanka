@@ -168,6 +168,7 @@ class Details(Action):
                 self._io.write(OUTPUTS['item not found'])
             else:
                 found_item = self._item_service.find_by_id(item_id)
+        self._io.write(OUTPUTS['details results'])
         self._show_details(found_item)
         return True
 
