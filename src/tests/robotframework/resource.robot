@@ -35,6 +35,9 @@ Input Add Blog Command In Add Menu
 Input Back To Main Menu Command In Add Menu
     Input  4
 
+Input Clear Command In Main Menu
+    Input  9
+
 Add New Book
     [Arguments]  ${author}  ${title}  ${published}
     Input Add Command In Main Menu
@@ -69,7 +72,7 @@ Add Test Video
     Add New Video  Studio Killers  Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO  https://youtu.be/hyj4JFSErrw  24.12.2015
 
 Add Test Blog
-    Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056  8.1.2019
+    Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://www.yle.fi/pentulive  8.1.2019
 
 Add Test Items
     Add Test Book

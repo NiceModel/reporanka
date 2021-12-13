@@ -1,6 +1,7 @@
 '''Module for executable menu.'''
 from collections import deque
 import re
+import webbrowser
 
 from config import CMD_PROMPTS, OUTPUTS, YES, NO, HEADERS
 
@@ -57,12 +58,31 @@ class Action:
         return ids
 
     def _show_details(self, item):
-        '''Prints detailed info of an item.'''
+        """Prints detailed info of an item.
+        Open url of an item in a new browser tab.
+        """
         if item:
             info = [[key, val] for key, val in item.items()]
             self._io.write(info, True)
+
+            url = ''
+            if info[0][1] == 'blog':
+                if 'http' not in info[4][1]:
+                    url = 'https://' + info[4][1]
+                else:
+                    url = info[4][1]
+        
+            if info[0][1] == 'video':
+                if 'http' not in info[3][1]:
+                    url = 'https://' + info[3][1]
+                else:
+                    url = info[3][1]
+        
+            webbrowser.open(url)
+
         else:
             self._io.write(OUTPUTS['broken input'])
+            
 
 class Add(Action):
     '''Superclass for add actions'''
@@ -152,6 +172,27 @@ class Delete(Action):
                 self._io.write(OUTPUTS['not deleted'])
                 return
 
+class Clear(Action):
+    '''Action for clearing all items and creating an empty document.'''
+    def __init__(self, io, item_service):
+        super().__init__(io, item_service, 'clear')
+
+    def perform(self):
+        '''Confirms the clear action.'''
+        self._io.write(OUTPUTS['list'])
+        items = self._list()
+
+        choice = self._io.read(OUTPUTS['confirm_clearing'])
+        if choice.upper() == YES:
+            self._item_service.clear()
+            self._io.write(OUTPUTS['clearing'])
+        elif choice.upper() == NO:
+            self._io.write(OUTPUTS['not cleared'])
+        else: 
+            self._io.write(OUTPUTS['unknown command'])
+        return True
+
+
 class Details(Action):
     '''Action for showing the details of an item.'''
     def __init__(self, io, item_service):
@@ -168,8 +209,8 @@ class Details(Action):
                 self._io.write(OUTPUTS['item not found'])
             else:
                 found_item = self._item_service.find_by_id(item_id)
-        self._io.write(OUTPUTS['details results'])
-        self._show_details(found_item)
+                self._io.write(OUTPUTS['details results'])
+                self._show_details(found_item)
         return True
 
 class Search(Action):

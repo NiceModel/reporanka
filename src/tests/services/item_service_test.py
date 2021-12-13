@@ -80,6 +80,12 @@ class TestItemService(unittest.TestCase):
         self.item_service.delete_item('0001')
         items = self.item_service.list_by_type_alphabetically()
         self.assertEqual(len(items), len(TEST_ITEMS)-1)
+    
+    def test_clear(self):
+        self._create_test_items()
+        self.item_service.clear()
+        items = self.item_service.list_by_type_alphabetically()
+        self.assertEqual(len(items), 0)
 
     def test_save_file(self):
         self._create_test_items()

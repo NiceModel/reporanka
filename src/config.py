@@ -16,6 +16,7 @@ INSTRUCTIONS = (
     "\n (3) poista"
     "\n (4) hae tarkemmat tiedot id:llä"
     "\n (5) hae vinkkejä hakusanalla"
+    "\n (9) tyhjennetään kaikki vinkit"
     "\n (0) lopeta\n")
 
 ADD_MENU = (
@@ -45,7 +46,9 @@ CMD_PROMPTS = {
     "delete": [("\nAnna poistettavan teoksen id: ", "Teoksen id on annettava!")
               ],
     "search":[("Syötä hakusana: ", "Kirjoita hakusana!")],
-    "details": [("\nAnna id: ", "ID on annettava!")]
+    "details": [("\nAnna id: ", "ID on annettava!")],
+    "clear": [("\nTyhjennetään tiedosto kaikista vinkeistä.","Ai etkö haluakaan tyhjentää?")]
+
 }
 
 OUTPUTS = {
@@ -67,7 +70,10 @@ OUTPUTS = {
     "details results": "\nVinkin tarkemmat tiedot:\n",
     "search results": "\nHakusanalla löytyvät vinkit:\n",
     "search help": "\nVoit etsiä vinkkiä tekijän ja nimen perusteella syöttämällä hakusanan",
-    "broken input": "Syötteessäsi on ongelma."
+    "broken input": "Syötteessäsi on ongelma.",
+    "confirm_clearing": "\nPoistetaanko ihan kaikki? (K/E)",
+    "clearing": "Tyhjennetään tiedosto kaikista vinkeistä. Hyvästi!",
+    "not cleared": "Tiedostoa ei tyhjennetty."
 }
 
 TITLE = "\nLUKUVINKKIKIRJASTO"
