@@ -1,7 +1,8 @@
+'''Module for executable menu.'''
 from collections import deque
 import re
 
-from config import CMD_PROMPTS, OUTPUTS, YES, NO
+from config import CMD_PROMPTS, OUTPUTS, YES, NO, HEADERS
 
 class Action:
     '''Superclass for menu actions'''
@@ -36,8 +37,10 @@ class Action:
     def _list(self):
         """Writes all items to the console, tabulated.
         Truncates over 20 character long fields.
+
+        return:
+            ids: list: list of item ids
         """
-        headers = ['type', 'id', 'creator', 'title']
         items = self._item_service.list_by_type_alphabetically()
 
         if items:
@@ -45,7 +48,7 @@ class Action:
                 [field if len(field) <= 20 else f"{field[:20]}..." for field in item]
                 for item in items])
             ids = [item[1] for item in items]
-            items.appendleft(headers)
+            items.appendleft(HEADERS)
             self._io.write(items, True)
         else:
             ids = []
@@ -53,23 +56,8 @@ class Action:
 
         return ids
 
-    def _show_item_info(self, item):
-        headers = ['type', 'creator', 'name', 'published', 'id']
-        if item:
-            item = deque([item.values()])
-            item.appendleft(headers)
-            self._io.write(item, True)
-        elif item == None:
-            self._io.write(OUTPUTS["broken input"])
-            return
-        else:
-            item = []
-            self._io.write(OUTPUTS["empty item"])
-            return
-
-        return item
-
     def _show_details(self, item):
+        '''Prints detailed info of an item.'''
         if item:
             info = [[key, val] for key, val in item.items()]
             self._io.write(info, True)
@@ -163,10 +151,12 @@ class Delete(Action):
                 self._io.write(OUTPUTS['not deleted'])
 
 class Details(Action):
+    '''Action for showing the details of an item.'''
     def __init__(self, io, item_service):
         super().__init__(io, item_service, 'details')
 
     def perform(self):
+        '''Lists all items and then fetches the details.'''
         ids = self._list()
         found_item = None
         if ids:
@@ -176,24 +166,27 @@ class Details(Action):
                 self._io.write(OUTPUTS['item not found'])
             else:
                 found_item = self._item_service.find_by_id(item_id)
-        # self._show_item_info(found_item)
         self._show_details(found_item)
         return True
 
 class Search(Action):
+    '''Action for searching specific items.'''
     def __init__(self, io, item_service):
         super().__init__(io, item_service, 'search')
 
     def perform(self):
+        '''Performs a search with a search word provided by the user.'''
         self._io.write(OUTPUTS['search help'])
         items = self._item_service.list_by_type_alphabetically()
-        headers = ['type', 'id', 'creator', 'title']
 
         if items:
             results = self._search(items)
             if results:
                 self._io.write(OUTPUTS['search results'])
-                results.appendleft(headers)
+                results = deque([
+                [field if len(field) <= 20 else f"{field[:20]}..." for field in item]
+                for item in results])
+                results.appendleft(HEADERS)
                 self._io.write(results, True)
             else:
                 self._io.write(OUTPUTS['item not found'])
@@ -203,6 +196,7 @@ class Search(Action):
         return True
 
     def _search(self, items):
+        '''Internal method for performing a search.'''
         results = deque()
 
         prompt, error_msg = self._cmds[0]

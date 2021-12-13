@@ -71,5 +71,6 @@ OUTPUTS = {
 }
 
 TITLE = "\nLUKUVINKKIKIRJASTO"
+HEADERS = ['type', 'id', 'creator', 'title']
 YES = 'K'
 NO = 'E'
