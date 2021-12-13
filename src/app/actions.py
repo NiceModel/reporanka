@@ -147,8 +147,10 @@ class Delete(Action):
             if choice.upper() == YES:
                 self._item_service.delete_item(item)
                 self._io.write(OUTPUTS['deleting'])
-            elif choice.upper() == NO:
+                return
+            if choice.upper() == NO:
                 self._io.write(OUTPUTS['not deleted'])
+                return
 
 class Details(Action):
     '''Action for showing the details of an item.'''

@@ -65,5 +65,5 @@ List Does Not Contain Deleted Item
 *** Keywords ***
 Delete Test Book
     Input Delete Command In Main Menu
-    Input	1001
+    Input  1001
     Input  K
