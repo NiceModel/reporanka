@@ -1,29 +1,14 @@
 import unittest
-from utilities import utilities
-
+from string import ascii_lowercase, digits
+from utilities.utilities import generate_id
 
 class TestUtilities(unittest.TestCase):
-    pass
-    # def test_check_year_valid_ce(self):
-    #     year = utilities.check_year("2021")
-    #     self.assertTrue(year)
+    def test_generated_id_is_right_length(self):
+        test_id = generate_id()
+        self.assertEqual(len(test_id), 4)
 
-    # def test_check_year_valid_bce(self):
-    #     year = utilities.check_year("299 eaa.")
-    #     self.assertTrue(year)
-
-    # def test_check_year_invalid_alpha(self):
-    #     year = utilities.check_year("uhfijdo")
-    #     self.assertFalse(year)
-
-    # def test_check_year_invalid_negative(self):
-    #     year = utilities.check_year("-200")
-    #     self.assertFalse(year)
-
-    # def test_check_year_invalid_bce(self):
-    #     year = utilities.check_year("udjkdj bce")
-    #     self.assertFalse(year)
-
-    # def test_check_year_empty(self):
-    #     year = utilities.check_year('')
-    #     self.assertFalse(year)
+    def test_generated_id_is_alphanumeric(self):
+        test_id = generate_id()
+        chars = ascii_lowercase + digits
+        for char in test_id:
+            self.assertTrue((char in chars))

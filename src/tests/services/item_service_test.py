@@ -2,7 +2,7 @@ import unittest
 from config import TEST_DB_PATH
 from services.item_service import ItemService
 from repositories.item_repository import ItemRepository
-from utilities.csv_utilities import clear_csv
+from utilities.csv_utilities import clear_csv, read_csv
 
 TEST_ITEMS = [
     ("book", ["Naomi Klein", "No Logo", "1999", "0001"]),
@@ -43,14 +43,7 @@ class TestItemService(unittest.TestCase):
         item_type = "book"
         item_fields = TEST_ITEMS[0][1]
         self.item_service.create_item(item_type, item_fields)
-        # item = self.item_service.find_all_items()[0]
         item = self.item_service.list_by_type_alphabetically()[0]
-        # item_id = item[0]
-        # item_type = item[1]
-        # item_data = item[2]
-        # self.assertIsNotNone(item_id)
-        # self.assertEqual(item_type, 'book')
-        # self.assertEqual(item_data, ['Naomi Klein', 'No Logo', '1999'])
         expected = ["book", "0001", "Naomi Klein", "No Logo"]
         self.assertEqual(item, expected)
 
@@ -59,34 +52,18 @@ class TestItemService(unittest.TestCase):
         item_fields = TEST_ITEMS[1][1]
         self.item_service.create_item(item_type, item_fields)
         item = self.item_service.list_by_type_alphabetically()[0]
-        # self.assertEqual(str(self.item_service.find_all_items()[0][1]), 'blog')
         self.assertEqual(item[1], "0002")
 
     def test_create_video(self):
         item_type = 'video'
         item_fields = TEST_ITEMS[2][1]
         self.item_service.create_item(item_type, item_fields)
-        # self.assertEqual(str(self.item_service.find_all_items()[0][1]), 'video')
         item = self.item_service.list_by_type_alphabetically()[0]
         self.assertEqual(item[1], "0003")
-
-    # def test_find_all_items_returns_list(self):
-    #     books = self.item_service.find_all_items()
-    #     self.assertTrue(isinstance(books, list))
 
     def test_list_items_returns_list(self):
         items = self.item_service.list_by_type_alphabetically()
         self.assertTrue(isinstance(items, list))
-
-    # def test_find_all_items_returns_items_in_correct_order(self):
-    #     self._create_test_items()
-    #     items = self.item_service.find_all_items()
-    #     correct_order = [
-    #         "Pedro Medeiros", "Tamsin", "Frank Herbert",
-    #         "Naomi Klein", "Lee Suhyun", "tglab"
-    #         ]
-    #     for item, expected in zip(items, correct_order):
-    #         self.assertEqual(item[2][0], expected)
 
     def test_list_returns_items_in_correct_order(self):
         self._create_test_items()
@@ -101,7 +78,16 @@ class TestItemService(unittest.TestCase):
     def test_delete_item(self):
         self._create_test_items()
         self.item_service.delete_item('0001')
-        # items = self.item_service.find_all_items()
         items = self.item_service.list_by_type_alphabetically()
         self.assertEqual(len(items), len(TEST_ITEMS)-1)
-        
+
+    def test_save_file(self):
+        self._create_test_items()
+        self.item_service.save()
+        data = read_csv(TEST_DB_PATH)
+        self.assertEqual(len(data), 6)
+
+    def test_find_by_id_returns_correct_item(self):
+        self._create_test_items()
+        item = self.item_service.find_by_id('0001')
+        self.assertEqual(item['id'], '0001')

@@ -1,7 +1,7 @@
 import unittest
 from config import TEST_DB_PATH
 from repositories.item_repository import ItemRepository
-from utilities.csv_utilities import clear_csv
+from utilities.csv_utilities import clear_csv, read_csv
 
 
 class TestItemRepository(unittest.TestCase):
@@ -68,3 +68,31 @@ class TestItemRepository(unittest.TestCase):
         items = self.item_repo.list_items()
         for item in items:
             self.assertNotEqual(item[1], '0001')
+
+    def test_save_file_not_empty(self):
+        self.item_repo.create('book', self.book)
+        self.item_repo.create('blog', self.blog)
+        self.item_repo.create('video', self.video)
+        self.item_repo.save()
+        data = read_csv(TEST_DB_PATH)
+        self.assertEqual(len(data), 3)
+
+    def test_delete_all(self):
+        self.item_repo.create('book', self.book)
+        self.item_repo.create('blog', self.blog)
+        self.item_repo.create('video', self.video)
+        self.item_repo.delete_all_items()
+        items = self.item_repo.list_items()
+        self.assertFalse(items)
+
+    def test_find_existing_item(self):
+        self.item_repo.create('book', self.book)
+        item = self.item_repo.find_by_id('0001')
+        self.assertEqual(item['id'], '0001')
+
+    def test_find_nonexisting_item_empty_repo(self):
+        self.assertIsNone(self.item_repo.find_by_id('0004'))
+
+    def test_find_nonexisting_item_nonempty_repo(self):
+        self.item_repo.create('book', self.book)
+        self.assertIsNone(self.item_repo.find_by_id('0004'))

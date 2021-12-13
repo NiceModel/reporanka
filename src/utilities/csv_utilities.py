@@ -14,6 +14,8 @@ def read_csv(fpath):
 
     args:
         fpath: str: path to the file to be read from
+    return:
+        list containing data
     """
     temp = []
     with open(fpath, 'r') as f:
