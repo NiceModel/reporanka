@@ -81,19 +81,19 @@ Add Test Items
     Add Test Video
     Add Test Blog
 
-Add Test Book And Id
-    Add New Book  Jonathan Safran Foer  Eating Animals  2009  ${ID1}
+# Add Test Book And Id
+#     Add New Book  Jonathan Safran Foer  Eating Animals  2009  ${ID1}
 
-Add Test Video And Id
-    Add New Video  Studio Killers  Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO  https://youtu.be/hyj4JFSErrw  24.12.2015  ${ID2}
+# Add Test Video And Id
+#     Add New Video  Studio Killers  Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO  https://youtu.be/hyj4JFSErrw  24.12.2015  ${ID2}
 
-Add Test Blog And Id
-    Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056  8.1.2019  ${ID3}
+# Add Test Blog And Id
+#     Add New Blog  Pedro Medeiros  Pixel Grimoire  How to start making pixel art #6  https://medium.com/pixel-grimoire/how-to-start-making-pixel-art-6-a74f562a4056  8.1.2019  ${ID3}
 
-Add Test Items With Ids
-    Add Test Book And Id
-    Add Test Video And Id
-    Add Test Blog And Id
+# Add Test Items With Ids
+#     Add Test Book And Id
+#     Add Test Video And Id
+#     Add Test Blog And Id
 
 Clear Data
     Clear Test File
