@@ -184,8 +184,8 @@ class Search(Action):
             if results:
                 self._io.write(OUTPUTS['search results'])
                 results = deque([
-                [field if len(field) <= 20 else f"{field[:20]}..." for field in item]
-                for item in results])
+                    [field if len(field) <= 20 else f"{field[:20]}..." for field in item]
+                    for item in results])
                 results.appendleft(HEADERS)
                 self._io.write(results, True)
             else:

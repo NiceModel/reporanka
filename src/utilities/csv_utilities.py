@@ -1,15 +1,20 @@
-"""Service for reading from and writing to the items datafile"""
+"""Utility functions for reading from and writing to the items datafile"""
 
 def write_csv(fpath, data):
-    """Writes to the datafile.
+    """Write to a csv file.
 
-    Writes in two columns:
-        item type: string, item fields: list
+    args:
+        fpath: str: path to the file to be written to
     """
-    with open(fpath, "a") as file:
-        file.write(f"{data}\n")
+    with open(fpath, "a") as f:
+        f.write(f"{data}\n")
 
 def read_csv(fpath):
+    """Read data from a csv file.
+
+    args:
+        fpath: str: path to the file to be read from
+    """
     temp = []
     with open(fpath, 'r') as f:
         next(f)
@@ -24,15 +29,3 @@ def clear_csv(fpath):
     f.write("type;fields\n")
     f.truncate()
     f.close()
-
-def delete_csv(fpath, title):
-    with open(fpath, "r") as f:
-        lines = f.readlines()
-
-    clear_csv(fpath)
-
-    with open(fpath, "w") as f:
-        for line in lines:
-            if title not in line:
-                f.write(line)
-        f.truncate()

@@ -5,7 +5,7 @@ from app.app import App
 
 
 def main():
-    """Runs main program"""
+    """Runs the main program"""
     item_service = ItemService()
     console_io = ConsoleIO()
     app = App(item_service, console_io)

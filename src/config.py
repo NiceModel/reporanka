@@ -44,8 +44,7 @@ CMD_PROMPTS = {
              ],
     "delete": [("\nAnna poistettavan teoksen id: ", "Teoksen id on annettava!")
               ],
-    "search":[("Syötä hakusana: ", "Kirjoita hakusana!")
-            ],
+    "search":[("Syötä hakusana: ", "Kirjoita hakusana!")],
     "details": [("\nAnna id: ", "ID on annettava!")]
 }
 
