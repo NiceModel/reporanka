@@ -2,8 +2,6 @@
 
 *** Settings ***
 Resource  resource.robot
-# Test Setup  Clear Test File
-# Test Setup  Add Test Items With Ids
 Test Setup  Clear And Add Items
 
 *** Test Cases ***
@@ -18,6 +16,14 @@ Details Contain Item Author And Title
     Id Search
     Run App
     Output Should Cover  Jonathan Safran Foer  Eating Animals
+
+Returns From Details To Main Menu Succesfully
+    Clear Test File
+    Id Search
+    Run App
+    Run App
+    Input  0
+    Output Should Contain  Kiitti & moi!
 
 *** Keywords ***
 Clear And Add Items
