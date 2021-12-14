@@ -89,7 +89,8 @@ class TestItemRepository(unittest.TestCase):
         self.item_repo.create('book', self.book)
         self.item_repo.create('blog', self.blog)
         self.item_repo.create('video', self.video)
-        clear_csv(TEST_DB_PATH)
+        self.item_repo.delete_all_items()
+        self.item_repo.save()
         data = read_csv(TEST_DB_PATH)
         self.assertFalse(len(data), 0)
 
