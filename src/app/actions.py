@@ -71,13 +71,14 @@ class Action:
                     url = 'https://' + info[4][1]
                 else:
                     url = info[4][1]
+                webbrowser.open(url)
 
             if info[0][1] == 'video':
                 if 'http' not in info[3][1]:
                     url = 'https://' + info[3][1]
                 else:
                     url = info[3][1]
-            webbrowser.open(url)
+                webbrowser.open(url)
 
         else:
             self._io.write(OUTPUTS['broken input'])
