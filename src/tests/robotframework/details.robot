@@ -6,19 +6,16 @@ Test Setup  Clear And Add Items
 
 *** Test Cases ***
 Details Can Be Fetched With Id Number
-    Clear Test File
     Id Search
     Run App
-    Output Should Contain  \nVinkin tarkemmat tiedot:\n
+    Output Should Contain  Jonathan Safran Foer
 
 Details Contain Item Author And Title
-    Clear Test File
     Id Search
     Run App
     Output Should Cover  Jonathan Safran Foer  Eating Animals
 
 Returns From Details To Main Menu Succesfully
-    Clear Test File
     Id Search
     Run App
     Run App
@@ -27,7 +24,7 @@ Returns From Details To Main Menu Succesfully
 
 *** Keywords ***
 Clear And Add Items
-    Clear Test File
+    Clear Data
     Add Test Items
 
 Id Search
