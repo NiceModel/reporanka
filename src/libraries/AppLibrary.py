@@ -44,6 +44,7 @@ class AppLibrary:
         outputs.clear()
 
     def output_should_cover(self, value1, value2):
+        """Validation #3 for output, for 2 attributes"""
         outputs = ""
         outputs = self._io.outputs
 

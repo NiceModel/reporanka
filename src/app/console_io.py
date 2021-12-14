@@ -12,7 +12,6 @@ class ConsoleIO:
         """
         if table:
             print(tabulate(value, headers='firstrow', tablefmt='fancy_grid'))
-            
         else:
             print(value)
 

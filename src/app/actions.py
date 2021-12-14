@@ -71,13 +71,12 @@ class Action:
                     url = 'https://' + info[4][1]
                 else:
                     url = info[4][1]
-        
+
             if info[0][1] == 'video':
                 if 'http' not in info[3][1]:
                     url = 'https://' + info[3][1]
                 else:
                     url = info[3][1]
-        
             webbrowser.open(url)
 
         else:
@@ -180,7 +179,6 @@ class Clear(Action):
     def perform(self):
         '''Confirms the clear action.'''
         self._io.write(OUTPUTS['list'])
-        items = self._list()
 
         choice = self._io.read(OUTPUTS['confirm_clearing'])
         if choice.upper() == YES:
@@ -188,10 +186,9 @@ class Clear(Action):
             self._io.write(OUTPUTS['clearing'])
         elif choice.upper() == NO:
             self._io.write(OUTPUTS['not cleared'])
-        else: 
+        else:
             self._io.write(OUTPUTS['unknown command'])
         return True
-
 
 class Details(Action):
     '''Action for showing the details of an item.'''
