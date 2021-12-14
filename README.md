@@ -10,9 +10,10 @@ Backlogeille ja tuntikirjanpidolle ym. on käytössä Google Sheets, jota pääs
 ### Asennusohjeet
 *Ohjeissa oletetaan, että olet luonut ssh-avaimen koneellesi ja lisännyt sen GitHubiin*
 
-1) Kloonaa repositorio paikalliselle koneelle: `git clone git@github.com:NiceModel/reporanka.git` TAI lataa viimeisin release [täältä](https://github.com/NiceModel/reporanka/releases)
-2) Asenna riippuvuudet seuraavalla komennolla: `poetry install` 
-3) Käynnistä sovellus: `poetry run invoke start`
+1) Kloonaa repositorio paikalliselle koneelle: `git clone git@github.com:NiceModel/reporanka.git`
+    + TAI lataa viimeisin release [täältä](https://github.com/NiceModel/reporanka/releases)
+3) Asenna riippuvuudet seuraavalla komennolla: `poetry install` 
+4) Käynnistä sovellus: `poetry run invoke start`
 
 ### Command line
 
