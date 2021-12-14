@@ -81,7 +81,6 @@ class Action:
 
         else:
             self._io.write(OUTPUTS['broken input'])
-            
 
 class Add(Action):
     '''Superclass for add actions'''

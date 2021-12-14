@@ -3,20 +3,20 @@ Resource  resource.robot
 Test Setup  Add Test Items And Input Clear Command
 
 *** Test Cases ***
-Choose Clear Command  
+Choose Delete All Command  
     Run App
     Input Clear Command In Main Menu
     Output Should Contain  \nTallennetut vinkit:\n
 
-App Verifies Deletion
-    Verify Clear
+App Verifies Delete All
+    Verify Delete All
     Run App
-    Output Should Contain  Tyhjennetään tiedosto kaikista vinkeistä. Hyvästi!
+    Output Should Contain  Poistetaan kaikkia vinkkejä. Hyvästi!
 
-Item Is Not Deleted Without Verification
-    Do Not Verify Clear
+Items Are Not Deleted Without Verification
+    Do Not Verify Delete All
     Run App
-    Output Should Contain  Tiedostoa ei tyhjennetty.
+    Output Should Contain  Vinkkejä ei poistettu.
 
 *** Keywords ***
 Add Test Items And Input Clear Command
@@ -24,8 +24,8 @@ Add Test Items And Input Clear Command
     Add Test Items
     Input Clear Command In Main Menu
 
-Verify Clear
+Verify Delete All
     Input  K
 
-Do Not Verify Clear
+Do Not Verify Delete All
     Input  E
