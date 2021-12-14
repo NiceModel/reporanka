@@ -42,7 +42,7 @@ class ItemService:
             Item object if item exists, otherwise None
         '''
         return self._item_repository.delete_item(item_id)
-    
+
     def clear(self):
         '''Clears the file of all items.'''
         return self._item_repository.delete_all_items()
