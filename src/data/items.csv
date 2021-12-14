@@ -1,12 +1,12 @@
 type;fields
-book;Meri Tuuli;Meemikirja;;;2021;7r4h
+book;Meri Tuuli;Meemikirja;2021;7r4h
 blog;Turre;Turren reseptei;Namnam resepti;turre.fi;1.12.2000;00ap
 blog;Pedro Medeiros;Pixel Grimoire;How to start making pixel art #6;https://www.yle.fi/pentulive;8.1.2019;cpa2
 blog;Roxy & Ben;SO VEGAN;Butternut Squash Wellington;https://www.wearesovegan.com/butternut-squash-wellington/;5.12.2019;6a43
-book;Jonathan Safran Foer;Eating Animals;;;2009;7fql
-book;Victor Hugo;Les Misérables;;;1862;z4tr
-book;Sisko Savonlahti;Talvea kohti;;;2021;avw3
-book;Goodall Buckingham;Nine Lies About Work;;;2000;mlkl
-video;Studio Killers;Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO;;https://youtu.be/hyj4JFSErrw;24.12.2015;5k3k
-video;Team StarKid;A Very Potter Musical Act 1 Part 1;;https://youtu.be/wmwM_AKeMCk;5.7.2009;8phq
-video;Team StarKid;A Very Potter Musical Act 1 Part 1;;https://youtu.be/wmwM_AKeMCk;5.7.2009;uvwb
+book;Jonathan Safran Foer;Eating Animals;2009;7fql
+book;Victor Hugo;Les Misérables;1862;z4tr
+book;Sisko Savonlahti;Talvea kohti;2021;avw3
+book;Goodall Buckingham;Nine Lies About Work;2000;mlkl
+video;Studio Killers;Jenny (I Wanna Ruin Our Friendship) OFFICIAL MUSIC VIDEO;https://youtu.be/hyj4JFSErrw;24.12.2015;5k3k
+video;Team StarKid;A Very Potter Musical Act 1 Part 1;https://youtu.be/wmwM_AKeMCk;5.7.2009;8phq
+video;Team StarKid;A Very Potter Musical Act 1 Part 1;https://youtu.be/wmwM_AKeMCk;5.7.2009;uvwb
