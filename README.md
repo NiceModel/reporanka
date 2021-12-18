@@ -35,3 +35,6 @@ Backlogeille ja tuntikirjanpidolle ym. on käytössä Google Sheets, jota pääs
 + Sovellus antaa järkevät virheilmoitukset yleisimmillä virheellisillä syötteillä
 + Github Actions on otettu käyttöön yksikkötestaukseen
 + Robot Framework on otettu käyttöön
+
+## Loppuraportti
+[Linkki loppuraporttiin, saa kommentoida!] (https://docs.google.com/document/d/1LOSab8Gh7XG8nHRHQoasI1nv2A6ZAU4luoKl7OryltA/edit?usp=sharing)
